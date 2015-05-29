@@ -1,0 +1,221 @@
+/***************************************
+         Header & Footer
+****************************************/
+header {
+  width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+  padding: 10px 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+footer{
+  text-align: center;
+  font-size: 0.5em;
+}
+h1, h2, h3, h4, h5, h6 {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0.2em;
+  font-family: serif;
+}
+p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  font-family: sans-serif;
+}
+html {
+  line-height: 1;
+}
+
+/***************************************
+        Non-presenting mode
+****************************************/
+
+.slide-container {
+  width: 82%;
+  margin: 0 auto 20px;
+  padding: 1%;
+  background-color: rgb(240, 240, 240);
+}
+.slide-container .slide {
+  display: inline-block;
+  position: relative;
+  float: left;
+  margin: 12px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+}
+.toolbar, .zoom, .edit, .font, .add-header,
+.swap, .full-screen, .delete-slide {
+  display: none;
+}
+.slide:hover .toolbar, .slide:hover .zoom,
+.slide:hover .edit, .slide:hover .swap,
+.slide:hover .full-screen, .slide:hover .delete-slide,
+.slide:hover .font, .slide:hover .add-header {
+  display: block;
+  position: absolute;
+  float: right;
+  padding: 0;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  width : 16px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+.slide:hover .toolbar {
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+}
+.slide:hover .edit {
+  right: 25px;
+}
+.slide:hover .font {
+  right: 50px;
+}
+.slide:hover .add-header {
+  right: 75px;
+}
+.slide:hover .swap {
+  right: 100px;
+}
+.slide:hover .delete-slide {
+  right: 125px;
+}
+.slide:hover .full-screen {
+  right: 150px;
+  width: 20px;
+}
+.add-slide {
+  display: inline-block;
+  width: 135px;
+  margin: 15px;
+}
+.slide-number {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 40px;
+  left: 0;
+  font-size: 60px;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+/***************************************
+        Presenting mode
+****************************************/
+
+.slide-container.presenting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  z-index: 10009;
+}
+.slide-container.presenting .slide {
+  display: none;
+}
+.slide-container.presenting .slide.active {
+  position: relative;
+  display: block;
+  margin: 0;
+  background-color: #fff;
+  z-index: 10010;
+}
+.slide-container.presenting .slide.active .slide-number {
+  top: 190px;
+  font-size: 120px;
+}
+.prev-arrow {
+  left: -150px;
+}
+.next-arrow {
+  right: -150px;
+}
+.arrows {
+  position: absolute;
+  top: 40%;
+  width: 50px;
+  cursor: pointer;
+}
+
+/***************************************
+        Full screen Mode
+****************************************/
+.slide-container.presenting .slide.active.fullscreen {
+  margin: 0;
+  z-index: 10010;
+}
+
+/***************************************
+            Edit Mode
+****************************************/
+
+.slide.editable {
+  cursor: text;
+  outline: 1px dashed #000;
+}
+
+/***************************************
+            Swap Mode
+****************************************/
+
+.slide.swapping {
+  outline: 1px dashed #000;
+}
+
+/***************************************
+            Responsive CSS
+****************************************/
+@media screen and (max-width: 1024px) {
+  .slide-container {
+    width: 70%;
+  }
+  .slide:hover .full-screen {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .slide-container {
+    width: 57%;
+  }
+  .add-slide {
+    margin-left: 45px;
+  }
+  .slide:hover .zoom {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .slide-container {
+    width: 63%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .slide-container {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .slide-container {
+    width: 73%;
+  }
+  .add-slide {
+    margin-left: 50px;
+  }
+}
