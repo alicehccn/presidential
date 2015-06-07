@@ -2,7 +2,7 @@ $(document).ready(function(){
   // Append slide menu icons
   var $addSlide = $('<img src="img/plus.png" class="add-slide" title="New Slide">');
 
-  var slideWidth = 162, slideHeight = 95;
+  var slideWidth = 212, slideHeight = 140;
   var currentSlide = null;
   window.slideCount = 0;
 
@@ -11,56 +11,74 @@ $(document).ready(function(){
 
   // New slide style on non-presenting mode 
   function newSlideStyle() {
-    currentSlide = $('.slide');
-    currentSlide.width(slideWidth)
-                .height(slideHeight);
-    currentSlide.css({
+    $('.slide').width(slideWidth)
+               .height(slideHeight);
+    $('.slide').css({
       "top": "0",
-      "left": "0",
-      "padding": "25px"
+      "left": "0"
     });
-    currentSlide.children("p").css(
-      "font-size", "9px",
-      "font-weight", "normal"
+    $(".textbox").css({
+      "margin": "9%",
+      "height": "70.5%"
+    });
+    $("p, ul, ol, pre, code, table").css(
+      "font-size", "0.5em"
     );
-    currentSlide.children("h1", "h2", "h3", "h4", "h5", "h6").css(
-      "font-size", "12px"
+    $("ul, ol").css(
+      "-webkit-padding-start", "1.8em"
+    );
+    $("h1, h2, h3, h4, h5, h6").css(
+      "font-size", "0.8em"
     );
   }
   // Active slide style on presenting mode
   function activeSlideStyle() {
-    currentSlide = $('.active');
-    currentSlide.width(slideWidth * 4)
-                .height(slideHeight * 4);
-    currentSlide.css({
-      "padding": "80px"
-    }).css({
-      "top": ($(window).height() - currentSlide.outerHeight()) / 2,
+    $('.active').width(slideWidth * 3.5)
+                .height(slideHeight * 3.5);
+    $('.active').css({
+      "top": ($(window).height() - $('.active').outerHeight()) / 2,
       "left": calculateEdgeWidth()
     });
-    currentSlide.children("p").css(
-      "font-size", "35px"
+    $(".textbox").css({
+      "margin": "9%",
+      "height": "73%"
+    });
+    $("p, ul, ol, pre, code, table").css(
+      "font-size", "1.9em"
     );
-    currentSlide.children("h1", "h2", "h3", "h4", "h5", "h6").css(
-      "font-size", "44px"
+    $("ul").css(
+      "-webkit-padding-start", "0.9em"
+    );
+    $("ol").css(
+      "-webkit-padding-start", "1.5em"
+    );
+    $("h1, h2, h3, h4, h5, h6").css(
+      "font-size", "2.8em"
     );
   }
   // Slide style on full screen
   function fullScreenSlideStyle() {
-    currentSlide = $('.slide-fullscreen');
-    currentSlide.width(slideWidth * 8)
-                .height(slideHeight  * 8);
-    currentSlide.css({
-      "padding": "80px"
-    }).css({
+    $('.slide-fullscreen').width("100%")
+                          .height("100%");
+    $('.slide-fullscreen').css({
       "top": "0",
       "left": "0"
     });
-    currentSlide.children("p").css(
-      "font-size", "66px"
+    $(".textbox").css({
+      "margin": "6% 10%",
+      "height": "74%"
+    });
+    $("p, ul, ol, pre, code, table").css(
+      "font-size", "3.5em"
     );
-    currentSlide.children("h1", "h2", "h3", "h4", "h5", "h6").css(
-      "font-size", "80px"
+    $("ul").css(
+      "-webkit-padding-start", "0.9em"
+    );
+    $("ol").css(
+      "-webkit-padding-start", "1.5em"
+    );
+    $("h1, h2, h3, h4, h5, h6").css(
+      "font-size", "5.6em"
     );
   }
 
@@ -68,13 +86,14 @@ $(document).ready(function(){
   function addNewSlide(slideContent) {
     window.slideCount++;
     var $slide = $('<div class="slide"></div>');
-    var $slideHeader = $('<h6 class="slide-header">Slide header</h6>');
-    var $newContent = $('<p class="normal-font">New Slide</p>');
+    var $textbox = $('<div class="textbox"></div>')
+    var $slideHeader = $('<h1 class="slide-header">Slide header</h1>');
+    var $newContent = $('<p>New Slide</p>');
     var $toolbar = $('<div class="toolbar" contenteditable="false"></div>');
     var $zoomIcon = $('<img src="img/zoom_in.png" class="zoom" title="Zoom In">');
     var $editIcon = $('<img src="img/edit.png" class="edit" title="Edit Slide">');
-    var $font = $('<img src="img/alphabet.png" class="font" title="Font Size">');
-    var $addHeader = $('<img src="img/add.png" class="add-header" title="Add Header">')
+    var $imgSize = $('<img src="img/image.png" class="img-size" title="Image Size">');
+    var $imgPos = $('<img src="img/direction.png" class="img-position" title="Image Position">');
     var $swapIcon = $('<img src="img/link.png" class="swap" title="Swap Slide">');
     var $deleteSlide = $('<img src="img/delete.png" class="delete-slide" title="Delete Slide">');
     var $fullScreen = $('<img src="img/slider.png" class="full-screen" title="Full Screen">');
@@ -88,28 +107,29 @@ $(document).ready(function(){
     $toolbar.
       append($zoomIcon).
       append($editIcon).
-      append($font).
-      append($addHeader).
+      append($imgSize).
+      append($imgPos).
       append($swapIcon).
       append($deleteSlide).
       append($fullScreen);
 
+    if (slideContent) {
+      $textbox.append(slideContent);
+    } else {
+      $textbox.
+        append($slideHeader).
+        append($newContent);
+    }
+
     $slide.
-      append($slideHeader).
+      append($textbox).
       append($toolbar).
       append($prevArrow).
       append($nextArrow).
       append($slideNumber);
 
-    if (slideContent) {
-      $slide.append(slideContent);
-    } else {
-      $slide.append($newContent);
-    }
-
     newSlideStyle();
     $('.add-slide').remove();
-    $slideHeader.hide();
     $('.arrows').hide();
     $('.slide-container').append($addSlide);
   }
@@ -145,8 +165,7 @@ $(document).ready(function(){
   function zoomInSlide() {
     $('.slide-container').addClass("presenting");
     $('.zoom').attr("src", "img/zoom_out.png");
-    $("header").hide();
-    $("footer").hide();
+    $('.slide-number').hide();
     $('.add-slide').hide();
     $('.arrows').show();
     activeSlideStyle();
@@ -159,8 +178,6 @@ $(document).ready(function(){
     $('.zoom').attr("src", "img/zoom_in.png");
     $('.slide').removeClass("active");
     $(".arrows").hide();
-    $("header").show();
-    $("footer").show();
     $('.add-slide').show();
     $('.slide-number').show();
     newSlideStyle();
@@ -208,49 +225,25 @@ $(document).ready(function(){
     }
   })
 
-  // Customize 3 types of font sizes
-  function normalFont() { 
-    // default font-size
-    currentSlide = $('.normal-font')
-    currentSlide.css("font-weight", "normal");
-  }
-  function lightFont() {
-    currentSlide = $('.light-font');
-    currentSlide.css("font-weight", "lighter");
-  }
-  function boldFont() {
-    currentSlide = $('.bold-font')
-    currentSlide.css("font-weight", "bold");
-  }
-
-  // Switching font size on mouse click
-  $('.slide-container').on("click", ".font", function() {
-    currentSlide = $(":focus").find("p");
-    if (currentSlide.hasClass("normal-font")) {
-      currentSlide.removeClass("normal-font");
-      currentSlide.removeClass("light-font");
-      currentSlide.addClass("bold-font");
-      boldFont();
-    } else if (currentSlide.hasClass("bold-font")) {
-      currentSlide.removeClass("bold-font");
-      currentSlide.removeClass("normal-font");
-      currentSlide.addClass("light-font");
-      lightFont();
-    } else if (currentSlide.hasClass("light-font")) {
-      currentSlide.removeClass("light-font");
-      currentSlide.removeClass("bold-font");
-      currentSlide.addClass("normal-font");
-      normalFont();
+  // Resize image
+  $('.slide-container').on("click", ".img-size", function() {
+    currentSlide = $(this).parents(".slide");
+    var currentImage = currentSlide.children(".textbox").find("img");
+    if (currentImage.hasClass("big-img")) {
+      currentImage.removeClass("big-img");
+    } else if (currentImage.hasClass("small-img")) {
+      currentImage.removeClass("small-img");
+      currentImage.addClass("big-img");
     } else {
-       currentSlide.addClass("normal-font");
-       normalFont();
+      currentImage.addClass("small-img");
     }
   })
 
-  // Add content to current slide
-  $('.slide-container').on("click", ".add-header", function() {
+  // Toggle image position
+  $('.slide-container').on("click", ".img-position", function() {
     currentSlide = $(this).parents(".slide");
-    currentSlide.children(".slide-header").toggle();
+    var currentImage = currentSlide.children(".textbox").find("img");
+    currentImage.toggleClass("float-left");
   })
 
   // Slide to be swappped
@@ -319,6 +312,7 @@ $(document).ready(function(){
     $('.slide-container').addClass("presenting");
     $('.toolbar').hide();
     $("header").hide();
+    $(".fetch-presentation").hide();
     $("footer").hide();
     $('.slide-number').hide();
     $('.add-slide').hide();
@@ -332,6 +326,10 @@ $(document).ready(function(){
         document.mozCancelFullScreen;
     cancelFullScreen.call(document);
     $(".slide").removeClass("active slide-fullscreen");
+    $("header").show();
+    $(".fetch-presentation").show();
+    $("footer").show();
+    $('.slide-number').show();
     $('.toolbar').show();
     newSlideStyle();
     zoomOutSlide();
@@ -393,13 +391,14 @@ $(document).ready(function(){
   // Slide back and forth in presenting mode on mouse click
   function goToNextSlide() {
     currentSlide = $('.active');
+    var isEdittingSlide = $('.editable').length;
     if (currentSlide.next().hasClass("slide") && currentSlide.hasClass("slide-fullscreen")) {
       currentSlide.next().addClass("active");
       currentSlide.next().addClass("slide-fullscreen");
       currentSlide.removeClass("active");
       currentSlide.removeClass("slide-fullscreen");
       fullScreenSlideStyle();
-    } else if (currentSlide.next().hasClass("slide") && !currentSlide.hasClass("slide-fullscreen")) {
+    } else if (currentSlide.next().hasClass("slide") && !currentSlide.hasClass("slide-fullscreen") && !isEdittingSlide) {
       currentSlide.next().addClass("active");
       currentSlide.removeClass("active");
       activeSlideStyle();
@@ -408,13 +407,14 @@ $(document).ready(function(){
 
   function goToPrevSlide() {
     currentSlide = $('.active');
+    var isEdittingSlide = $('.editable').length;
     if (currentSlide.prev().hasClass("slide") && currentSlide.hasClass("slide-fullscreen")) {
       currentSlide.prev().addClass("active");
       currentSlide.prev().addClass("slide-fullscreen");
       currentSlide.removeClass("active");
       currentSlide.removeClass("slide-fullscreen");
       fullScreenSlideStyle();
-    } else if (currentSlide.prev().hasClass("slide") && !currentSlide.hasClass("slide-fullscreen")) {
+    } else if (currentSlide.prev().hasClass("slide") && !currentSlide.hasClass("slide-fullscreen") && !isEdittingSlide) {
       currentSlide.prev().addClass("active");
       currentSlide.removeClass("active");
       activeSlideStyle();
@@ -430,6 +430,60 @@ $(document).ready(function(){
     currentSlide = $(this).parent(".slide");
     goToNextSlide();
   })
+
+  /********************************************
+          Fetch data from Markdown
+  *********************************************/
+
+  function renderHTMLSlides(slides) {
+    $('.slide-container').children('.slide').remove();
+    window.slideCount = 0;
+    for (var i = 0; i < slides.length; i++) {
+      addNewSlide(slides[i]);
+    }
+  }
+
+  function getMarkdown(url) {
+    if (url.length > 0) {
+      var presentationUrl = '/presentation?url=' + encodeURIComponent(url);
+      $.get(presentationUrl, function (data) {
+        renderHTMLSlides(data.slides);
+        document.location.hash = encodeURIComponent(url);
+        clearUrlInput();
+      }).fail(function() {
+        alert("An error has occured and your file could not be loaded. Please try again.");
+      });
+    }
+  }
+    
+  function getMarkdownIfUrl() {
+    var url = $('#presentation-url').val();
+    if (url.length > 0) {
+      getMarkdown(url);
+    }
+  }
+
+  function clearUrlInput() {
+    $('#presentation-url').val("").blur();
+  }
+
+  $('#get-markdown').on('click', getMarkdownIfUrl);
+
+  // Load markdown from URL
+  function setupPresidential() {
+    var hash = decodeURIComponent(document.location.hash);
+    if (hash.length > 0) {
+      if (hash.charAt(0) === "#") {
+        hash = hash.substring(1);
+      }
+      getMarkdown(hash);
+    } else {
+      $('#presentation-url').focus()
+    }
+  }
+
+  setupPresidential();
+
 
   /********************************************
                 Keyboard Event
@@ -450,48 +504,13 @@ $(document).ready(function(){
       exitFullScreen();
       break;
 
+      case 13: // enter
+      getMarkdownIfUrl();
+      break;
+
       default: return;
     }
   })
-
-  /********************************************
-          Fetch data from Markdown
-  *********************************************/
-
-  window.converter = new showdown.Converter();
-
-  function numberOfSlides(slides) {
-    for (var i = 0; i < slides.length; i++) {
-      var slideHtml = fetchSlideHtml(slides[i]);
-      addNewSlide(slideHtml);
-    }
-  }
-
-  function fetchSlideHtml(data) {
-    return window.converter.makeHtml(data);
-  }
-
-  function getMarkdown() {
-    var presentationUrl = '/presentation?url=' + encodeURIComponent($('#presentation-url').val());
-    $.get(
-      presentationUrl,
-      function (data) {
-        window.slides = data.split('# ').
-          filter(function(d) { return d.length > 0; }).
-          map(function(d) { return '# ' + d; });
-        numberOfSlides(window.slides);
-      }
-    );
-  }
-
-  $('#presentation-url').on('change', function(e) {
-    this.placeholder = "";
-  });
-
-
-  $('#get-markdown').on('click', function(e) {
-    getMarkdown();
-  });
 
 
 })//JQuery ends

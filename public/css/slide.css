@@ -12,22 +12,32 @@ header {
   text-align: center;
   border-bottom: 2px solid #aaa;
 }
-footer{
+header a, header a:visited {
+  color: #fff;
+}
+footer {
   text-align: center;
   font-size: 0.5em;
 }
 h1, h2, h3, h4, h5, h6 {
   -webkit-margin-before: 0;
-  -webkit-margin-after: 0.2em;
+  -webkit-margin-after: 0.1em;
   font-family: serif;
 }
-p {
+p, ul, ol, pre, code, table {
   -webkit-margin-before: 0;
   -webkit-margin-after: 0.2em;
   font-family: sans-serif;
 }
+td {
+  border: 1px dotted #000;
+}
 html {
   line-height: 1.1;
+}
+a, a:visited {
+  text-decoration: none;
+  color: mediumblue;
 }
 
 /***************************************
@@ -35,7 +45,7 @@ html {
 ****************************************/
 .fetch-presentation {
   display: block;
-  margin: 20px auto;
+  margin: 30px auto;
   padding: none;
   text-align: center;
 }
@@ -66,18 +76,18 @@ html {
   position: relative;
   float: left;
   margin: 12px;
+  padding: 0;
   background-color: #fff;
   border: none;
   outline: none;
 }
-.toolbar, .zoom, .edit, .font, .add-header,
+.toolbar, .zoom, .edit, .img-size, .img-position,
 .swap, .full-screen, .delete-slide {
   display: none;
 }
-.slide:hover .toolbar, .slide:hover .zoom,
-.slide:hover .edit, .slide:hover .swap,
-.slide:hover .full-screen, .slide:hover .delete-slide,
-.slide:hover .font, .slide:hover .add-header {
+.slide:hover .toolbar, .slide:hover .zoom, .slide:hover .img-size,
+.slide:hover .img-position, .slide:hover .edit, .slide:hover .swap,
+.slide:hover .full-screen, .slide:hover .delete-slide {
   display: block;
   position: absolute;
   float: right;
@@ -99,11 +109,13 @@ html {
 .slide:hover .edit {
   right: 25px;
 }
-.slide:hover .font {
+.slide:hover .img-size {
   right: 50px;
+  width: 17px;
 }
-.slide:hover .add-header {
+.slide:hover .img-position {
   right: 75px;
+  width: 18px;
 }
 .slide:hover .swap {
   right: 100px;
@@ -156,28 +168,45 @@ html {
   z-index: 10010;
 }
 .slide-container.presenting .slide.active .slide-number {
-  top: 190px;
-  font-size: 120px;
+  display: none;
+  top: 135px;
+  font-size: 200px;
 }
 .prev-arrow {
-  left: -150px;
+  left: -20%;
 }
 .next-arrow {
-  right: -150px;
+  right: -20%;
 }
 .arrows {
   position: absolute;
   top: 40%;
-  width: 50px;
+  height: 60px;
   cursor: pointer;
 }
 
 /***************************************
-        Full screen Mode
+        Slide image content
 ****************************************/
-.slide-container.presenting .slide.active.fullscreen {
-  margin: 0;
-  z-index: 10010;
+.textbox {
+  overflow: hidden;
+}
+.textbox img {
+  position: relative;
+  float: right;
+  margin: 0 0 0 1.5%;
+  max-width: 100%;
+  width: 30%;
+}
+p img.float-left {
+  float: left;
+  margin: 0 5% 0 0;
+}
+p img.small-img {
+  width: 15%;
+}
+p img.big-img {
+  width: 60%;
 }
 
 /***************************************
