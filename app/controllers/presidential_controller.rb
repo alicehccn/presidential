@@ -1,7 +1,6 @@
 class PresidentialController < ApplicationController
   require 'net/http'
   require 'uri'
-  require 'pry'
 
   def index
     render :app
