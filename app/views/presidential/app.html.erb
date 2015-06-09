@@ -2,10 +2,11 @@
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
-        <title>Presidential</title>
+        <meta property="og:title" content="Presidentail" />
+        <meta property="og:image" content="img/alice.jpg" />
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
-        <meta name="description" content="">
+        <title>Presidential</title>
+        <meta name="description" content="Create and edit presentation online">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -22,6 +23,16 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+        <div id="fb-root"></div>
+        <script>
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=820512734710881";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <header>
             <div><a href="#">Presidential</a></div>
         </header>
@@ -31,9 +42,12 @@
           <img id="get-markdown" class="get-markdown" src="img/markdown.png" title="Get Markdown">
         </div>
 
-        <div class="slide-container">
-            
+        <div class="slide-container"></div>
+
+        <div>
+            <div class="fb-share-button" data-href="http://presidential.herokuapp.com" data-layout="button_count"></div>
         </div>
+
         <footer>
             <p>&copy; 2015 Presidential</p>
         </footer>
@@ -42,6 +56,7 @@
         <script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.2/dist/showdown.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--

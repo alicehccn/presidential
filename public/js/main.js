@@ -1,13 +1,16 @@
 $(document).ready(function(){
   // Append slide menu icons
   var $addSlide = $('<img src="img/plus.png" class="add-slide" title="New Slide">');
+  var $shareButton = $('<div class="share-button"></div>');
 
   var slideWidth = 212, slideHeight = 140;
   var currentSlide = null;
   window.slideCount = 0;
 
   // Append add-slide button
-  $('.slide-container').append($addSlide);
+  $('.slide-container').
+    append($addSlide).
+    append($shareButton);
 
   // New slide style on non-presenting mode 
   function newSlideStyle() {
@@ -21,10 +24,10 @@ $(document).ready(function(){
       "margin": "9%",
       "height": "70.5%"
     });
-    $("p, ul, ol, pre, code, table").css(
+    $("p, ul, ol, pre, table").css(
       "font-size", "0.5em"
     );
-    $("ul, ol").css(
+    $(".slide ul, .slide ol").css(
       "-webkit-padding-start", "1.8em"
     );
     $("h1, h2, h3, h4, h5, h6").css(
@@ -43,7 +46,7 @@ $(document).ready(function(){
       "margin": "9%",
       "height": "73%"
     });
-    $("p, ul, ol, pre, code, table").css(
+    $("p, ul, ol, pre, table").css(
       "font-size", "1.9em"
     );
     $("ul").css(
@@ -68,7 +71,7 @@ $(document).ready(function(){
       "margin": "6% 10%",
       "height": "74%"
     });
-    $("p, ul, ol, pre, code, table").css(
+    $("p, ul, ol, pre, table").css(
       "font-size", "3.5em"
     );
     $("ul").css(
@@ -130,8 +133,10 @@ $(document).ready(function(){
 
     newSlideStyle();
     $('.add-slide').remove();
+    $('.share-button').remove();
     $('.arrows').hide();
-    $('.slide-container').append($addSlide);
+    $('.slide-container').append($addSlide).append($shareButton);
+    $('.share-button').css("display", "inline-block");
   }
 
   $('.slide-container').on("click", ".add-slide", function() {
@@ -484,7 +489,11 @@ $(document).ready(function(){
 
   setupPresidential();
 
-
+  /********************************************
+                Share buttons
+  *********************************************/
+  
+  
   /********************************************
                 Keyboard Event
   *********************************************/
