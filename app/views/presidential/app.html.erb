@@ -3,30 +3,16 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div id="fb-root"></div>
-        <script>
-            (function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=820512734710881";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
         <header>
-            <div><a href="#">Presidential</a></div>
+          <div><a href="#">Presidential</a></div>
         </header>
 
         <div class="fetch-presentation">
-          <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
-          <img id="get-markdown" class="get-markdown" src="img/markdown.png" title="Get Markdown">
+            <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
+            <img id="get-markdown" class="get-markdown" src="img/markdown.png" title="Get Markdown">
         </div>
 
         <div class="slide-container"></div>
-
-        <div>
-            <div class="fb-share-button" data-href="http://presidential.herokuapp.com" data-layout="button_count"></div>
-        </div>
 
         <footer>
             <p>&copy; 2015 Presidential</p>

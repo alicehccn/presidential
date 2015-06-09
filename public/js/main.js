@@ -1,16 +1,27 @@
 $(document).ready(function(){
   // Append slide menu icons
   var $addSlide = $('<img src="img/plus.png" class="add-slide" title="New Slide">');
-  var $shareButton = $('<div class="share-button"></div>');
+  var $shareButton = $('<div class="share-buttons"></div>');
+
+  var $facebook = $('<a><img class="facebook" src="img/facebook-wrap.png"></a>');
+  var $twitter = $('<a><img class="twitter" src="img/twitter-wrap.png"></a>');
+  var $emailto = $("<img class='emailto' src='img/mail.png'>");
 
   var slideWidth = 212, slideHeight = 140;
   var currentSlide = null;
   window.slideCount = 0;
 
-  // Append add-slide button
+  // Append add-slide and share buttons
+  $shareButton.
+    prepend($emailto).
+    prepend($twitter).
+    prepend($facebook);
+
   $('.slide-container').
     append($addSlide).
     append($shareButton);
+
+  $shareButton.hide();
 
   // New slide style on non-presenting mode 
   function newSlideStyle() {
@@ -136,6 +147,7 @@ $(document).ready(function(){
     $('.share-button').remove();
     $('.arrows').hide();
     $('.slide-container').append($addSlide).append($shareButton);
+    $shareButton.show();
     $('.share-button').css("display", "inline-block");
   }
 
@@ -492,8 +504,27 @@ $(document).ready(function(){
   /********************************************
                 Share buttons
   *********************************************/
-  
-  
+  $(".slide-container").on("click", ".emailto", function() {
+    var subject = "Check out this presentation I just created online";
+    var body_message = "Hi! I just use Presidential to create an online presentation. Check it out on:";
+    var url = window.location.href;
+    document.location.href = "mailto:" + '?subject=' + subject + '&body=' + body_message + " " +url;
+  })
+
+  $(".slide-container").on("click", ".twitter", function() {
+    var url = window.location.href;
+    var nonHashUrl = url.toString().replace("#", "%23");
+    window.open("https://twitter.com/intent/tweet?url="  + nonHashUrl);
+  })
+
+  $(".slide-container").on("click", ".facebook", function() {
+    var url = window.location.href;
+    var nonHashUrl = url.toString().
+      replace("#", "%23");
+      // replace("localhost:9696", "presidential.herokuapp.com");
+    window.open("http://www.facebook.com/sharer/sharer.php?u=" + nonHashUrl);
+  })
+
   /********************************************
                 Keyboard Event
   *********************************************/

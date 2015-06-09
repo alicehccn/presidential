@@ -69,50 +69,34 @@ a, a:visited {
 /***************************************
             Share buttons
 ****************************************/
-.share-button {
+.add-slide {
   display: inline-block;
+  width: 30px;
+  margin: 0;
+  float: right;
+  clear: both;
 }
-.share-button.sharer-0 label { 
+.share-buttons {
+  /*display: none;*/
+  margin: 0px 10px;
+  width: auto;
   display: inline-block;
-  margin: 5px; 
-  position: absolute; 
-  font-size: 100px;
-  background: none;
-  color: rgb(142, 142, 145);
-  -webkit-transform: translateY(-55px);
+  float: right;
+  clear: left;
 }
-.fork img { 
-  opacity: .6;
-  -webkit-transition: all .5s ease; 
-  transition: all .5s ease; 
-}
-.fork img:hover { 
-  opacity: 1; 
-}
-.social.top.center.networks-5 {
-  position: absolute;
-  padding: 10px;
-  background-color: #fff;
-  top: 50%;
-  left: 45%;
-}
-.social.top.center.networks-5.active li {
+.share-buttons img {
   margin: 0 5px;
-  width: 50px;
+  height: 30px;
 }
-.hide-slides {
-  opacity: 0.1;
-}
-
 /***************************************
         Non-presenting mode
 ****************************************/
-
 .slide-container {
   width: 82%;
   margin: 0 auto 20px;
   padding: 1%;
   background-color: rgb(240, 240, 240);
+  overflow: auto;
 }
 .slide-container .slide {
   display: inline-block;
@@ -169,12 +153,6 @@ a, a:visited {
 .slide:hover .full-screen {
   right: 150px;
   width: 20px;
-}
-.add-slide {
-  display: inline-block;
-  width: 90px;
-  margin: 35px 10px;
-  -webkit-transform: translateY(10px);
 }
 .slide-number {
   position: absolute;
