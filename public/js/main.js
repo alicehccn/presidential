@@ -328,7 +328,7 @@ $(document).ready(function(){
     $(".fetch-presentation").hide();
     $("footer").hide();
     $('.slide-number').hide();
-    $('.add-slide').hide();
+    $('.slide-container-buttons').hide();
   }
 
   // Exit full screen mode
@@ -342,7 +342,8 @@ $(document).ready(function(){
     $("header").show();
     $(".fetch-presentation").show();
     $("footer").show();
-    $('.slide-number').show();
+    $('.slide-number').show()
+    $('.slide-container-buttons').show();
     $('.toolbar').show();
     newSlideStyle();
     zoomOutSlide();
