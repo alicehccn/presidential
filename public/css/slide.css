@@ -67,24 +67,16 @@ a, a:visited {
 }
 
 /***************************************
-            Share buttons
+     Slide adder and social sharer
 ****************************************/
-.add-slide {
+.slide-container-buttons {
   display: inline-block;
-  width: 30px;
-  margin: 0;
-  float: right;
-  clear: both;
-}
-.share-buttons {
-  /*display: none;*/
-  margin: 0px 10px;
-  width: auto;
-  display: inline-block;
-  float: right;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
   clear: left;
 }
-.share-buttons img {
+.slide-container-buttons img {
   margin: 0 5px;
   height: 30px;
 }
@@ -264,9 +256,6 @@ p img.big-img {
   .slide-container {
     width: 57%;
   }
-  .add-slide {
-    margin-left: 50px;
-  }
   .slide:hover .zoom {
     display: none;
   }
@@ -287,8 +276,5 @@ p img.big-img {
 @media screen and (max-width: 320px) {
   .slide-container {
     width: 73%;
-  }
-  .add-slide {
-    margin-left: 50px;
   }
 }

@@ -1,27 +1,26 @@
 $(document).ready(function(){
   // Append slide menu icons
-  var $addSlide = $('<img src="img/plus.png" class="add-slide" title="New Slide">');
-  var $shareButton = $('<div class="share-buttons"></div>');
+  
+  var $slideContainerButtons = $('<div class="slide-container-buttons"></div>');
 
   var $facebook = $('<a><img class="facebook" src="img/facebook-wrap.png"></a>');
   var $twitter = $('<a><img class="twitter" src="img/twitter-wrap.png"></a>');
   var $emailto = $("<img class='emailto' src='img/mail.png'>");
+  var $addSlide = $('<img src="img/add.png" class="add-slide" title="New Slide">');
 
   var slideWidth = 212, slideHeight = 140;
   var currentSlide = null;
   window.slideCount = 0;
 
   // Append add-slide and share buttons
-  $shareButton.
+  $slideContainerButtons.
+    prepend($addSlide).
     prepend($emailto).
     prepend($twitter).
     prepend($facebook);
 
   $('.slide-container').
-    append($addSlide).
-    append($shareButton);
-
-  $shareButton.hide();
+    append($slideContainerButtons);
 
   // New slide style on non-presenting mode 
   function newSlideStyle() {
@@ -143,13 +142,12 @@ $(document).ready(function(){
       append($slideNumber);
 
     newSlideStyle();
-    $('.add-slide').remove();
-    $('.share-button').remove();
+    $('.slide-container-buttons').remove();
     $('.arrows').hide();
-    $('.slide-container').append($addSlide).append($shareButton);
-    $shareButton.show();
-    $('.share-button').css("display", "inline-block");
+    $('.slide-container').append($slideContainerButtons);
   }
+
+  
 
   $('.slide-container').on("click", ".add-slide", function() {
     addNewSlide();
