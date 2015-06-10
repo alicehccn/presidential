@@ -74,12 +74,17 @@ a, a:visited {
   margin: 10px 0;
   width: 100%;
   text-align: center;
-  clear: left;
+  clear: both;
 }
 .slide-container-buttons img {
   margin: 0 5px;
   height: 30px;
 }
+.slide-container-buttons .github {
+  margin: 0 2px;
+  height: 38px;
+}
+
 /***************************************
         Non-presenting mode
 ****************************************/
@@ -100,15 +105,12 @@ a, a:visited {
   border: none;
   outline: none;
 }
-.toolbar, .zoom, .edit, .font, .add-header, .swap,
-.full-screen, .delete-slide, .img-size, .img-position {
+.toolbar, .toolbar img {
   display: none;
   width: 100%;
   text-align: center;
 }
-.slide:hover .zoom, .slide:hover .img-size,
-.slide:hover .img-position, .slide:hover .edit, .slide:hover .swap,
-.slide:hover .full-screen, .slide:hover .delete-slide {
+.slide:hover .toolbar img{
   display: inline;
   position: relative;
   padding: 2px 4px;
@@ -171,13 +173,7 @@ a, a:visited {
   padding: 5px;
 }
 
-.slide-container.presenting .slide:hover .zoom, 
-.slide-container.presenting .slide:hover .img-size,
-.slide-container.presenting .slide:hover .img-position,
-.slide-container.presenting .slide:hover .edit,
-.slide-container.presenting .slide:hover .swap,
-.slide-container.presenting .slide:hover .full-screen,
-.slide-container.presenting .slide:hover .delete-slide{
+.slide-container.presenting .slide:hover .toolbar img{
   width: auto;
   height: 35px;
   margin: 0 10px;
@@ -222,7 +218,6 @@ p img.big-img {
 /***************************************
             Edit Mode
 ****************************************/
-
 .slide.editable {
   cursor: text;
   outline: 1px dashed #000;
@@ -231,7 +226,6 @@ p img.big-img {
 /***************************************
             Swap Mode
 ****************************************/
-
 .slide.swapping {
   outline: 1px dashed #000;
 }

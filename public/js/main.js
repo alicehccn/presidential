@@ -4,6 +4,7 @@ $(document).ready(function(){
   var $facebook = $('<a><img class="facebook" src="img/facebook-wrap.png"></a>');
   var $twitter = $('<a><img class="twitter" src="img/twitter-wrap.png"></a>');
   var $emailto = $("<img class='emailto' src='img/mail.png'>");
+  var $github = $('<img src="img/github.png" class="github" title="Save to Gist">');
   var $addSlide = $('<img src="img/add.png" class="add-slide" title="New Slide">');
 
   var slideWidth = 212, slideHeight = 140;
@@ -13,6 +14,7 @@ $(document).ready(function(){
   // Append add-slide and share buttons
   $slideContainerButtons.
     prepend($addSlide).
+    prepend($github).
     prepend($emailto).
     prepend($twitter).
     prepend($facebook);
@@ -514,7 +516,7 @@ $(document).ready(function(){
   }
 
   $(".slide-container").on("click", ".twitter", function() {
-    window.open("https://twitter.com/intent/tweet?url="  + getUrlWithoutHash());
+    window.open("https://twitter.com/intent/tweet?text=Check out the presentation I just created Presidential&url="  + getUrlWithoutHash());
   })
 
   $(".slide-container").on("click", ".facebook", function() {
