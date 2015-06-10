@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  // Append slide menu icons
   var $slideContainerButtons = $('<div class="slide-container-buttons"></div>');
 
   var $facebook = $('<a><img class="facebook" src="img/facebook-wrap.png"></a>');
