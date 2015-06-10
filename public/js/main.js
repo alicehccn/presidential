@@ -1,6 +1,5 @@
 $(document).ready(function(){
   // Append slide menu icons
-  
   var $slideContainerButtons = $('<div class="slide-container-buttons"></div>');
 
   var $facebook = $('<a><img class="facebook" src="img/facebook-wrap.png"></a>');
@@ -118,13 +117,13 @@ $(document).ready(function(){
     $('.slide-container').append($slide);
 
     $toolbar.
-      append($zoomIcon).
-      append($editIcon).
-      append($imgSize).
-      append($imgPos).
-      append($swapIcon).
-      append($deleteSlide).
-      append($fullScreen);
+      prepend($zoomIcon).
+      prepend($editIcon).
+      prepend($imgSize).
+      prepend($imgPos).
+      prepend($swapIcon).
+      prepend($deleteSlide).
+      prepend($fullScreen);
 
     if (slideContent) {
       $textbox.append(slideContent);
@@ -509,18 +508,17 @@ $(document).ready(function(){
     document.location.href = "mailto:" + '?subject=' + subject + '&body=' + body_message + " " +url;
   })
 
-  $(".slide-container").on("click", ".twitter", function() {
+  function getUrlWithoutHash() {
     var url = window.location.href;
-    var nonHashUrl = url.toString().replace("#", "%23");
-    window.open("https://twitter.com/intent/tweet?url="  + nonHashUrl);
+    return url.toString().replace("#", "%23");
+  }
+
+  $(".slide-container").on("click", ".twitter", function() {
+    window.open("https://twitter.com/intent/tweet?url="  + getUrlWithoutHash());
   })
 
   $(".slide-container").on("click", ".facebook", function() {
-    var url = window.location.href;
-    var nonHashUrl = url.toString().
-      replace("#", "%23");
-      // replace("localhost:9696", "presidential.herokuapp.com");
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + nonHashUrl);
+    window.open("http://www.facebook.com/sharer/sharer.php?u=" + getUrlWithoutHash());
   })
 
   /********************************************

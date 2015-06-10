@@ -100,51 +100,30 @@ a, a:visited {
   border: none;
   outline: none;
 }
-.toolbar, .zoom, .edit, .img-size, .img-position,
-.swap, .full-screen, .delete-slide {
+.toolbar, .zoom, .edit, .font, .add-header, .swap,
+.full-screen, .delete-slide, .img-size, .img-position {
   display: none;
+  width: 100%;
+  text-align: center;
 }
-.slide:hover .toolbar, .slide:hover .zoom, .slide:hover .img-size,
+.slide:hover .zoom, .slide:hover .img-size,
 .slide:hover .img-position, .slide:hover .edit, .slide:hover .swap,
 .slide:hover .full-screen, .slide:hover .delete-slide {
-  display: block;
-  position: absolute;
-  float: right;
-  padding: 0;
-  bottom: 0;
-  right: 0;
+  display: inline;
+  position: relative;
+  padding: 2px 4px;
   cursor: pointer;
-  width : 16px;
-  margin-right: 5px;
-  margin-bottom: 2px;
+  width: auto;
+  height: 16px;
 }
 .slide:hover .toolbar {
+  display: block;
+  position: absolute;
   width: 100%;
-  height: 20px;
-  margin: 0;
+  height: 22px;
+  margin-top: -19px;
   background-color: rgba(0, 0, 0, 0.1);
   border: none;
-}
-.slide:hover .edit {
-  right: 25px;
-}
-.slide:hover .img-size {
-  right: 50px;
-  width: 17px;
-}
-.slide:hover .img-position {
-  right: 75px;
-  width: 18px;
-}
-.slide:hover .swap {
-  right: 100px;
-}
-.slide:hover .delete-slide {
-  right: 125px;
-}
-.slide:hover .full-screen {
-  right: 150px;
-  width: 20px;
 }
 .slide-number {
   position: absolute;
@@ -185,6 +164,23 @@ a, a:visited {
   display: none;
   top: 135px;
   font-size: 200px;
+}
+.slide-container.presenting .slide.active .toolbar {
+  height: 40px;
+  margin-top: -50px;
+  padding: 5px;
+}
+
+.slide-container.presenting .slide:hover .zoom, 
+.slide-container.presenting .slide:hover .img-size,
+.slide-container.presenting .slide:hover .img-position,
+.slide-container.presenting .slide:hover .edit,
+.slide-container.presenting .slide:hover .swap,
+.slide-container.presenting .slide:hover .full-screen,
+.slide-container.presenting .slide:hover .delete-slide{
+  width: auto;
+  height: 35px;
+  margin: 0 10px;
 }
 .prev-arrow {
   left: -20%;
