@@ -120,7 +120,7 @@ $(document).ready(function(){
     $('.slide-container').addClass("presenting");
     $('.zoom').attr("src", "img/zoom_out.png");
     $('.slide-number').hide();
-    $('.add-slide').hide();
+    $('.slide-container-buttons').hide();
     $('.arrows').show();
     centerSlideWhenZoomedIn();
     disableSwapDeleteFullScreenAddSlide();
@@ -132,7 +132,7 @@ $(document).ready(function(){
     $('.zoom').attr("src", "img/zoom_in.png");
     $('.slide').removeClass("active");
     $(".arrows").hide();
-    $('.add-slide').show();
+    $('.slide-container-buttons').show();
     $('.slide-number').show();
     decenterSlide();
     enableSwapDeleteFullScreenAddSlide();
@@ -439,7 +439,7 @@ $(document).ready(function(){
   /********************************************
                 Share buttons
   *********************************************/
-  
+
   $(".slide-container").on("click", ".emailto", function() {
     var subject = "Check out this presentation I just created online";
     var body_message = "Hi! I just use Presidential to create an online presentation. Check it out on:";
