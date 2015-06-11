@@ -1,6 +1,6 @@
-/***************************************
-         Header & Footer
-****************************************/
+/******************************************************************************
+                                 GENERAL RULES
+*******************************************************************************/
 header {
   width: 100%;
   height: auto;
@@ -45,9 +45,9 @@ a, a:visited {
   color: mediumblue;
 }
 
-/***************************************
-        Fetch slide html
-****************************************/
+/******************************************************************************
+                              INPUT BOX FOR MARKDOWN URL
+*******************************************************************************/
 .fetch-presentation {
   display: block;
   margin: 30px auto;
@@ -66,28 +66,9 @@ a, a:visited {
   cursor: pointer;
 }
 
-/***************************************
-     Slide adder and social sharer
-****************************************/
-.slide-container-buttons {
-  display: inline-block;
-  margin: 10px 0;
-  width: 100%;
-  text-align: center;
-  clear: both;
-}
-.slide-container-buttons img {
-  margin: 0 5px;
-  height: 30px;
-}
-.slide-container-buttons .github {
-  margin: 0 2px;
-  height: 38px;
-}
-
-/***************************************
-        Non-presenting mode
-****************************************/
+/******************************************************************************
+                              NON PRESENTING MODE
+*******************************************************************************/
 .slide-container {
   width: 82%;
   margin: 0 auto 20px;
@@ -98,13 +79,64 @@ a, a:visited {
 .slide-container .slide {
   display: inline-block;
   position: relative;
-  float: left;
+  top: 0;
+  left: 0;
   margin: 12px;
   padding: 0;
+  width: 212px;
+  height: 140px;
+  float: left;
   background-color: #fff;
   border: none;
   outline: none;
 }
+.slide-container .slide .textbox {
+  margin: 9%;
+  height: 70.5%;
+  overflow: hidden;
+}
+
+/************************ Text content ************************/
+.slide-container .slide .textbox p,
+.slide-container .slide .textbox ul,
+.slide-container .slide .textbox ol,
+.slide-container .slide .textbox pre,
+.slide-container .slide .textbox table {
+  font-size: 0.5em;
+}
+.slide-container .slide .textbox h1,
+.slide-container .slide .textbox h2,
+.slide-container .slide .textbox h3,
+.slide-container .slide .textbox h4,
+.slide-container .slide .textbox h5,
+.slide-container .slide .textbox h6 {
+  font-size: 0.8em;
+}
+.slide-container .slide .textbox ul,
+.slide-container .slide .textbox ol {
+  -webkit-padding-start: 1.8em;
+}
+
+/************************ Image content ************************/
+.slide-container .slide .textbox img {
+  position: relative;
+  float: right;
+  margin: 0 0 0 1.5%;
+  max-width: 100%;
+  width: 30%;
+}
+.slide-container .slide .textbox p img.float-left {
+  float: left;
+  margin: 0 5% 0 0;
+}
+.slide-container .slide .textbox p img.small-img {
+  width: 15%;
+}
+.slide-container .slide .textbox p img.big-img {
+  width: 60%;
+}
+
+/************************ Slide toolbar ************************/
 .toolbar, .toolbar img {
   display: none;
   width: 100%;
@@ -127,6 +159,8 @@ a, a:visited {
   background-color: rgba(0, 0, 0, 0.1);
   border: none;
 }
+
+/************************ Slide number ************************/
 .slide-number {
   position: absolute;
   width: 100%;
@@ -137,10 +171,9 @@ a, a:visited {
   color: rgba(0, 0, 0, 0.2);
 }
 
-/***************************************
-        Presenting mode
-****************************************/
-
+/******************************************************************************
+                                PRESENTING MODE
+*******************************************************************************/
 .slide-container.presenting {
   position: absolute;
   top: 0;
@@ -159,25 +192,53 @@ a, a:visited {
   position: relative;
   display: block;
   margin: 0;
+  width: 742px; /* 3.5x */
+  height: 490px; /* 3.5x */
   background-color: #fff;
   z-index: 10010;
+}
+.slide-container.presenting .slide.active .textbox {
+  margin: 8.5%;
+  height: 76%;
+}
+/************************ Text content ************************/
+.slide-container.presenting .slide.active .textbox p,
+.slide-container.presenting .slide.active .textbox ul,
+.slide-container.presenting .slide.active .textbox ol,
+.slide-container.presenting .slide.active .textbox pre,
+.slide-container.presenting .slide.active .textbox table {
+  font-size: 2em;
+}
+.slide-container.presenting .slide.active .textbox h1,
+.slide-container.presenting .slide.active .textbox h2,
+.slide-container.presenting .slide.active .textbox h3,
+.slide-container.presenting .slide.active .textbox h4,
+.slide-container.presenting .slide.active .textbox h5,
+.slide-container.presenting .slide.active .textbox h6 {
+  font-size: 2.8em;
+}
+.slide-container.presenting .slide.active .textbox ul {
+  -webkit-padding-start: 0.9em;
+}
+.slide-container.presenting .slide.active .textbox ol {
+  -webkit-padding-start: 1.5em;
 }
 .slide-container.presenting .slide.active .slide-number {
   display: none;
   top: 135px;
   font-size: 200px;
 }
+/************************  Slide toolbar  ************************/
 .slide-container.presenting .slide.active .toolbar {
-  height: 40px;
-  margin-top: -50px;
+  height: 45px;
+  margin-top: -55px;
   padding: 5px;
 }
-
 .slide-container.presenting .slide:hover .toolbar img{
-  width: auto;
   height: 35px;
   margin: 0 10px;
 }
+/************************ Prev and next arrows ************************/
 .prev-arrow {
   left: -20%;
 }
@@ -191,48 +252,80 @@ a, a:visited {
   cursor: pointer;
 }
 
-/***************************************
-        Slide image content
-****************************************/
-.textbox {
-  overflow: hidden;
+/******************************************************************************
+                              FULL SCREEN MODE
+*******************************************************************************/
+.slide-container.presenting .slide.active.slide-fullscreen {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
-.textbox img {
-  position: relative;
-  float: right;
-  margin: 0 0 0 1.5%;
-  max-width: 100%;
-  width: 30%;
-}
-p img.float-left {
-  float: left;
-  margin: 0 5% 0 0;
-}
-p img.small-img {
-  width: 15%;
-}
-p img.big-img {
-  width: 60%;
+.slide-container.presenting .slide.active.slide-fullscreen .textbox {
+  margin: 6% 10%;
+  height: 77%;
 }
 
-/***************************************
-            Edit Mode
-****************************************/
+/************************ Text content ************************/
+.slide-container.presenting .slide.active.slide-fullscreen .textbox p,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox ul,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox ol,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox pre,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox table {
+  font-size: 3.7em;
+}
+.slide-container.presenting .slide.active.slide-fullscreen .textbox h1,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox h2,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox h3,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox h4,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox h5,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox h6 {
+  font-size: 5.6em;
+}
+.slide-container.presenting .slide.active.slide-fullscreen .textbox ul {
+  -webkit-padding-start: 0.9em;
+}
+.slide-container.presenting .slide.active.slide-fullscreen .textbox ol {
+  -webkit-padding-start: 1.5em;
+}
+
+/******************************************************************************
+                                EDITING MODE
+*******************************************************************************/
 .slide.editable {
   cursor: text;
   outline: 1px dashed #000;
 }
 
-/***************************************
-            Swap Mode
-****************************************/
+/******************************************************************************
+                                SWAPPING MODE
+*******************************************************************************/
 .slide.swapping {
   outline: 1px dashed #000;
 }
 
-/***************************************
-            Responsive CSS
-****************************************/
+/******************************************************************************
+                         SLIDE ADDER AND SOCIAL SHARER
+*******************************************************************************/
+.slide-container-buttons {
+  display: inline-block;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+  clear: both;
+}
+.slide-container-buttons img {
+  margin: 0 5px;
+  height: 30px;
+}
+.slide-container-buttons .github {
+  margin: 0 2px;
+  height: 38px;
+}
+
+/******************************************************************************
+                                RESPONSIVE CSS
+*******************************************************************************/
 @media screen and (max-width: 1024px) {
   .slide-container {
     width: 70%;
@@ -241,7 +334,6 @@ p img.big-img {
     display: none;
   }
 }
-
 @media screen and (max-width: 414px) {
   .slide-container {
     width: 57%;
@@ -250,19 +342,16 @@ p img.big-img {
     display: none;
   }
 }
-
 @media screen and (max-width: 375px) {
   .slide-container {
     width: 63%;
   }
 }
-
 @media screen and (max-width: 360px) {
   .slide-container {
     width: 65%;
   }
 }
-
 @media screen and (max-width: 320px) {
   .slide-container {
     width: 73%;

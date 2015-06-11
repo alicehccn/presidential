@@ -1,13 +1,12 @@
 $(document).ready(function(){
   var $slideContainerButtons = $('<div class="slide-container-buttons"></div>');
 
-  var $facebook = $('<a><img class="facebook" src="img/facebook-wrap.png"></a>');
-  var $twitter = $('<a><img class="twitter" src="img/twitter-wrap.png"></a>');
-  var $emailto = $("<img class='emailto' src='img/mail.png'>");
-  var $github = $('<img src="img/github.png" class="github" title="Save to Gist">');
-  var $addSlide = $('<img src="img/add.png" class="add-slide" title="New Slide">');
+  var $facebook = $('<a><img class="facebook" src="img/facebook.png" title="Share on Facebook"></a>');
+  var $twitter = $('<a><img class="twitter" src="img/twitter.png" title="Share on Twitter"></a>');
+  var $emailto = $('<img class="emailto" src="img/mail.png" title="Send by Email">');
+  var $github = $('<img src="img/github.png" class="github" title="Save as Gist">');
+  var $addSlide = $('<img src="img/add.png" class="add-slide" title="Add New Slide">');
 
-  var slideWidth = 212, slideHeight = 140;
   var currentSlide = null;
   window.slideCount = 0;
 
@@ -22,78 +21,6 @@ $(document).ready(function(){
   $('.slide-container').
     append($slideContainerButtons);
 
-  // New slide style on non-presenting mode 
-  function newSlideStyle() {
-    $('.slide').width(slideWidth)
-               .height(slideHeight);
-    $('.slide').css({
-      "top": "0",
-      "left": "0"
-    });
-    $(".textbox").css({
-      "margin": "9%",
-      "height": "70.5%"
-    });
-    $("p, ul, ol, pre, table").css(
-      "font-size", "0.5em"
-    );
-    $(".slide ul, .slide ol").css(
-      "-webkit-padding-start", "1.8em"
-    );
-    $("h1, h2, h3, h4, h5, h6").css(
-      "font-size", "0.8em"
-    );
-  }
-  // Active slide style on presenting mode
-  function activeSlideStyle() {
-    $('.active').width(slideWidth * 3.5)
-                .height(slideHeight * 3.5);
-    $('.active').css({
-      "top": ($(window).height() - $('.active').outerHeight()) / 2,
-      "left": calculateEdgeWidth()
-    });
-    $(".textbox").css({
-      "margin": "9%",
-      "height": "73%"
-    });
-    $("p, ul, ol, pre, table").css(
-      "font-size", "1.9em"
-    );
-    $("ul").css(
-      "-webkit-padding-start", "0.9em"
-    );
-    $("ol").css(
-      "-webkit-padding-start", "1.5em"
-    );
-    $("h1, h2, h3, h4, h5, h6").css(
-      "font-size", "2.8em"
-    );
-  }
-  // Slide style on full screen
-  function fullScreenSlideStyle() {
-    $('.slide-fullscreen').width("100%")
-                          .height("100%");
-    $('.slide-fullscreen').css({
-      "top": "0",
-      "left": "0"
-    });
-    $(".textbox").css({
-      "margin": "6% 10%",
-      "height": "74%"
-    });
-    $("p, ul, ol, pre, table").css(
-      "font-size", "3.5em"
-    );
-    $("ul").css(
-      "-webkit-padding-start", "0.9em"
-    );
-    $("ol").css(
-      "-webkit-padding-start", "1.5em"
-    );
-    $("h1, h2, h3, h4, h5, h6").css(
-      "font-size", "5.6em"
-    );
-  }
 
   // Add slide to DOM on mouse click
   function addNewSlide(slideContent) {
@@ -141,13 +68,10 @@ $(document).ready(function(){
       append($nextArrow).
       append($slideNumber);
 
-    newSlideStyle();
     $('.slide-container-buttons').remove();
     $('.arrows').hide();
     $('.slide-container').append($slideContainerButtons);
   }
-
-  
 
   $('.slide-container').on("click", ".add-slide", function() {
     addNewSlide();
@@ -176,6 +100,21 @@ $(document).ready(function(){
     $('.add-slide').prop("disabled", true);
   }
 
+  // Reposition slide when zoomed in and out
+  function centerSlideWhenZoomedIn() {
+    $('.active').css({
+      "top": ($(window).height() - $('.active').outerHeight()) / 2,
+      "left": calculateEdgeWidth()
+    });
+  }
+
+  function decenterSlide() {
+    $('.slide').css({
+      "top": "0",
+      "left": "0"
+    });
+  }
+
   // Zoom in slide
   function zoomInSlide() {
     $('.slide-container').addClass("presenting");
@@ -183,7 +122,7 @@ $(document).ready(function(){
     $('.slide-number').hide();
     $('.add-slide').hide();
     $('.arrows').show();
-    activeSlideStyle();
+    centerSlideWhenZoomedIn();
     disableSwapDeleteFullScreenAddSlide();
   }
 
@@ -195,7 +134,7 @@ $(document).ready(function(){
     $(".arrows").hide();
     $('.add-slide').show();
     $('.slide-number').show();
-    newSlideStyle();
+    decenterSlide();
     enableSwapDeleteFullScreenAddSlide();
   }
 
@@ -347,7 +286,6 @@ $(document).ready(function(){
     $('.slide-number').show()
     $('.slide-container-buttons').show();
     $('.toolbar').show();
-    newSlideStyle();
     zoomOutSlide();
   }
 
@@ -359,7 +297,6 @@ $(document).ready(function(){
     } else {
       currentSlide.addClass("active slide-fullscreen");
       enterFullScreen();
-      fullScreenSlideStyle();
     }
   });
 
@@ -413,11 +350,11 @@ $(document).ready(function(){
       currentSlide.next().addClass("slide-fullscreen");
       currentSlide.removeClass("active");
       currentSlide.removeClass("slide-fullscreen");
-      fullScreenSlideStyle();
+      decenterSlide();
     } else if (currentSlide.next().hasClass("slide") && !currentSlide.hasClass("slide-fullscreen") && !isEdittingSlide) {
       currentSlide.next().addClass("active");
       currentSlide.removeClass("active");
-      activeSlideStyle();
+      centerSlideWhenZoomedIn();
     }
   }
 
@@ -429,11 +366,11 @@ $(document).ready(function(){
       currentSlide.prev().addClass("slide-fullscreen");
       currentSlide.removeClass("active");
       currentSlide.removeClass("slide-fullscreen");
-      fullScreenSlideStyle();
+      decenterSlide();
     } else if (currentSlide.prev().hasClass("slide") && !currentSlide.hasClass("slide-fullscreen") && !isEdittingSlide) {
       currentSlide.prev().addClass("active");
       currentSlide.removeClass("active");
-      activeSlideStyle();
+      centerSlideWhenZoomedIn();
     }   
   }
 
@@ -497,12 +434,12 @@ $(document).ready(function(){
       $('#presentation-url').focus()
     }
   }
-
   setupPresidential();
 
   /********************************************
                 Share buttons
   *********************************************/
+  
   $(".slide-container").on("click", ".emailto", function() {
     var subject = "Check out this presentation I just created online";
     var body_message = "Hi! I just use Presidential to create an online presentation. Check it out on:";
@@ -549,6 +486,5 @@ $(document).ready(function(){
       default: return;
     }
   })
-
 
 })//JQuery ends
