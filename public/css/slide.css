@@ -4,12 +4,9 @@
 header {
   width: 100%;
   height: auto;
-  margin: 0px;
-  padding: 10px 0;
-  background-color: #000;
+  margin-bottom: 50px;
+  background-color: rgb(88,88,88);
   color: #fff;
-  font-size: 1em;
-  text-align: center;
   border-bottom: 2px solid #aaa;
 }
 header a, header a:visited {
@@ -19,51 +16,54 @@ footer {
   text-align: center;
   font-size: 0.5em;
 }
-h1, h2, h3, h4, h5, h6 {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0.1em;
-  font-family: serif;
-}
-p, ul, ol, pre, code, table {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0.2em;
-  font-family: sans-serif;
-}
-table {
-  -webkit-margin-before: 1em;
-  width: 99%;
-}
-td {
-  border: 1px dotted #000;
-  padding: 2%;
-}
-html {
-  line-height: 1.1;
-}
 a, a:visited {
   text-decoration: none;
-  color: mediumblue;
+}
+html {
+  line-height: 1;
+}
+/******************************************************************************
+                              HEADER AND NAVIGATION
+*******************************************************************************/
+.logo {
+  display: inline-block;
+  width: auto;
+  margin: 15px 9% 15px 8%;
+  font-size: 1.2em;
+  font-weight: lighter;
+  text-align: left;
+}
+.login {
+  position: absolute;
+  text-align: center;
+  margin: 20px 8%;
+  top: 0;
+  right: 0;
+  font-size: 0.9em;
 }
 
 /******************************************************************************
                               INPUT BOX FOR MARKDOWN URL
 *******************************************************************************/
 .fetch-presentation {
-  display: block;
-  margin: 30px auto;
-  padding: none;
-  text-align: center;
+  display: inline-block;
+  width: 50%;
+  padding: 5px;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 1px;
 }
 .presentation-url {
-  width: 50%;
-  margin: 0;
-  padding: 1px;
+  width: 92%;
   outline: none;
   font-size: 0.9em;
+  border: none;
+  color: #000;
 }
 .get-markdown {
   width: 30px;
   cursor: pointer;
+  float: right;
 }
 
 /******************************************************************************
@@ -71,7 +71,7 @@ a, a:visited {
 *******************************************************************************/
 .slide-container {
   width: 82%;
-  margin: 0 auto 20px;
+  margin: 0 auto;
   padding: 1%;
   background-color: rgb(240, 240, 240);
   overflow: auto;
@@ -95,14 +95,30 @@ a, a:visited {
   height: 70.5%;
   overflow: hidden;
 }
-
+html .slide-container .slide .textbox{
+  line-height: 1.1;
+}
 /************************ Text content ************************/
+.slide-container .slide .textbox a {
+  color: mediumblue;
+}
 .slide-container .slide .textbox p,
 .slide-container .slide .textbox ul,
 .slide-container .slide .textbox ol,
 .slide-container .slide .textbox pre,
 .slide-container .slide .textbox table {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0.2em;
+  font-family: sans-serif;
   font-size: 0.5em;
+}
+.slide-container .slide .textbox table {
+  -webkit-margin-before: 1em;
+  width: 99%;
+}
+.slide-container .slide .textbox table td {
+  border: 1px dotted #000;
+  padding: 2%;
 }
 .slide-container .slide .textbox h1,
 .slide-container .slide .textbox h2,
@@ -110,6 +126,9 @@ a, a:visited {
 .slide-container .slide .textbox h4,
 .slide-container .slide .textbox h5,
 .slide-container .slide .textbox h6 {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0.1em;
+  font-family: serif;
   font-size: 0.8em;
 }
 .slide-container .slide .textbox ul,
@@ -207,6 +226,9 @@ a, a:visited {
 .slide-container.presenting .slide.active .textbox ol,
 .slide-container.presenting .slide.active .textbox pre,
 .slide-container.presenting .slide.active .textbox table {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0.2em;
+  font-family: sans-serif;
   font-size: 2em;
 }
 .slide-container.presenting .slide.active .textbox h1,

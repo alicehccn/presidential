@@ -453,7 +453,7 @@ $(document).ready(function(){
   }
 
   $(".slide-container").on("click", ".twitter", function() {
-    window.open("https://twitter.com/intent/tweet?text=Check out the presentation I just created Presidential&url="  + getUrlWithoutHash());
+    window.open("https://twitter.com/intent/tweet?text=Check out the presentation I just created on Presidential&url="  + getUrlWithoutHash());
   })
 
   $(".slide-container").on("click", ".facebook", function() {

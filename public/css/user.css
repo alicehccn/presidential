@@ -1,0 +1,14 @@
+
+.user-page {
+  width: 84%;
+  margin: auto;
+}
+.field {
+  padding: 5px 0;
+}
+.actions {
+  padding: 10px 0;
+  background-color: rbg(140, 140, 142);
+  color: #000;
+  font-size: 0.9em
+}
