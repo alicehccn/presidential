@@ -3,8 +3,26 @@
 </header>
 
 <div class="user-page">
-  <h3>Create Account</h3>
 
-  <%= render 'form' %>
+  <div class="user-login">
+    <h3>Log In</h3>
+    <div class="field">
+      <%= form_tag user_sessions_path do %>
+      <%= label_tag :email, "Email Address" %><br>
+      <%= text_field_tag :email %>
+    </div>
+    <div class="field">
+      <%= label_tag :password, "Password" %><br>
+      <%= password_field_tag :password %>
+    </div>
+    <div class="actions">
+      <%= submit_tag "Log In" %>
+    </div>
+    <% end %>
+  </div>
 
+  <div class="create-account">
+    <h3>Create Account</h3>
+    <%= render 'form' %>
+  </div>
 </div>

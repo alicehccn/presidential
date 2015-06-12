@@ -9,10 +9,15 @@
     <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
     <img id="get-markdown" class="get-markdown" src="img/markdown.png" title="Get Markdown">
   </div>
-  <div class="login"><%=link_to "Login", new_user_path %></li><div>
+    <% if @current_user.first_name %>
+      <ul class="user"><%= "Hello, " + @current_user.first_name %>
+        <li>Presentations</li>
+        <li>Log Out</li>
+      </ul>
+    <% else %>
+      <div class="user"><%=link_to "Login", new_user_path %></li><div>
+    <% end %>
 </header>
-
-
 
 <div class="slide-container"></div>
 
@@ -24,6 +29,7 @@
 <script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.2/dist/showdown.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
+<script src="/js/user.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--

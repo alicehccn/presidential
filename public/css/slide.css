@@ -5,7 +5,7 @@ header {
   width: 100%;
   height: auto;
   margin-bottom: 50px;
-  background-color: rgb(88,88,88);
+  background-color: rgb(58,58,58);
   color: #fff;
   border-bottom: 2px solid #aaa;
 }
@@ -33,13 +33,27 @@ html {
   font-weight: lighter;
   text-align: left;
 }
-.login {
+.user {
   position: absolute;
-  text-align: center;
-  margin: 20px 8%;
+  margin: 15px 8%;
   top: 0;
   right: 0;
+  width: auto;
   font-size: 0.9em;
+  color: #eee;
+  text-align: right;
+}
+ul.user {
+  background-color: rgba(58,58,58, 0.8);
+  margin: 5px 8%;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.user li {
+  display: none;
+  margin-top: 20px;
+  list-style: none;
 }
 
 /******************************************************************************
@@ -47,7 +61,7 @@ html {
 *******************************************************************************/
 .fetch-presentation {
   display: inline-block;
-  width: 50%;
+  width: 48%;
   padding: 5px;
   text-align: left;
   background-color: #fff;
