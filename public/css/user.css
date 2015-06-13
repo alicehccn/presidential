@@ -1,0 +1,31 @@
+.user-page {
+  width: 84%;
+  margin: auto;
+}
+.user-login, .edit-user {
+  display: inline-block;
+  margin: 0;
+  width: 50%;
+}
+.sign-up, .deactivate {
+  display: inline-block;
+  width: 50%;
+  float: right;
+}
+.field {
+  margin: 5px 0;
+}
+.field input {
+  width: 50%;
+  outline: none;
+  margin: 5px 0;
+}
+.check-box {
+  width: auto;
+  margin: 5px 0;
+}
+.actions {
+  margin: 15px 0;
+  color: #000;
+  font-size: 0.9em
+}
