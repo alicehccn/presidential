@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# Use postgres as the database for Active Record
+gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
@@ -33,8 +34,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'github-markdown'
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -49,6 +48,4 @@ group :development, :test do
 end
 
 group :production, :test do
-  # Use postgres as the database for Active Record
-  gem 'pg'
 end
