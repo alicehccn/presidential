@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'github-markdown'
 
+gem 'devise'
+
 group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
