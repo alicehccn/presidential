@@ -1,0 +1,27 @@
+
+.user-page {
+  width: 84%;
+  margin: auto;
+}
+.create-account {
+  display: inline-block;
+  width: 50%;
+  float: right;
+}
+.field {
+  padding: 5px 0;
+}
+.field input {
+  width: 70%;
+}
+.actions {
+  padding: 10px 0;
+  background-color: rbg(140, 140, 142);
+  color: #000;
+  font-size: 0.9em
+}
+.user-login {
+  display: inline-block;
+  margin: 0;
+  width: 50%;
+}
