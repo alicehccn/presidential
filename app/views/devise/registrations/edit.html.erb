@@ -1,0 +1,50 @@
+<div class="user-page">
+
+  <div class="edit-user">
+    <h3>Edit Profile</h3>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username %>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_password %> <br />
+        <%= f.password_field :current_password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, "New Password" %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Update" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="deactivate">
+    <h3>Delete Account</h3>
+    <p>Do you want to delete your account?</p>
+    <p>This will completely remove your record from our system.</p>
+    <%= button_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "actions"%>
+  </div>
+</div>
