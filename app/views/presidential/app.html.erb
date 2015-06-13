@@ -10,7 +10,7 @@
     <img id="get-markdown" class="get-markdown" src="img/markdown.png" title="Get Markdown">
   </div>
     <%if signed_in?%>
-      <ul class="user"><%= current_user.email %>
+      <ul class="user"><%= username_or_email(current_user) %>
       <li><%=link_to "Account", edit_user_registration_path%></li>
       <li><%=link_to "Logout", destroy_user_session_path, method: :delete%></li>
       </ul>
