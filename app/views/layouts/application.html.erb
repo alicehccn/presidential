@@ -22,35 +22,39 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <!-- Place favicon.ico in the root directory -->
   <link rel="icon" href="presidential.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/slide.css">
-  <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/slide.css">
+  <link rel="stylesheet" href="/css/user.css">
+  <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
 <body>
-  <header>
-    <div><a href="/">Presidential</a></div>
-    <div class="fetch-presentation">
-        <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
-        <img id="get-markdown" class="get-markdown" src="img/markdown.png" title="Get Markdown">
-    </div>
-<% if user_signed_in? %>
-  <%= current_user.username %>
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+<header>
+  <div class="logo"><%=link_to "Presidential", root_path %></div>
+  <div class="fetch-presentation">
+    <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
+    <img id="get-markdown" class="get-markdown" src="/img/markdown.png" title="Get Markdown">
+  </div>
+    <% if user_signed_in? %>
+      <ul class="user"><%= current_user.username %>
+      <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+      </ul>
+    <% else %>
+      <div>
+        <div class="user"><%=link_to "Login", new_user_session_path%></div>
+      </div>
+    <% end %>
   </header>
-
-<% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+  <div class="alert-box">
+    <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+  </div>
 
 
 <%= yield %>
@@ -61,8 +65,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
   <script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.2/dist/showdown.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/js/plugins.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/user.js"></script>
 
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
