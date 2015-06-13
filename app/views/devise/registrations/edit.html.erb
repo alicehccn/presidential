@@ -40,7 +40,9 @@
   </div>
 
   <div class="deactivate">
-    <h3>Deactivate</h3>
-    <p>Want to deactivate your account? <%= button_to "Deactivate", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "actions"%></p>
+    <h3>Delete Account</h3>
+    <p>You have the option to deactivate your account. </p>
+    <p>This will completely remove your record from our system.</p>
+    <%= button_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "actions"%></p>
   </div>
 </div>
