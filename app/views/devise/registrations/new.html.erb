@@ -1,4 +1,4 @@
-<!-- <header>
+<header>
   <div class="logo"><%=link_to "Presidential", root_path %></div>
 </header>
 
@@ -11,6 +11,11 @@
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :username %><br />
+      <%= f.text_field :username %>
     </div>
 
     <div class="field">
@@ -34,4 +39,3 @@
 </div>
 
 <%= render "devise/shared/links" %>
- -->
