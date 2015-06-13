@@ -24,5 +24,10 @@ class ApplicationController < ActionController::Base
           :current_password
         )
       }
+      # devise_parameter_sanitizer.for(:sign_out) { |u|
+      #   u.permit(
+      #     :email
+      #   )
+      # }
   end
 end

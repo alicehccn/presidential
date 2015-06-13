@@ -56,5 +56,6 @@ Rails.application.routes.draw do
   #   end
 
   get 'presentation' => 'presidential#presentation'
+
   root 'presidential#index'
 end

@@ -29,13 +29,12 @@
 
 </head>
 <body>
-
-<header>
-  <div><a href="#">Presidential</a></div>
-  <div class="fetch-presentation">
-      <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
-      <img id="get-markdown" class="get-markdown" src="img/markdown.png" title="Get Markdown">
-  </div>
+  <header>
+    <div><a href="/">Presidential</a></div>
+    <div class="fetch-presentation">
+        <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
+        <img id="get-markdown" class="get-markdown" src="img/markdown.png" title="Get Markdown">
+    </div>
 <% if user_signed_in? %>
   <%= current_user.username %>
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
@@ -44,17 +43,39 @@
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
-</header>
+  </header>
 
 <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
+    <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
+    <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
 
 <%= yield %>
+
+  <footer>
+      <p>&copy; 2015 Presidential</p>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+  <script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.2/dist/showdown.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <!--
+  <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+  </script>
+  -->
 
 </body>
 </html>
