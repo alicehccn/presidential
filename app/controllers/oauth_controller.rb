@@ -2,6 +2,7 @@ class OauthController < ApplicationController
 
   require 'uri'
   require 'net/http'
+  require 'json'
 
   def authorize
     @github_authorization_link = generate_github_oauth_authorization_link
@@ -33,7 +34,8 @@ class OauthController < ApplicationController
       params
     )
 
-    puts response.body
+    @github_access_token_response = JSON.parse(response)['access_token']
+    render :callback
   end
 
   private
