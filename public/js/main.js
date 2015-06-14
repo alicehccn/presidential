@@ -73,6 +73,18 @@ $(document).ready(function(){
     $('.slide-container').append($slideContainerButtons);
   }
 
+  function applyImageStyles() {
+    var hasLargeImageOnLeft = $('img[alt="large-left"');
+    var hasLargeImageOnRight = $('img[alt="large-right"');
+    var hasSmallImageOnLeft = $('img[alt="small-left"');
+    var hasSmallImageOnRight = $('img[alt="small-right"');
+
+    hasLargeImageOnLeft.addClass("big-img float-left");
+    hasLargeImageOnRight.addClass("big-img float-right");
+    hasLargeImageOnLeft.addClass("small-img float-left");
+    hasSmallImageOnRight.addClass("small-img float-right");
+  }
+
   $('.slide-container').on("click", ".add-slide", function() {
     addNewSlide();
   })
@@ -394,6 +406,7 @@ $(document).ready(function(){
     for (var i = 0; i < slides.length; i++) {
       addNewSlide(slides[i]);
     }
+    applyImageStyles();
   }
 
   function getMarkdown(url) {
@@ -459,16 +472,6 @@ $(document).ready(function(){
   $(".slide-container").on("click", ".facebook", function() {
     window.open("http://www.facebook.com/sharer/sharer.php?u=" + getUrlWithoutHash());
   })
-
-  /********************************************
-                Flash Notice
-  *********************************************/
-  setTimeout(
-    function() {
-      $('.alert-box').fadeOut();
-    },
-    3 * 1000
-  );
 
   /********************************************
                 Keyboard Event
