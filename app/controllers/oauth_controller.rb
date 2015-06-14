@@ -34,7 +34,11 @@ class OauthController < ApplicationController
       params
     )
 
-    @github_access_token_response = JSON.parse(response)['access_token']
+    begin
+      @github_access_token_response = JSON.parse(response.body)['access_token']
+    rescue
+      @github_access_token_response = response.body
+    end
     render :callback
   end
 
