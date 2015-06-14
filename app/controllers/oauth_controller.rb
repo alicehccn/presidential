@@ -2,7 +2,6 @@ class OauthController < ApplicationController
 
   require 'uri'
   require 'net/http'
-  require 'pry'
 
   def authorize
     @github_authorization_link = generate_github_oauth_authorization_link
