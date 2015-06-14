@@ -57,5 +57,8 @@ Rails.application.routes.draw do
 
   get 'presentation' => 'presidential#presentation'
 
+  get 'oauth/authorize' => 'oauth#authorize'
+  get 'oauth/callback' => 'oauth#callback'
+
   root 'presidential#index'
 end

@@ -32,8 +32,6 @@ $(document).ready(function(){
     var $toolbar = $('<div class="toolbar" contenteditable="false"></div>');
     var $zoomIcon = $('<img src="img/zoom_in.png" class="zoom" title="Zoom In">');
     var $editIcon = $('<img src="img/edit.png" class="edit" title="Edit Slide">');
-    var $imgSize = $('<img src="img/image.png" class="img-size" title="Image Size">');
-    var $imgPos = $('<img src="img/direction.png" class="img-position" title="Image Position">');
     var $swapIcon = $('<img src="img/link.png" class="swap" title="Swap Slide">');
     var $deleteSlide = $('<img src="img/delete.png" class="delete-slide" title="Delete Slide">');
     var $fullScreen = $('<img src="img/slider.png" class="full-screen" title="Full Screen">');
@@ -47,8 +45,6 @@ $(document).ready(function(){
     $toolbar.
       prepend($zoomIcon).
       prepend($editIcon).
-      prepend($imgSize).
-      prepend($imgPos).
       prepend($swapIcon).
       prepend($deleteSlide).
       prepend($fullScreen);
@@ -78,11 +74,16 @@ $(document).ready(function(){
     var hasLargeImageOnRight = $('img[alt="large-right"');
     var hasSmallImageOnLeft = $('img[alt="small-left"');
     var hasSmallImageOnRight = $('img[alt="small-right"');
+    var hasMediumImageOnLeft = $('img[alt="medium-left"');
+    var hasMediumImageOnRight = $('img[alt="medium-right"');
+
 
     hasLargeImageOnLeft.addClass("big-img float-left");
     hasLargeImageOnRight.addClass("big-img float-right");
-    hasLargeImageOnLeft.addClass("small-img float-left");
+    hasSmallImageOnLeft.addClass("small-img float-left");
     hasSmallImageOnRight.addClass("small-img float-right");
+    hasMediumImageOnLeft.addClass("medium-img float-left");
+    hasSmallImageOnRight.addClass("medium-img float-right");
   }
 
   $('.slide-container').on("click", ".add-slide", function() {
@@ -189,27 +190,6 @@ $(document).ready(function(){
       enableSwapDeleteFullScreenAddSlide();
       currentSlide.siblings().children(".toolbar").show();
     }
-  })
-
-  // Resize image
-  $('.slide-container').on("click", ".img-size", function() {
-    currentSlide = $(this).parents(".slide");
-    var currentImage = currentSlide.children(".textbox").find("img");
-    if (currentImage.hasClass("big-img")) {
-      currentImage.removeClass("big-img");
-    } else if (currentImage.hasClass("small-img")) {
-      currentImage.removeClass("small-img");
-      currentImage.addClass("big-img");
-    } else {
-      currentImage.addClass("small-img");
-    }
-  })
-
-  // Toggle image position
-  $('.slide-container').on("click", ".img-position", function() {
-    currentSlide = $(this).parents(".slide");
-    var currentImage = currentSlide.children(".textbox").find("img");
-    currentImage.toggleClass("float-left");
   })
 
   // Slide to be swappped
