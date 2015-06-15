@@ -13,11 +13,11 @@ $(document).ready(function(){
             User Button on Homepage
   *********************************************/
   
-  $("header").on("mouseover", ".user", function() {
-    $(this).children("li").show();
-  })
+  // $("header").on("mouseover", ".user", function() {
+  //   $(this).children("li").show();
+  // })
 
-  $("header").on("mouseleave", ".user", function() {
-    $(this).children("li").hide();
-  })
+  // $("header").on("mouseleave", ".user", function() {
+  //   $(this).children("li").hide();
+  // })
 })

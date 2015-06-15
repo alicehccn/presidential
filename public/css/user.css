@@ -1,22 +1,23 @@
 .user-page {
   width: 84%;
   margin: auto;
+  text-align: left;
 }
 .user-login, .edit-user {
   display: inline-block;
   margin: 0;
-  width: 50%;
+  width: 42%;
 }
 .sign-up, .deactivate {
   display: inline-block;
-  width: 50%;
-  float: right;
+  width: 42%;
+  vertical-align: top;
 }
 .field {
   margin: 5px 0;
 }
 .field input {
-  width: 50%;
+  width: 60%;
   outline: none;
   margin: 5px 0;
 }

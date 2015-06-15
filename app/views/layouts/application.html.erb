@@ -13,7 +13,7 @@
   <meta property="og:type"          content="website" /> 
   <meta property="og:url"           content="http://www.presidentialjs.com/" /> 
   <meta property="og:description"   content="Presidential is a free online tool for creating and editing presentation using Markdown" />
-  <meta name="description"          content="Check out this presentation I just created online"
+  <meta name="description"          content="Presentation in Markdown"
 
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -31,21 +31,22 @@
 </head>
 <body>
 <header>
-  <div class="logo"><%=link_to "Presidential", root_path %></div>
+  <div class="logo">
+    <span class="logo-name"><%=link_to "Presidential", root_path %></span>
+    <span class="tagline">Presentation in Markdown.</span>
+  </div>
   <div class="fetch-presentation">
     <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
-    <img id="get-markdown" class="get-markdown" src="/img/markdown.png" title="Get Markdown">
+    <span class="get-markdown"><img id="get-markdown" src="/img/markdown.png" title="Get Markdown">MARKDOWN</span>
   </div>
+  <ul class="user">
     <% if user_signed_in? %>
-      <ul class="user"><%= current_user.username %>
-      <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-      <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
-      </ul>
+      <li><%= link_to current_user.username, edit_user_registration_path %></li>|
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     <% else %>
-      <div>
-        <div class="user"><%=link_to "Login", new_user_session_path%></div>
-      </div>
+      <li><%=link_to "Login", new_user_session_path%></li>
     <% end %>
+  </ul>
   </header>
   <div class="alert-box">
     <% if notice %>

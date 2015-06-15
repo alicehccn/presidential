@@ -5,14 +5,16 @@ header {
   width: 100%;
   height: auto;
   margin-bottom: 50px;
-  background-color: rgb(58,58,58);
+  background-color: rgb(110,110,110);
   color: #fff;
-  border-bottom: 2px solid #aaa;
+  padding: 10px 0;
+  vertical-align: middle;
 }
 header a, header a:visited {
   color: #fff;
 }
 footer {
+  margin-top: 30px;
   text-align: center;
   font-size: 0.5em;
 }
@@ -22,37 +24,40 @@ a, a:visited {
 html {
   line-height: 1;
 }
+::-webkit-scrollbar { 
+  display: none; 
+}
 /******************************************************************************
                               HEADER AND NAVIGATION
 *******************************************************************************/
 .logo {
   display: inline-block;
   width: auto;
-  margin: 15px 9% 15px 8%;
-  font-size: 1.2em;
-  font-weight: lighter;
+  margin: 0 8%;
   text-align: left;
+  vertical-align: middle;
+}
+.logo-name {
+  display: block;
+  font-size: 1.8em;
+}
+.tagline {
+  font-size: 0.8em;
+  font-weight: lighter;
 }
 .user {
   position: absolute;
-  margin: 15px 8%;
-  top: 0;
+  margin: 5px 8%;
+  top: 30px;
   right: 0;
   width: auto;
   font-size: 0.9em;
   color: #eee;
   text-align: right;
 }
-ul.user {
-  background-color: rgba(58,58,58, 0.9);
-  margin: 5px 8%;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 2px;
-}
 .user li {
-  display: none;
-  margin-top: 20px;
+  display: inline-block;
+  padding: 0 10px;
   list-style: none;
 }
 .alert-box {
@@ -60,30 +65,38 @@ ul.user {
   width: 100%;
   text-align: center;
   color: brown;
-  top: 55px;
+  top: 75px;
 }
-/******************************************************************************
-                              INPUT BOX FOR MARKDOWN URL
-*******************************************************************************/
 .fetch-presentation {
   display: inline-block;
-  width: 50%;
-  padding: 5px;
+  width: 46%;
   text-align: left;
   background-color: #fff;
   border-radius: 1px;
+  vertical-align: middle;
+  padding: 2px;
 }
 .presentation-url {
-  width: 92%;
+  width: 88%;
+  margin: 15px 2px;
   outline: none;
-  font-size: 0.9em;
   border: none;
   color: #000;
+
 }
 .get-markdown {
-  width: 30px;
+  width: auto;
   cursor: pointer;
   float: right;
+  text-align: center;
+  font-size: 0.65em;
+  color: #000;
+}
+.get-markdown img {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+  opacity: 0.7;
 }
 
 /******************************************************************************
@@ -113,7 +126,7 @@ ul.user {
 .slide-container .slide .textbox {
   margin: 9%;
   height: 70.5%;
-  overflow: hidden;
+  overflow: scroll;
 }
 html .slide-container .slide .textbox{
   line-height: 1.1;
@@ -168,15 +181,25 @@ html .slide-container .slide .textbox{
   float: left;
   margin: 0 5% 0 0;
 }
-.slide-container .slide .textbox p img.small-img {
-  width: 15%;
+.slide-container .slide .textbox p img.medium-img {
+  width: 30%;
 }
 .slide-container .slide .textbox p img.big-img {
   width: 60%;
 }
-.slide-container .slide .textbox p img.medium-img {
-  width: 30%;
+.slide-container .slide .textbox p img.small-img {
+  width: 15%;
 }
+.slide-container .slide img.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+
 
 /************************ Slide toolbar ************************/
 .toolbar, .toolbar img {
@@ -301,6 +324,7 @@ html .slide-container .slide .textbox{
                               FULL SCREEN MODE
 *******************************************************************************/
 .slide-container.presenting .slide.active.slide-fullscreen {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -352,26 +376,34 @@ html .slide-container .slide .textbox{
 /******************************************************************************
                          SLIDE ADDER AND SOCIAL SHARER
 *******************************************************************************/
-.slide-container-buttons {
+.share-buttons {
   display: inline-block;
   margin: 10px 0;
   width: 100%;
   text-align: center;
   clear: both;
 }
-.slide-container-buttons img {
-  margin: 0 5px;
-  height: 30px;
+.share-buttons img {
+  margin: 0 6px;
+  height: 35px;
 }
-.slide-container-buttons .github {
-  margin: 0 2px;
-  height: 38px;
+.share-buttons .github {
+  margin: 0 3px;
+  height: 43px;
 }
 
 /******************************************************************************
                                 RESPONSIVE CSS
 *******************************************************************************/
+@media screen and (max-width: 1305px) {
+  .presentation-url {
+    width: 70%;
+  }
+}
 @media screen and (max-width: 1024px) {
+  .fetch-presentation {
+    width: 40%;
+  }
   .slide-container {
     width: 70%;
   }

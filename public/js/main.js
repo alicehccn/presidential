@@ -1,25 +1,23 @@
 $(document).ready(function(){
-  var $slideContainerButtons = $('<div class="slide-container-buttons"></div>');
+  var $shareButtons = $('<div class="share-buttons"></div>');
 
   var $facebook = $('<a><img class="facebook" src="img/facebook.png" title="Share on Facebook"></a>');
   var $twitter = $('<a><img class="twitter" src="img/twitter.png" title="Share on Twitter"></a>');
   var $emailto = $('<img class="emailto" src="img/mail.png" title="Send by Email">');
   var $github = $('<img src="img/github.png" class="github" title="Save as Gist">');
-  var $addSlide = $('<img src="img/add.png" class="add-slide" title="Add New Slide">');
 
   var currentSlide = null;
   window.slideCount = 0;
 
   // Append add-slide and share buttons
-  $slideContainerButtons.
-    prepend($addSlide).
+  $shareButtons.
     prepend($github).
     prepend($emailto).
     prepend($twitter).
     prepend($facebook);
 
   $('.slide-container').
-    append($slideContainerButtons);
+    append($shareButtons);
 
 
   // Add slide to DOM on mouse click
@@ -64,9 +62,9 @@ $(document).ready(function(){
       append($nextArrow).
       append($slideNumber);
 
-    $('.slide-container-buttons').remove();
+    $shareButtons.remove();
     $('.arrows').hide();
-    $('.slide-container').append($slideContainerButtons);
+    $('.slide-container').append($shareButtons);
   }
 
   function applyImageStyles() {
@@ -76,7 +74,7 @@ $(document).ready(function(){
     var hasSmallImageOnRight = $('img[alt="small-right"');
     var hasMediumImageOnLeft = $('img[alt="medium-left"');
     var hasMediumImageOnRight = $('img[alt="medium-right"');
-
+    var hasBackgroundImage = $('img[alt="background"]');
 
     hasLargeImageOnLeft.addClass("big-img float-left");
     hasLargeImageOnRight.addClass("big-img float-right");
@@ -84,11 +82,8 @@ $(document).ready(function(){
     hasSmallImageOnRight.addClass("small-img float-right");
     hasMediumImageOnLeft.addClass("medium-img float-left");
     hasSmallImageOnRight.addClass("medium-img float-right");
+    hasBackgroundImage.addClass("background");
   }
-
-  $('.slide-container').on("click", ".add-slide", function() {
-    addNewSlide();
-  })
 
   // Check presenting mode
   function isPresentingMode() {
@@ -133,7 +128,7 @@ $(document).ready(function(){
     $('.slide-container').addClass("presenting");
     $('.zoom').attr("src", "img/zoom_out.png");
     $('.slide-number').hide();
-    $('.slide-container-buttons').hide();
+    $('.share-buttons').hide();
     $('.arrows').show();
     centerSlideWhenZoomedIn();
     disableSwapDeleteFullScreenAddSlide();
@@ -145,7 +140,7 @@ $(document).ready(function(){
     $('.zoom').attr("src", "img/zoom_in.png");
     $('.slide').removeClass("active");
     $(".arrows").hide();
-    $('.slide-container-buttons').show();
+    $('.share-buttons').show();
     $('.slide-number').show();
     decenterSlide();
     enableSwapDeleteFullScreenAddSlide();
@@ -261,7 +256,7 @@ $(document).ready(function(){
     $(".fetch-presentation").hide();
     $("footer").hide();
     $('.slide-number').hide();
-    $('.slide-container-buttons').hide();
+    $('.share-buttons').hide();
   }
 
   // Exit full screen mode
@@ -276,7 +271,7 @@ $(document).ready(function(){
     $(".fetch-presentation").show();
     $("footer").show();
     $('.slide-number').show()
-    $('.slide-container-buttons').show();
+    $('.share-buttons').show();
     $('.toolbar').show();
     zoomOutSlide();
   }
