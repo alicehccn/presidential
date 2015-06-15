@@ -190,13 +190,12 @@ html .slide-container .slide .textbox{
 .slide-container .slide .textbox p img.small-img {
   width: 15%;
 }
-.slide-container .slide img.full-size {
+.slide-container .slide img.full-width {
   position: absolute;
   top: 0;
   left: 0;
   margin: 0;
   width: 100%;
-  height: 100%;
   opacity: 1;
 }
 
