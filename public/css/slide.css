@@ -24,6 +24,9 @@ a, a:visited {
 html {
   line-height: 1;
 }
+::-webkit-scrollbar { 
+  display: none; 
+}
 /******************************************************************************
                               HEADER AND NAVIGATION
 *******************************************************************************/
@@ -94,7 +97,7 @@ html {
                               NON PRESENTING MODE
 *******************************************************************************/
 .slide-container {
-  width: 83%;
+  width: 82%;
   margin: 0 auto;
   padding: 1%;
   background-color: rgb(240, 240, 240);
@@ -117,7 +120,7 @@ html {
 .slide-container .slide .textbox {
   margin: 9%;
   height: 70.5%;
-  overflow: hidden;
+  overflow: scroll;
 }
 html .slide-container .slide .textbox{
   line-height: 1.1;
