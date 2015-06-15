@@ -34,7 +34,7 @@
   <div class="logo"><%=link_to "Presidential", root_path %></div>
   <div class="fetch-presentation">
     <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
-    <img id="get-markdown" class="get-markdown" src="/img/markdown.png" title="Get Markdown">
+    <span class="get-markdown"><img id="get-markdown" src="/img/markdown.png" title="Get Markdown">MARKDOWN</span>
   </div>
     <% if user_signed_in? %>
       <ul class="user"><%= current_user.username %>
