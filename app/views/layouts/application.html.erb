@@ -13,7 +13,7 @@
   <meta property="og:type"          content="website" /> 
   <meta property="og:url"           content="http://www.presidentialjs.com/" /> 
   <meta property="og:description"   content="Presidential is a free online tool for creating and editing presentation using Markdown" />
-  <meta name="description"          content="Check out this presentation I just created online"
+  <meta name="description"          content="Presentation in Markdown"
 
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -31,7 +31,10 @@
 </head>
 <body>
 <header>
-  <div class="logo"><%=link_to "Presidential", root_path %></div>
+  <div class="logo">
+    <span class="logo-name"><%=link_to "Presidential", root_path %></span>
+    <span class="tagline">Presentation in Markdown.</span>
+  </div>
   <div class="fetch-presentation">
     <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
     <span class="get-markdown"><img id="get-markdown" src="/img/markdown.png" title="Get Markdown">MARKDOWN</span>

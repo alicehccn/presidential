@@ -34,9 +34,16 @@ html {
   display: inline-block;
   width: auto;
   margin: 0 8%;
-  font-size: 1.2em;
   text-align: left;
   vertical-align: middle;
+}
+.logo-name {
+  display: block;
+  font-size: 1.8em;
+}
+.tagline {
+  font-size: 0.8em;
+  font-weight: lighter;
 }
 .user {
   position: absolute;
@@ -62,8 +69,7 @@ html {
 }
 .fetch-presentation {
   display: inline-block;
-  margin-left: 2%;
-  width: 50%;
+  width: 46%;
   text-align: left;
   background-color: #fff;
   border-radius: 1px;
@@ -71,7 +77,7 @@ html {
   padding: 2px;
 }
 .presentation-url {
-  width: 89%;
+  width: 88%;
   margin: 15px 2px;
   outline: none;
   border: none;
@@ -389,12 +395,14 @@ html .slide-container .slide .textbox{
 /******************************************************************************
                                 RESPONSIVE CSS
 *******************************************************************************/
+@media screen and (max-width: 1305px) {
+  .presentation-url {
+    width: 70%;
+  }
+}
 @media screen and (max-width: 1024px) {
   .fetch-presentation {
-    width: 45%;
-  }
-  .presentation-url {
-    width: 80%;
+    width: 40%;
   }
   .slide-container {
     width: 70%;
