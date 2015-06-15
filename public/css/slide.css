@@ -14,6 +14,7 @@ header a, header a:visited {
   color: #fff;
 }
 footer {
+  margin-top: 30px;
   text-align: center;
   font-size: 0.5em;
 }
@@ -44,16 +45,9 @@ html {
   color: #eee;
   text-align: right;
 }
-ul.user {
-  background-color: rgba(58,58,58, 0.9);
-  margin: 5px 8%;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 2px;
-}
 .user li {
-  display: none;
-  margin-top: 20px;
+  display: inline-block;
+  padding: 0 10px;
   list-style: none;
 }
 .alert-box {
@@ -61,7 +55,7 @@ ul.user {
   width: 100%;
   text-align: center;
   color: brown;
-  top: 55px;
+  top: 75px;
 }
 .fetch-presentation {
   display: inline-block;
@@ -100,7 +94,7 @@ ul.user {
                               NON PRESENTING MODE
 *******************************************************************************/
 .slide-container {
-  width: 82%;
+  width: 83%;
   margin: 0 auto;
   padding: 1%;
   background-color: rgb(240, 240, 240);
@@ -189,6 +183,9 @@ html .slide-container .slide .textbox{
 }
 .slide-container .slide img.background {
   position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
   width: 100%;
   height: 100%;
   opacity: 0.4;
@@ -378,12 +375,12 @@ html .slide-container .slide .textbox{
   clear: both;
 }
 .share-buttons img {
-  margin: 0 5px;
-  height: 30px;
+  margin: 0 6px;
+  height: 35px;
 }
 .share-buttons .github {
-  margin: 0 2px;
-  height: 38px;
+  margin: 0 3px;
+  height: 43px;
 }
 
 /******************************************************************************

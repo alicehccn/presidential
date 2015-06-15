@@ -82,8 +82,7 @@ $(document).ready(function(){
     hasSmallImageOnRight.addClass("small-img float-right");
     hasMediumImageOnLeft.addClass("medium-img float-left");
     hasSmallImageOnRight.addClass("medium-img float-right");
-    hasBackgroundImage.parents('.slide').prepend(hasBackgroundImage);
-    hasBackgroundImage.addClass("background")
+    hasBackgroundImage.addClass("background");
   }
 
   // Check presenting mode
