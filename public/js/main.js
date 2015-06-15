@@ -74,7 +74,7 @@ $(document).ready(function(){
     var hasSmallImageOnRight = $('img[alt="small-right"');
     var hasMediumImageOnLeft = $('img[alt="medium-left"');
     var hasMediumImageOnRight = $('img[alt="medium-right"');
-    var hasBackgroundImage = $('img[alt="background"]');
+    var hasFullSizeImage = $('img[alt="full-size"]');
 
     hasLargeImageOnLeft.addClass("big-img float-left");
     hasLargeImageOnRight.addClass("big-img float-right");
@@ -82,7 +82,7 @@ $(document).ready(function(){
     hasSmallImageOnRight.addClass("small-img float-right");
     hasMediumImageOnLeft.addClass("medium-img float-left");
     hasSmallImageOnRight.addClass("medium-img float-right");
-    hasBackgroundImage.addClass("background");
+    hasFullSizeImage.addClass("full-size");
   }
 
   // Check presenting mode
