@@ -154,6 +154,10 @@ html .slide-container .slide .textbox{
   border: 1px dotted #000;
   padding: 2%;
 }
+.slide-container .slide .textbox code {
+  background-color: #eee;
+  word-wrap: break-word;
+}
 .slide-container .slide .textbox h1,
 .slide-container .slide .textbox h2,
 .slide-container .slide .textbox h3,
@@ -435,6 +439,9 @@ html .slide-container .slide .textbox{
     display: block;
     margin-bottom: 10px;
     padding: 0;
+  }
+  .alert-box {
+    top: 140px;
   }
   .slide-container {
     width: 57%;
