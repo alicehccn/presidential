@@ -57,7 +57,7 @@ html {
 }
 .user li {
   display: inline-block;
-  padding: 0 10px;
+  padding: 0 0 0 30px;
   list-style: none;
 }
 .alert-box {
@@ -383,12 +383,8 @@ html .slide-container .slide .textbox{
   clear: both;
 }
 .share-buttons img {
-  margin: 0 6px;
-  height: 35px;
-}
-.share-buttons .github {
-  margin: 0 3px;
-  height: 43px;
+  margin: 0 8px;
+  height: 40px;
 }
 
 /******************************************************************************
@@ -416,6 +412,8 @@ html .slide-container .slide .textbox{
   }
   .logo {
     margin: 20px 0;
+    width: 80%;
+    text-align: left;
   }
   .fetch-presentation {
     width: 80%;
@@ -429,13 +427,14 @@ html .slide-container .slide .textbox{
     font-size: 8px;
   }
   .user {
-    position: relative;
-    display: block;
-    top: 5px;
-    left: 0;
-    margin: 10px 0;
+    margin-right: 10%;
     padding: 0;
-    text-align: center;
+    font-size: 0.8em;
+  }
+  .user li {
+    display: block;
+    margin-bottom: 10px;
+    padding: 0;
   }
   .slide-container {
     width: 57%;

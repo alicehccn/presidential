@@ -4,14 +4,12 @@ $(document).ready(function(){
   var $facebook = $('<a><img class="facebook" src="/img/facebook.png" title="Share on Facebook"></a>');
   var $twitter = $('<a><img class="twitter" src="/img/twitter.png" title="Share on Twitter"></a>');
   var $emailto = $('<img class="emailto" src="/img/mail.png" title="Send by Email">');
-  var $github = $('<img src="/img/github.png" class="github" title="Save as Gist">');
 
   var currentSlide = null;
   window.slideCount = 0;
 
   // Append add-slide and share buttons
   $shareButtons.
-    prepend($github).
     prepend($emailto).
     prepend($twitter).
     prepend($facebook);
