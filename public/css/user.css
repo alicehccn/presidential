@@ -42,3 +42,14 @@
   border-radius: 5px;
   padding: 3px;
 }
+
+@media screen and (max-width: 414px) {
+  .user-page {
+    width: 80%;
+  }
+  .user-login, .edit-user,
+  .sign-up, .deactivate {
+    display: block;
+    width: 100%;
+  }
+}

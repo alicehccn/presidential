@@ -371,6 +371,10 @@ $(document).ready(function(){
     goToNextSlide();
   })
 
+  $(window).on('swipe', function() {
+    console.log("swipe");
+  })
+
   /********************************************
           Fetch data from Markdown
   *********************************************/
