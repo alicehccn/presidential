@@ -408,6 +408,12 @@ $(document).ready(function(){
 
   $('#get-markdown').on('click', getMarkdownIfUrl);
 
+  function getInstructionSlide() {
+    var demo = 'https://gist.githubusercontent.com/alicehccn/ec09248285c24a49316a/raw';
+    getMarkdown(demo);
+  }
+  getInstructionSlide();
+
   // Load markdown from URL
   function setupPresidential() {
     var hash = decodeURIComponent(document.location.hash);
@@ -417,7 +423,7 @@ $(document).ready(function(){
       }
       getMarkdown(hash);
     } else {
-      $('#presentation-url').focus()
+      $('#presentation-url').focus();
     }
   }
   setupPresidential();
