@@ -1,10 +1,10 @@
 $(document).ready(function(){
   var $shareButtons = $('<div class="share-buttons"></div>');
 
-  var $facebook = $('<a><img class="facebook" src="img/facebook.png" title="Share on Facebook"></a>');
-  var $twitter = $('<a><img class="twitter" src="img/twitter.png" title="Share on Twitter"></a>');
-  var $emailto = $('<img class="emailto" src="img/mail.png" title="Send by Email">');
-  var $github = $('<img src="img/github.png" class="github" title="Save as Gist">');
+  var $facebook = $('<a><img class="facebook" src="/img/facebook.png" title="Share on Facebook"></a>');
+  var $twitter = $('<a><img class="twitter" src="/img/twitter.png" title="Share on Twitter"></a>');
+  var $emailto = $('<img class="emailto" src="/img/mail.png" title="Send by Email">');
+  var $github = $('<img src="/img/github.png" class="github" title="Save as Gist">');
 
   var currentSlide = null;
   window.slideCount = 0;
@@ -28,14 +28,14 @@ $(document).ready(function(){
     var $slideHeader = $('<h1 class="slide-header">Slide header</h1>');
     var $newContent = $('<p>New Slide</p>');
     var $toolbar = $('<div class="toolbar" contenteditable="false"></div>');
-    var $zoomIcon = $('<img src="img/zoom_in.png" class="zoom" title="Zoom In">');
-    var $editIcon = $('<img src="img/edit.png" class="edit" title="Edit Slide">');
-    var $swapIcon = $('<img src="img/link.png" class="swap" title="Swap Slide">');
-    var $deleteSlide = $('<img src="img/delete.png" class="delete-slide" title="Delete Slide">');
-    var $fullScreen = $('<img src="img/slider.png" class="full-screen" title="Full Screen">');
+    var $zoomIcon = $('<img src="/img/zoom_in.png" class="zoom" title="Zoom In">');
+    var $editIcon = $('<img src="/img/edit.png" class="edit" title="Edit Slide">');
+    var $swapIcon = $('<img src="/img/link.png" class="swap" title="Swap Slide">');
+    var $deleteSlide = $('<img src="/img/delete.png" class="delete-slide" title="Delete Slide">');
+    var $fullScreen = $('<img src="/img/slider.png" class="full-screen" title="Full Screen">');
     var $slideNumber = $('<span class="slide-number" contenteditable="false">' + window.slideCount + "</span>")
-    var $prevArrow = $('<img src="img/prev.png" class="prev-arrow arrows" title="Next Slide">');
-    var $nextArrow = $('<img src="img/next.png" class="next-arrow arrows" title="Previous Slide">');
+    var $prevArrow = $('<img src="/img/prev.png" class="prev-arrow arrows" title="Next Slide">');
+    var $nextArrow = $('<img src="/img/next.png" class="next-arrow arrows" title="Previous Slide">');
 
     $slide.attr("id", "s" + window.slideCount);
     $('.slide-container').append($slide);
@@ -126,7 +126,7 @@ $(document).ready(function(){
   // Zoom in slide
   function zoomInSlide() {
     $('.slide-container').addClass("presenting");
-    $('.zoom').attr("src", "img/zoom_out.png");
+    $('.zoom').attr("src", "/img/zoom_out.png");
     $('.slide-number').hide();
     $('.share-buttons').hide();
     $('.arrows').show();
@@ -137,7 +137,7 @@ $(document).ready(function(){
   // Zoom out slide
   function zoomOutSlide() {
     $('.slide-container').removeClass("presenting");
-    $('.zoom').attr("src", "img/zoom_in.png");
+    $('.zoom').attr("src", "/img/zoom_in.png");
     $('.slide').removeClass("active");
     $(".arrows").hide();
     $('.share-buttons').show();
@@ -175,13 +175,13 @@ $(document).ready(function(){
       currentSlide.addClass("editable");
       currentSlide.siblings(".slide").removeClass("editable");
       currentSlide.find(".slide-number").hide();
-      $(this).attr("src", "img/editing.png");
+      $(this).attr("src", "/img/editing.png");
       editSlide();
     } else {
       currentSlide.attr("contenteditable", "false");
       currentSlide.removeClass("editable");
       currentSlide.find(".slide-number").show();
-      $(this).attr("src", "img/edit.png");
+      $(this).attr("src", "/img/edit.png");
       enableSwapDeleteFullScreenAddSlide();
       currentSlide.siblings().children(".toolbar").show();
     }
