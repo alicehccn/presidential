@@ -1,14 +1,15 @@
 $(document).ready(function(){
   var $shareButtons = $('<div class="share-buttons"></div>');
-
   var $facebook = $('<a><img class="facebook" src="/img/facebook.png" title="Share on Facebook"></a>');
   var $twitter = $('<a><img class="twitter" src="/img/twitter.png" title="Share on Twitter"></a>');
   var $emailto = $('<img class="emailto" src="/img/mail.png" title="Send by Email">');
 
+  var $startShow = $('<img src="/img/play.png" class="start-show" title="Start Slide Show">');
+
   var currentSlide = null;
   window.slideCount = 0;
 
-  // Append add-slide and share buttons
+  // Append share buttons
   $shareButtons.
     prepend($emailto).
     prepend($twitter).
@@ -57,30 +58,33 @@ $(document).ready(function(){
       append($textbox).
       append($toolbar).
       append($prevArrow).
-      append($nextArrow).
-      append($slideNumber);
+      append($nextArrow);
+      // append($slideNumber);
 
     $shareButtons.remove();
     $('.arrows').hide();
     $('.slide-container').append($shareButtons);
+    $('.slide').eq(0).append($startShow);
   }
 
   function applyImageStyles() {
-    var hasLargeImageOnLeft = $('img[alt="large-left"');
-    var hasLargeImageOnRight = $('img[alt="large-right"');
-    var hasSmallImageOnLeft = $('img[alt="small-left"');
-    var hasSmallImageOnRight = $('img[alt="small-right"');
-    var hasMediumImageOnLeft = $('img[alt="medium-left"');
-    var hasMediumImageOnRight = $('img[alt="medium-right"');
-    var hasFullWidthImage = $('img[alt="full-width"]');
+    var hasLargeImageOnLeft = $('img[alt="large-l"');
+    var hasLargeImageOnRight = $('img[alt="large-r"');
+    var hasSmallImageOnLeft = $('img[alt="small-l"');
+    var hasSmallImageOnRight = $('img[alt="small-r"');
+    var hasMediumImageOnLeft = $('img[alt="medium-l"');
+    var hasMediumImageOnRight = $('img[alt="medium-r"');
+    var hasFullWidthImage = $('img[alt="full"]');
+    var hasBackgroundImage = $('img[alt="background"')
 
-    hasLargeImageOnLeft.addClass("big-img float-left");
-    hasLargeImageOnRight.addClass("big-img float-right");
+    hasLargeImageOnLeft.addClass("large-img float-left");
+    hasLargeImageOnRight.addClass("large-img float-right");
     hasSmallImageOnLeft.addClass("small-img float-left");
     hasSmallImageOnRight.addClass("small-img float-right");
     hasMediumImageOnLeft.addClass("medium-img float-left");
     hasSmallImageOnRight.addClass("medium-img float-right");
-    hasFullWidthImage.addClass("full-width");
+    hasFullWidthImage.addClass("full");
+    hasBackgroundImage.addClass("background");
   }
 
   // Check presenting mode
@@ -93,17 +97,15 @@ $(document).ready(function(){
   }
 
   // Enable and disable swap and delete
-  function enableSwapDeleteFullScreenAddSlide() {
+  function enableSwapDeleteFullScreen() {
     $('.swap').prop("disabled", false);
     $('.delete-slide').prop("disabled", false);
     $('.full-screen').prop("disabled", false);
-    $('.add-slide').prop("disabled", false);
   }
-  function disableSwapDeleteFullScreenAddSlide() {
+  function disableSwapDeleteFullScreen() {
     $('.swap').prop("disabled", true);
     $('.delete-slide').prop("disabled", true);
     $('.full-screen').prop("disabled", true);
-    $('.add-slide').prop("disabled", true);
   }
 
   // Reposition slide when zoomed in and out
@@ -125,11 +127,10 @@ $(document).ready(function(){
   function zoomInSlide() {
     $('.slide-container').addClass("presenting");
     $('.zoom').attr("src", "/img/zoom_out.png");
-    $('.slide-number').hide();
     $('.share-buttons').hide();
     $('.arrows').show();
     centerSlideWhenZoomedIn();
-    disableSwapDeleteFullScreenAddSlide();
+    disableSwapDeleteFullScreen();
   }
 
   // Zoom out slide
@@ -139,9 +140,8 @@ $(document).ready(function(){
     $('.slide').removeClass("active");
     $(".arrows").hide();
     $('.share-buttons').show();
-    $('.slide-number').show();
     decenterSlide();
-    enableSwapDeleteFullScreenAddSlide();
+    enableSwapDeleteFullScreen();
   }
 
   // Toggle slide zooming on mouse click
@@ -163,7 +163,7 @@ $(document).ready(function(){
     currentSlide.siblings(".slide").attr("contenteditable", "false");
     currentSlide.siblings().children(".toolbar").hide();
     currentSlide.focus();
-    disableSwapDeleteFullScreenAddSlide();
+    disableSwapDeleteFullScreen();
   }
 
   // Make slide edittable on mouse click
@@ -172,15 +172,15 @@ $(document).ready(function(){
     if (!currentSlide.hasClass("editable")) {
       currentSlide.addClass("editable");
       currentSlide.siblings(".slide").removeClass("editable");
-      currentSlide.find(".slide-number").hide();
+      $('.start-show').hide();
       $(this).attr("src", "/img/editing.png");
       editSlide();
     } else {
       currentSlide.attr("contenteditable", "false");
       currentSlide.removeClass("editable");
-      currentSlide.find(".slide-number").show();
+      $('.start-show').show();
       $(this).attr("src", "/img/edit.png");
-      enableSwapDeleteFullScreenAddSlide();
+      enableSwapDeleteFullScreen();
       currentSlide.siblings().children(".toolbar").show();
     }
   })
@@ -197,6 +197,8 @@ $(document).ready(function(){
       swappingSlide.eq(1).html(slideTextA);
       swappingSlide.eq(0).css("font-size", slideStyleB);
       swappingSlide.eq(1).css("font-size", slideStyleA);
+      $('.start-show').remove();
+      $('.slide').eq(0).append($startShow);
       swappingSlide.removeClass("swapping");
       $('.swap').siblings("img").prop("disabled", false);
     }
@@ -249,11 +251,9 @@ $(document).ready(function(){
       currentSlide.mozRequestFullScreen;
     requestFullScreen.call(currentSlide);
     $('.slide-container').addClass("presenting");
-    $('.toolbar').hide();
     $("header").hide();
     $(".fetch-presentation").hide();
     $("footer").hide();
-    $('.slide-number').hide();
     $('.share-buttons').hide();
   }
 
@@ -268,14 +268,22 @@ $(document).ready(function(){
     $("header").show();
     $(".fetch-presentation").show();
     $("footer").show();
-    $('.slide-number').show()
     $('.share-buttons').show();
-    $('.toolbar').show();
     zoomOutSlide();
   }
 
   // Toggle full screen mode on click
   $('.slide-container').on("click", ".full-screen", function() {
+    currentSlide = $(this).parents(".slide");
+    if (isFullScreen()) {
+      exitFullScreen();
+    } else {
+      currentSlide.addClass("active slide-fullscreen");
+      enterFullScreen();
+    }
+  });
+
+   $('.slide-container').on("click", ".start-show", function() {
     currentSlide = $(this).parents(".slide");
     if (isFullScreen()) {
       exitFullScreen();
