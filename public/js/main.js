@@ -382,13 +382,15 @@ $(document).ready(function(){
     applyImageStyles();
   }
 
-  function getMarkdown(url) {
+  function getMarkdown(url, preventHashUpdate) {
     if (url.length > 0) {
       var presentationUrl = '/presentation?url=' + encodeURIComponent(url);
       $.get(presentationUrl, function (data) {
         renderHTMLSlides(data.slides);
-        document.location.hash = encodeURIComponent(url);
         clearUrlInput();
+        if (!preventHashUpdate) {
+          document.location.hash = encodeURIComponent(url);
+        }
       }).fail(function() {
         alert("An error has occured and your file could not be loaded. Please try again.");
       });
@@ -408,11 +410,11 @@ $(document).ready(function(){
 
   $('#get-markdown').on('click', getMarkdownIfUrl);
 
+  // Show demo slides on load
   function getInstructionSlide() {
     var demo = 'https://gist.githubusercontent.com/alicehccn/ec09248285c24a49316a/raw';
-    getMarkdown(demo);
+    getMarkdown(demo, true);
   }
-  getInstructionSlide();
 
   // Load markdown from URL
   function setupPresidential() {
@@ -423,6 +425,7 @@ $(document).ready(function(){
       }
       getMarkdown(hash);
     } else {
+      getInstructionSlide();
       $('#presentation-url').focus();
     }
   }
