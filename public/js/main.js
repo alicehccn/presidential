@@ -62,20 +62,19 @@ $(document).ready(function(){
       // append($slideNumber);
 
     $shareButtons.remove();
-    $('.arrows').hide();
     $('.slide-container').append($shareButtons);
     $('.slide').eq(0).append($startShow);
   }
 
   function applyImageStyles() {
-    var hasLargeImageOnLeft = $('img[alt="large-l"');
-    var hasLargeImageOnRight = $('img[alt="large-r"');
-    var hasSmallImageOnLeft = $('img[alt="small-l"');
-    var hasSmallImageOnRight = $('img[alt="small-r"');
-    var hasMediumImageOnLeft = $('img[alt="medium-l"');
-    var hasMediumImageOnRight = $('img[alt="medium-r"');
+    var hasLargeImageOnLeft = $('img[alt="large-l"]');
+    var hasLargeImageOnRight = $('img[alt="large-r"]');
+    var hasSmallImageOnLeft = $('img[alt="small-l"]');
+    var hasSmallImageOnRight = $('img[alt="small-r"]');
+    var hasMediumImageOnLeft = $('img[alt="medium-l"]');
+    var hasMediumImageOnRight = $('img[alt="medium-r"]');
     var hasFullWidthImage = $('img[alt="full"]');
-    var hasBackgroundImage = $('img[alt="background"')
+    var hasBackgroundImage = $('img[alt="background"]');
 
     hasLargeImageOnLeft.addClass("large-img float-left");
     hasLargeImageOnRight.addClass("large-img float-right");
@@ -271,28 +270,6 @@ $(document).ready(function(){
     $('.share-buttons').show();
     zoomOutSlide();
   }
-
-  // Toggle full screen mode on click
-  $('.slide-container').on("click", ".full-screen", function() {
-    currentSlide = $(this).parents(".slide");
-    if (isFullScreen()) {
-      exitFullScreen();
-    } else {
-      currentSlide.addClass("active slide-fullscreen");
-      enterFullScreen();
-    }
-  });
-
-   $('.slide-container').on("click", ".start-show", function() {
-    currentSlide = $(this).parents(".slide");
-    if (isFullScreen()) {
-      exitFullScreen();
-    } else {
-      currentSlide.addClass("active slide-fullscreen");
-      enterFullScreen();
-    }
-  });
-
   // Detect window screen change (exit)
   // Make sure the slide styles are restored in case the user
   // presses ESC instead of clicking our custom button.
@@ -301,6 +278,19 @@ $(document).ready(function(){
       exitFullScreen();
     }
   })
+
+  // Toggle full screen mode on click
+  $('.slide-container').on("click", ".full-screen", function() {
+    currentSlide = $(this).parents(".slide");
+    currentSlide.addClass("active slide-fullscreen");
+    enterFullScreen();
+  });
+
+  // Start slide show from the beginning
+  $('.slide-container').on("click", ".start-show", function() {
+    $('.slide').eq(0).addClass("active slide-fullscreen");
+    enterFullScreen();
+  });
 
   // Calculate mouse position in relation to the active slide
   function calculateEdgeWidth() {
@@ -382,7 +372,7 @@ $(document).ready(function(){
   *********************************************/
 
   function renderHTMLSlides(slides) {
-    $('.slide-container').children('.slide').remove();
+    $('.slide').remove();
     window.slideCount = 0;
     for (var i = 0; i < slides.length; i++) {
       addNewSlide(slides[i]);

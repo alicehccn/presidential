@@ -27,6 +27,9 @@ html {
 ::-webkit-scrollbar { 
   display: none; 
 }
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
 /******************************************************************************
                               HEADER AND NAVIGATION
 *******************************************************************************/
@@ -107,7 +110,6 @@ html {
   margin: 0 auto;
   padding: 1%;
   background-color: rgb(240, 240, 240);
-  overflow: auto;
 }
 .slide-container .slide {
   display: inline-block;
@@ -124,12 +126,15 @@ html {
   outline: none;
 }
 .slide-container .slide .textbox {
-  margin: 9%;
-  height: 71%;
-  overflow: scroll;
+  margin: 8%;
+  height: 72%;
+  overflow: hidden;
 }
 html .slide-container .slide .textbox{
   line-height: 1.1;
+}
+.slide-container .slide .arrows {
+  display: none;
 }
 /************************ Text content ************************/
 .slide-container .slide .textbox a {
@@ -141,13 +146,21 @@ html .slide-container .slide .textbox{
 .slide-container .slide .textbox pre,
 .slide-container .slide .textbox table,
 .slide-container .slide .textbox code {
-  -webkit-margin-before: 0.5em;
-  -webkit-margin-after: 0.5em;
+  margin: 0.6em 0.1em;
   font-family: sans-serif;
   font-size: 8.5px;
 }
+.slide-container .slide .textbox ul,
+.slide-container .slide .textbox ol {
+  padding-left: 15px;
+}
+.slide-container .slide .textbox ul li,
+.slide-container .slide .textbox ol li {
+  -moz-margin-start: -0.5em;
+}
 .slide-container .slide .textbox table {
-  -webkit-margin-before: 1em;
+  margin: 0.1em;
+  -moz-margin-start: 0.2em;
   width: 99%;
   font-size: 7px;
 }
@@ -165,18 +178,13 @@ html .slide-container .slide .textbox{
 .slide-container .slide .textbox h4,
 .slide-container .slide .textbox h5,
 .slide-container .slide .textbox h6 {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0.5em;
+  margin: 0;
   font-family: serif;
   font-size: 12.5px;
 }
-.slide-container .slide .textbox ul,
-.slide-container .slide .textbox ol {
-  -webkit-padding-start: 15px;
-}
 
 /************************ Image content ************************/
-.slide-container .slide .textbox img {
+.slide-container .slide .textbox p img {
   position: relative;
   float: right;
   margin: 0 1.5%;
@@ -196,7 +204,8 @@ html .slide-container .slide .textbox{
 .slide-container .slide .textbox p img.small-img {
   width: 15%;
 }
-.slide-container .slide img.full, .slide-container .slide img.background {
+.slide-container .slide .textbox p img.full,
+.slide-container .slide .textbox p img.background {
   position: absolute;
   top: 0;
   left: 0;
@@ -225,8 +234,7 @@ html .slide-container .slide .textbox{
   display: block;
   position: absolute;
   width: 100%;
-  height: 22px;
-  margin-top: -20px;
+  margin-top: -17px;
   border: none;
   z-index: 10050;
 }
@@ -241,6 +249,9 @@ html .slide-container .slide .textbox{
   opacity: 0.6;
   cursor: pointer;
   z-index: 10030;
+}
+.start-show:hover {
+  opacity: 0.8;
 }
 
 /******************************************************************************
@@ -270,7 +281,6 @@ html .slide-container .slide .textbox{
   z-index: 10010;
 }
 .slide-container.presenting .slide.active .textbox {
-  margin: 8%;
   height: 75%;
 }
 /************************ Text content ************************/
@@ -278,7 +288,7 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active .textbox ul,
 .slide-container.presenting .slide.active .textbox ol,
 .slide-container.presenting .slide.active .textbox pre,
-.slide-container.presenting .slide.active .textbox code  {
+.slide-container.presenting .slide.active .textbox code {
   font-size: 31px;
 }
 .slide-container.presenting .slide.active .textbox table {
@@ -293,10 +303,12 @@ html .slide-container .slide .textbox{
   font-size: 45px;
 }
 .slide-container.presenting .slide.active .textbox ul {
-  -webkit-padding-start: 38px;
+  margin-left: 0.9em;
+  -moz-margin-start: 1.3em;
 }
 .slide-container.presenting .slide.active .textbox ol {
-  -webkit-padding-start: 52px;
+  margin-left: 1.1em;
+  -moz-margin-start: 1.3em;
 }
 .slide-container.presenting .slide.active .start-show {
   display: none;
@@ -318,7 +330,8 @@ html .slide-container .slide .textbox{
 .next-arrow {
   right: -20%;
 }
-.arrows {
+.slide-container.presenting .slide.active .arrows {
+  display: block;
   position: absolute;
   top: 40%;
   height: 60px;
@@ -336,7 +349,7 @@ html .slide-container .slide .textbox{
   height: 100%;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox {
-  margin: 8% 10%;
+  margin: 8% 9%;
   height: 76%;
 }
 
@@ -346,7 +359,7 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ol,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox pre,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox code {
-  font-size: 56px;
+  font-size: 58px;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox table {
   font-size: 46px;
@@ -360,10 +373,12 @@ html .slide-container .slide .textbox{
   font-size: 82px;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ul {
-  -webkit-padding-start: 0.9em;
+  margin-left: 0.9em;
+  -moz-margin-start: 1.5em;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ol {
-  -webkit-padding-start: 1.5em;
+  margin-left: 1.4em;
+  -moz-margin-start: 1.6em;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .start-show {
   display: none;
@@ -401,79 +416,4 @@ html .slide-container .slide .textbox{
   margin: 0 8px;
   height: 40px;
   cursor: pointer;
-}
-
-/******************************************************************************
-                                RESPONSIVE CSS
-*******************************************************************************/
-@media screen and (max-width: 1305px) {
-  .presentation-url {
-    width: 70%;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .fetch-presentation {
-    width: 40%;
-  }
-  .slide-container {
-    width: 70%;
-  }
-  .slide:hover .full-screen, .slide:hover .start-show {
-    display: none;
-  }
-}
-@media screen and (max-width: 414px) {
-  header {
-    text-align: center;
-  }
-  .logo {
-    margin: 20px 0;
-    width: 80%;
-    text-align: left;
-  }
-  .fetch-presentation {
-    width: 80%;
-    margin-left: auto;
-  }
-  .presentation-url {
-    margin: 10px 0;
-  }
-  .get-markdown {
-    width: 50px;
-    font-size: 8px;
-  }
-  .user {
-    margin-right: 10%;
-    padding: 0;
-    font-size: 0.8em;
-  }
-  .user li {
-    display: block;
-    margin-bottom: 10px;
-    padding: 0;
-  }
-  .alert-box {
-    top: 140px;
-  }
-  .slide-container {
-    width: 57%;
-  }
-  .slide:hover .zoom {
-    display: none;
-  }
-}
-@media screen and (max-width: 375px) {
-  .slide-container {
-    width: 63%;
-  }
-}
-@media screen and (max-width: 360px) {
-  .slide-container {
-    width: 65%;
-  }
-}
-@media screen and (max-width: 320px) {
-  .slide-container {
-    width: 73%;
-  }
 }

@@ -5,7 +5,7 @@
 }
 .user-login, .edit-user{
   display: inline-block;
-  margin: 0;
+  margin-bottom: 30px;
   width: 42%;
 }
 .sign-up, .deactivate {
@@ -38,18 +38,9 @@
 .actions a, .actions:visited {
   display: inline;
   color: #000;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 2px;
-}
-
-@media screen and (max-width: 414px) {
-  .user-page {
-    width: 80%;
-  }
-  .user-login, .edit-user,
-  .sign-up, .deactivate {
-    display: block;
-    width: 100%;
-  }
+  padding: 3px;
+ /* -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;*/
 }
