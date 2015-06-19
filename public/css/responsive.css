@@ -137,7 +137,7 @@
   .slide-container .slide .textbox ol,
   .slide-container .slide .textbox pre,
   .slide-container .slide .textbox code {
-    font-size: 16.5px;
+    font-size: 16.3px;
   }
   .slide-container .slide .textbox table {
     font-size: 14px;
@@ -172,7 +172,7 @@
   .slide-container .slide .textbox ol,
   .slide-container .slide .textbox pre,
   .slide-container .slide .textbox code {
-    font-size: 15px;
+    font-size: 14.9px;
   }
   .slide-container .slide .textbox table {
     font-size: 12px;
@@ -188,7 +188,7 @@
 }
 @media screen and (max-width: 360px) { /* Samsung Galaxy Note*/
   .slide-container .slide {
-    width: 349.8px;
+    width: 350px;
     height: 233px;
   }
   .slide-container .slide .textbox p,
@@ -196,7 +196,7 @@
   .slide-container .slide .textbox ol,
   .slide-container .slide .textbox code,
   .slide-container .slide .textbox pre {
-    font-size: 14px;
+    font-size: 14.1px;
   }
   .slide-container .slide .textbox table {
     font-size: 11px;
@@ -223,7 +223,7 @@
   .slide-container .slide .textbox ol,
   .slide-container .slide .textbox code,
   .slide-container .slide .textbox pre {
-    font-size: 13px;
+    font-size: 12.6px;
   }
   .slide-container .slide .textbox table {
     font-size: 11px;

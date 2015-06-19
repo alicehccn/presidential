@@ -292,7 +292,7 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active .textbox ol,
 .slide-container.presenting .slide.active .textbox pre,
 .slide-container.presenting .slide.active .textbox code {
-  font-size: 31px;
+  font-size: 30.5px;
 }
 .slide-container.presenting .slide.active .textbox table {
   font-size: 25px;
@@ -353,7 +353,7 @@ html .slide-container .slide .textbox{
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox {
   margin: 8% 9%;
-  height: 76%;
+  height: 76.5%;
 }
 
 /************************ Text content ************************/
@@ -362,7 +362,7 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ol,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox pre,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox code {
-  font-size: 58px;
+  font-size: 58.5px;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox table {
   font-size: 46px;
@@ -377,7 +377,7 @@ html .slide-container .slide .textbox{
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ul {
   margin-left: 0.9em;
-  -moz-margin-start: 1.5em;
+  -moz-margin-start: 1.4em;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ol {
   margin-left: 1.4em;
