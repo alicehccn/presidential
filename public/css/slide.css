@@ -27,6 +27,9 @@ html {
 ::-webkit-scrollbar { 
   display: none; 
 }
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
 /******************************************************************************
                               HEADER AND NAVIGATION
 *******************************************************************************/
@@ -57,7 +60,7 @@ html {
 }
 .user li {
   display: inline-block;
-  padding: 0 10px;
+  padding: 0 0 0 30px;
   list-style: none;
 }
 .alert-box {
@@ -66,6 +69,9 @@ html {
   text-align: center;
   color: brown;
   top: 75px;
+}
+.alert-box p {
+  margin: 0;
 }
 .fetch-presentation {
   display: inline-block;
@@ -107,7 +113,6 @@ html {
   margin: 0 auto;
   padding: 1%;
   background-color: rgb(240, 240, 240);
-  overflow: auto;
 }
 .slide-container .slide {
   display: inline-block;
@@ -124,12 +129,15 @@ html {
   outline: none;
 }
 .slide-container .slide .textbox {
-  margin: 9%;
-  height: 70.5%;
-  overflow: scroll;
+  margin: 8%;
+  height: 72%;
+  overflow: hidden;
 }
 html .slide-container .slide .textbox{
   line-height: 1.1;
+}
+.slide-container .slide .arrows {
+  display: none;
 }
 /************************ Text content ************************/
 .slide-container .slide .textbox a {
@@ -139,19 +147,33 @@ html .slide-container .slide .textbox{
 .slide-container .slide .textbox ul,
 .slide-container .slide .textbox ol,
 .slide-container .slide .textbox pre,
-.slide-container .slide .textbox table {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0.2em;
+.slide-container .slide .textbox table,
+.slide-container .slide .textbox code {
+  margin: 0.6em 0.1em;
   font-family: sans-serif;
-  font-size: 0.5em;
+  font-size: 8.5px;
+}
+.slide-container .slide .textbox ul,
+.slide-container .slide .textbox ol {
+  padding-left: 15px;
+}
+.slide-container .slide .textbox ul li,
+.slide-container .slide .textbox ol li {
+  -moz-margin-start: -0.5em;
 }
 .slide-container .slide .textbox table {
-  -webkit-margin-before: 1em;
+  margin: 0.1em;
+  -moz-margin-start: 0.2em;
   width: 99%;
+  font-size: 7px;
 }
 .slide-container .slide .textbox table td {
   border: 1px dotted #000;
-  padding: 2%;
+  padding: 1%;
+}
+.slide-container .slide .textbox code {
+  background-color: #eee;
+  word-wrap: break-word;
 }
 .slide-container .slide .textbox h1,
 .slide-container .slide .textbox h2,
@@ -159,21 +181,16 @@ html .slide-container .slide .textbox{
 .slide-container .slide .textbox h4,
 .slide-container .slide .textbox h5,
 .slide-container .slide .textbox h6 {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0.1em;
+  margin: 0;
   font-family: serif;
-  font-size: 0.8em;
-}
-.slide-container .slide .textbox ul,
-.slide-container .slide .textbox ol {
-  -webkit-padding-start: 1.8em;
+  font-size: 12.5px;
 }
 
 /************************ Image content ************************/
-.slide-container .slide .textbox img {
+.slide-container .slide .textbox p img {
   position: relative;
   float: right;
-  margin-left: 1.5%;
+  margin: 0 1.5%;
   max-width: 100%;
   width: 30%;
 }
@@ -184,21 +201,23 @@ html .slide-container .slide .textbox{
 .slide-container .slide .textbox p img.medium-img {
   width: 30%;
 }
-.slide-container .slide .textbox p img.big-img {
+.slide-container .slide .textbox p img.large-img {
   width: 70%;
 }
 .slide-container .slide .textbox p img.small-img {
   width: 15%;
 }
-.slide-container .slide img.full-width {
+.slide-container .slide .textbox p img.full,
+.slide-container .slide .textbox p img.background {
   position: absolute;
   top: 0;
   left: 0;
   margin: 0;
   width: 100%;
-  opacity: 1;
 }
-
+.slide-container .slide img.background {
+  opacity: 0.2;
+}
 
 /************************ Slide toolbar ************************/
 .toolbar, .toolbar img {
@@ -218,21 +237,24 @@ html .slide-container .slide .textbox{
   display: block;
   position: absolute;
   width: 100%;
-  height: 22px;
-  margin-top: -18px;
-  background-color: rgba(0, 0, 0, 0.1);
+  margin-top: -17px;
   border: none;
+  z-index: 10050;
 }
 
-/************************ Slide number ************************/
-.slide-number {
+/************************ Start Show Button ************************/
+.start-show {
   position: absolute;
-  width: 100%;
-  text-align: center;
-  top: 40px;
+  top: 0;
   left: 0;
-  font-size: 60px;
-  color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  cursor: pointer;
+  z-index: 10030;
+}
+.start-show:hover {
+  opacity: 0.8;
 }
 
 /******************************************************************************
@@ -262,19 +284,18 @@ html .slide-container .slide .textbox{
   z-index: 10010;
 }
 .slide-container.presenting .slide.active .textbox {
-  margin: 8.5%;
-  height: 76%;
+  height: 75%;
 }
 /************************ Text content ************************/
 .slide-container.presenting .slide.active .textbox p,
 .slide-container.presenting .slide.active .textbox ul,
 .slide-container.presenting .slide.active .textbox ol,
 .slide-container.presenting .slide.active .textbox pre,
+.slide-container.presenting .slide.active .textbox code {
+  font-size: 30.5px;
+}
 .slide-container.presenting .slide.active .textbox table {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0.2em;
-  font-family: sans-serif;
-  font-size: 2em;
+  font-size: 25px;
 }
 .slide-container.presenting .slide.active .textbox h1,
 .slide-container.presenting .slide.active .textbox h2,
@@ -282,27 +303,27 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active .textbox h4,
 .slide-container.presenting .slide.active .textbox h5,
 .slide-container.presenting .slide.active .textbox h6 {
-  font-size: 2.8em;
+  font-size: 45px;
 }
 .slide-container.presenting .slide.active .textbox ul {
-  -webkit-padding-start: 0.9em;
+  margin-left: 0.9em;
+  -moz-margin-start: 1.3em;
 }
 .slide-container.presenting .slide.active .textbox ol {
-  -webkit-padding-start: 1.5em;
+  margin-left: 1.1em;
+  -moz-margin-start: 1.3em;
 }
-.slide-container.presenting .slide.active .slide-number {
+.slide-container.presenting .slide.active .start-show {
   display: none;
-  top: 135px;
-  font-size: 200px;
 }
 /************************  Slide toolbar  ************************/
 .slide-container.presenting .slide.active .toolbar {
-  height: 45px;
+  height: 50px;
   margin-top: -55px;
   padding: 5px;
 }
 .slide-container.presenting .slide:hover .toolbar img{
-  height: 35px;
+  height: 40px;
   margin: 0 10px;
 }
 /************************ Prev and next arrows ************************/
@@ -312,7 +333,8 @@ html .slide-container .slide .textbox{
 .next-arrow {
   right: -20%;
 }
-.arrows {
+.slide-container.presenting .slide.active .arrows {
+  display: block;
   position: absolute;
   top: 40%;
   height: 60px;
@@ -330,8 +352,8 @@ html .slide-container .slide .textbox{
   height: 100%;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox {
-  margin: 6% 10%;
-  height: 77%;
+  margin: 8% 9%;
+  height: 76.5%;
 }
 
 /************************ Text content ************************/
@@ -339,8 +361,11 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ul,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ol,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox pre,
+.slide-container.presenting .slide.active.slide-fullscreen .textbox code {
+  font-size: 58.5px;
+}
 .slide-container.presenting .slide.active.slide-fullscreen .textbox table {
-  font-size: 3.7em;
+  font-size: 46px;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox h1,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox h2,
@@ -348,13 +373,21 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active.slide-fullscreen .textbox h4,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox h5,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox h6 {
-  font-size: 5.6em;
+  font-size: 82px;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ul {
-  -webkit-padding-start: 0.9em;
+  margin-left: 0.9em;
+  -moz-margin-start: 1.4em;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox ol {
-  -webkit-padding-start: 1.5em;
+  margin-left: 1.4em;
+  -moz-margin-start: 1.6em;
+}
+.slide-container.presenting .slide.active.slide-fullscreen .start-show {
+  display: none;
+}
+.slide-container.presenting .slide.active.slide-fullscreen .toolbar {
+  display: none;
 }
 
 /******************************************************************************
@@ -373,7 +406,7 @@ html .slide-container .slide .textbox{
 }
 
 /******************************************************************************
-                         SLIDE ADDER AND SOCIAL SHARER
+                           SLIDE CONTAINER BUTTONS
 *******************************************************************************/
 .share-buttons {
   display: inline-block;
@@ -383,53 +416,7 @@ html .slide-container .slide .textbox{
   clear: both;
 }
 .share-buttons img {
-  margin: 0 6px;
-  height: 35px;
-}
-.share-buttons .github {
-  margin: 0 3px;
-  height: 43px;
-}
-
-/******************************************************************************
-                                RESPONSIVE CSS
-*******************************************************************************/
-@media screen and (max-width: 1305px) {
-  .presentation-url {
-    width: 70%;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .fetch-presentation {
-    width: 40%;
-  }
-  .slide-container {
-    width: 70%;
-  }
-  .slide:hover .full-screen {
-    display: none;
-  }
-}
-@media screen and (max-width: 414px) {
-  .slide-container {
-    width: 57%;
-  }
-  .slide:hover .zoom {
-    display: none;
-  }
-}
-@media screen and (max-width: 375px) {
-  .slide-container {
-    width: 63%;
-  }
-}
-@media screen and (max-width: 360px) {
-  .slide-container {
-    width: 65%;
-  }
-}
-@media screen and (max-width: 320px) {
-  .slide-container {
-    width: 73%;
-  }
+  margin: 0 8px;
+  height: 40px;
+  cursor: pointer;
 }

@@ -3,9 +3,9 @@
   margin: auto;
   text-align: left;
 }
-.user-login, .edit-user {
+.user-login, .edit-user{
   display: inline-block;
-  margin: 0;
+  margin-bottom: 30px;
   width: 42%;
 }
 .sign-up, .deactivate {
@@ -21,12 +21,26 @@
   outline: none;
   margin: 5px 0;
 }
+.forgot-password .field input,
+.change-password .field input {
+  width: 30%;
+}
 .check-box {
   width: auto;
-  margin: 5px 0;
+  margin: 10px 0 20px 0;
 }
 .actions {
-  margin: 15px 0;
+  display: inline;
+  margin-right: 10px;
   color: #000;
   font-size: 0.9em
+}
+.actions a, .actions:visited {
+  display: inline;
+  color: #000;
+  border-radius: 5px;
+  padding: 3px;
+ /* -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;*/
 }

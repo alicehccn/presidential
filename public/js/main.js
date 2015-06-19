@@ -1,17 +1,16 @@
 $(document).ready(function(){
   var $shareButtons = $('<div class="share-buttons"></div>');
+  var $facebook = $('<a><img class="facebook" src="/img/facebook.png" title="Share on Facebook"></a>');
+  var $twitter = $('<a><img class="twitter" src="/img/twitter.png" title="Share on Twitter"></a>');
+  var $emailto = $('<img class="emailto" src="/img/mail.png" title="Send by Email">');
 
-  var $facebook = $('<a><img class="facebook" src="img/facebook.png" title="Share on Facebook"></a>');
-  var $twitter = $('<a><img class="twitter" src="img/twitter.png" title="Share on Twitter"></a>');
-  var $emailto = $('<img class="emailto" src="img/mail.png" title="Send by Email">');
-  var $github = $('<img src="img/github.png" class="github" title="Save as Gist">');
+  var $startShow = $('<img src="/img/play.png" class="start-show" title="Start Slide Show">');
 
   var currentSlide = null;
   window.slideCount = 0;
 
-  // Append add-slide and share buttons
+  // Append share buttons
   $shareButtons.
-    prepend($github).
     prepend($emailto).
     prepend($twitter).
     prepend($facebook);
@@ -28,14 +27,14 @@ $(document).ready(function(){
     var $slideHeader = $('<h1 class="slide-header">Slide header</h1>');
     var $newContent = $('<p>New Slide</p>');
     var $toolbar = $('<div class="toolbar" contenteditable="false"></div>');
-    var $zoomIcon = $('<img src="img/zoom_in.png" class="zoom" title="Zoom In">');
-    var $editIcon = $('<img src="img/edit.png" class="edit" title="Edit Slide">');
-    var $swapIcon = $('<img src="img/link.png" class="swap" title="Swap Slide">');
-    var $deleteSlide = $('<img src="img/delete.png" class="delete-slide" title="Delete Slide">');
-    var $fullScreen = $('<img src="img/slider.png" class="full-screen" title="Full Screen">');
+    var $zoomIcon = $('<img src="/img/zoom_in.png" class="zoom" title="Zoom In">');
+    var $editIcon = $('<img src="/img/edit.png" class="edit" title="Edit Slide">');
+    var $swapIcon = $('<img src="/img/link.png" class="swap" title="Swap Slide">');
+    var $deleteSlide = $('<img src="/img/delete.png" class="delete-slide" title="Delete Slide">');
+    var $fullScreen = $('<img src="/img/slider.png" class="full-screen" title="Full Screen">');
     var $slideNumber = $('<span class="slide-number" contenteditable="false">' + window.slideCount + "</span>")
-    var $prevArrow = $('<img src="img/prev.png" class="prev-arrow arrows" title="Next Slide">');
-    var $nextArrow = $('<img src="img/next.png" class="next-arrow arrows" title="Previous Slide">');
+    var $prevArrow = $('<img src="/img/prev.png" class="prev-arrow arrows" title="Next Slide">');
+    var $nextArrow = $('<img src="/img/next.png" class="next-arrow arrows" title="Previous Slide">');
 
     $slide.attr("id", "s" + window.slideCount);
     $('.slide-container').append($slide);
@@ -59,30 +58,32 @@ $(document).ready(function(){
       append($textbox).
       append($toolbar).
       append($prevArrow).
-      append($nextArrow).
-      append($slideNumber);
+      append($nextArrow);
+      // append($slideNumber);
 
     $shareButtons.remove();
-    $('.arrows').hide();
     $('.slide-container').append($shareButtons);
+    $('.slide').eq(0).append($startShow);
   }
 
   function applyImageStyles() {
-    var hasLargeImageOnLeft = $('img[alt="large-left"');
-    var hasLargeImageOnRight = $('img[alt="large-right"');
-    var hasSmallImageOnLeft = $('img[alt="small-left"');
-    var hasSmallImageOnRight = $('img[alt="small-right"');
-    var hasMediumImageOnLeft = $('img[alt="medium-left"');
-    var hasMediumImageOnRight = $('img[alt="medium-right"');
-    var hasFullWidthImage = $('img[alt="full-width"]');
+    var hasLargeImageOnLeft = $('img[alt="large-l"]');
+    var hasLargeImageOnRight = $('img[alt="large-r"]');
+    var hasSmallImageOnLeft = $('img[alt="small-l"]');
+    var hasSmallImageOnRight = $('img[alt="small-r"]');
+    var hasMediumImageOnLeft = $('img[alt="medium-l"]');
+    var hasMediumImageOnRight = $('img[alt="medium-r"]');
+    var hasFullWidthImage = $('img[alt="full"]');
+    var hasBackgroundImage = $('img[alt="background"]');
 
-    hasLargeImageOnLeft.addClass("big-img float-left");
-    hasLargeImageOnRight.addClass("big-img float-right");
+    hasLargeImageOnLeft.addClass("large-img float-left");
+    hasLargeImageOnRight.addClass("large-img float-right");
     hasSmallImageOnLeft.addClass("small-img float-left");
     hasSmallImageOnRight.addClass("small-img float-right");
     hasMediumImageOnLeft.addClass("medium-img float-left");
     hasSmallImageOnRight.addClass("medium-img float-right");
-    hasFullWidthImage.addClass("full-width");
+    hasFullWidthImage.addClass("full");
+    hasBackgroundImage.addClass("background");
   }
 
   // Check presenting mode
@@ -95,17 +96,15 @@ $(document).ready(function(){
   }
 
   // Enable and disable swap and delete
-  function enableSwapDeleteFullScreenAddSlide() {
+  function enableSwapDeleteFullScreen() {
     $('.swap').prop("disabled", false);
     $('.delete-slide').prop("disabled", false);
     $('.full-screen').prop("disabled", false);
-    $('.add-slide').prop("disabled", false);
   }
-  function disableSwapDeleteFullScreenAddSlide() {
+  function disableSwapDeleteFullScreen() {
     $('.swap').prop("disabled", true);
     $('.delete-slide').prop("disabled", true);
     $('.full-screen').prop("disabled", true);
-    $('.add-slide').prop("disabled", true);
   }
 
   // Reposition slide when zoomed in and out
@@ -126,24 +125,22 @@ $(document).ready(function(){
   // Zoom in slide
   function zoomInSlide() {
     $('.slide-container').addClass("presenting");
-    $('.zoom').attr("src", "img/zoom_out.png");
-    $('.slide-number').hide();
+    $('.zoom').attr("src", "/img/zoom_out.png");
     $('.share-buttons').hide();
     $('.arrows').show();
     centerSlideWhenZoomedIn();
-    disableSwapDeleteFullScreenAddSlide();
+    disableSwapDeleteFullScreen();
   }
 
   // Zoom out slide
   function zoomOutSlide() {
     $('.slide-container').removeClass("presenting");
-    $('.zoom').attr("src", "img/zoom_in.png");
+    $('.zoom').attr("src", "/img/zoom_in.png");
     $('.slide').removeClass("active");
     $(".arrows").hide();
     $('.share-buttons').show();
-    $('.slide-number').show();
     decenterSlide();
-    enableSwapDeleteFullScreenAddSlide();
+    enableSwapDeleteFullScreen();
   }
 
   // Toggle slide zooming on mouse click
@@ -165,7 +162,7 @@ $(document).ready(function(){
     currentSlide.siblings(".slide").attr("contenteditable", "false");
     currentSlide.siblings().children(".toolbar").hide();
     currentSlide.focus();
-    disableSwapDeleteFullScreenAddSlide();
+    disableSwapDeleteFullScreen();
   }
 
   // Make slide edittable on mouse click
@@ -174,15 +171,15 @@ $(document).ready(function(){
     if (!currentSlide.hasClass("editable")) {
       currentSlide.addClass("editable");
       currentSlide.siblings(".slide").removeClass("editable");
-      currentSlide.find(".slide-number").hide();
-      $(this).attr("src", "img/editing.png");
+      $('.start-show').hide();
+      $(this).attr("src", "/img/editing.png");
       editSlide();
     } else {
       currentSlide.attr("contenteditable", "false");
       currentSlide.removeClass("editable");
-      currentSlide.find(".slide-number").show();
-      $(this).attr("src", "img/edit.png");
-      enableSwapDeleteFullScreenAddSlide();
+      $('.start-show').show();
+      $(this).attr("src", "/img/edit.png");
+      enableSwapDeleteFullScreen();
       currentSlide.siblings().children(".toolbar").show();
     }
   })
@@ -199,6 +196,8 @@ $(document).ready(function(){
       swappingSlide.eq(1).html(slideTextA);
       swappingSlide.eq(0).css("font-size", slideStyleB);
       swappingSlide.eq(1).css("font-size", slideStyleA);
+      $('.start-show').remove();
+      $('.slide').eq(0).append($startShow);
       swappingSlide.removeClass("swapping");
       $('.swap').siblings("img").prop("disabled", false);
     }
@@ -251,11 +250,9 @@ $(document).ready(function(){
       currentSlide.mozRequestFullScreen;
     requestFullScreen.call(currentSlide);
     $('.slide-container').addClass("presenting");
-    $('.toolbar').hide();
     $("header").hide();
     $(".fetch-presentation").hide();
     $("footer").hide();
-    $('.slide-number').hide();
     $('.share-buttons').hide();
   }
 
@@ -270,23 +267,9 @@ $(document).ready(function(){
     $("header").show();
     $(".fetch-presentation").show();
     $("footer").show();
-    $('.slide-number').show()
     $('.share-buttons').show();
-    $('.toolbar').show();
     zoomOutSlide();
   }
-
-  // Toggle full screen mode on click
-  $('.slide-container').on("click", ".full-screen", function() {
-    currentSlide = $(this).parents(".slide");
-    if (isFullScreen()) {
-      exitFullScreen();
-    } else {
-      currentSlide.addClass("active slide-fullscreen");
-      enterFullScreen();
-    }
-  });
-
   // Detect window screen change (exit)
   // Make sure the slide styles are restored in case the user
   // presses ESC instead of clicking our custom button.
@@ -295,6 +278,19 @@ $(document).ready(function(){
       exitFullScreen();
     }
   })
+
+  // Toggle full screen mode on click
+  $('.slide-container').on("click", ".full-screen", function() {
+    currentSlide = $(this).parents(".slide");
+    currentSlide.addClass("active slide-fullscreen");
+    enterFullScreen();
+  });
+
+  // Start slide show from the beginning
+  $('.slide-container').on("click", ".start-show", function() {
+    $('.slide').eq(0).addClass("active slide-fullscreen");
+    enterFullScreen();
+  });
 
   // Calculate mouse position in relation to the active slide
   function calculateEdgeWidth() {
@@ -376,7 +372,7 @@ $(document).ready(function(){
   *********************************************/
 
   function renderHTMLSlides(slides) {
-    $('.slide-container').children('.slide').remove();
+    $('.slide').remove();
     window.slideCount = 0;
     for (var i = 0; i < slides.length; i++) {
       addNewSlide(slides[i]);
@@ -384,13 +380,15 @@ $(document).ready(function(){
     applyImageStyles();
   }
 
-  function getMarkdown(url) {
+  function getMarkdown(url, preventHashUpdate) {
     if (url.length > 0) {
       var presentationUrl = '/presentation?url=' + encodeURIComponent(url);
       $.get(presentationUrl, function (data) {
         renderHTMLSlides(data.slides);
-        document.location.hash = encodeURIComponent(url);
         clearUrlInput();
+        if (!preventHashUpdate) {
+          document.location.hash = encodeURIComponent(url);
+        }
       }).fail(function() {
         alert("An error has occured and your file could not be loaded. Please try again.");
       });
@@ -410,6 +408,12 @@ $(document).ready(function(){
 
   $('#get-markdown').on('click', getMarkdownIfUrl);
 
+  // Show demo slides on load
+  function getInstructionSlide() {
+    var demo = 'https://gist.githubusercontent.com/alicehccn/ec09248285c24a49316a/raw';
+    getMarkdown(demo, true);
+  }
+
   // Load markdown from URL
   function setupPresidential() {
     var hash = decodeURIComponent(document.location.hash);
@@ -419,7 +423,8 @@ $(document).ready(function(){
       }
       getMarkdown(hash);
     } else {
-      $('#presentation-url').focus()
+      getInstructionSlide();
+      $('#presentation-url').focus();
     }
   }
   setupPresidential();

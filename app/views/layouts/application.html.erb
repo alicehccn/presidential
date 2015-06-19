@@ -12,7 +12,7 @@
   <meta property="fb:app_id"        content="820512734710881" /> 
   <meta property="og:type"          content="website" /> 
   <meta property="og:url"           content="http://www.presidentialjs.com/" /> 
-  <meta property="og:description"   content="Presidential is a cross-device Markdown-supported online presentation tool." />
+  <meta property="og:description"   content="Presidential is a cross-device, Markdown-supported online presentation tool." />
   <meta name="description"          content="Presentation in Markdown"
 
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/slide.css">
   <link rel="stylesheet" href="/css/user.css">
+  <link rel="stylesheet" href="/css/responsive.css">
   <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
@@ -41,7 +42,7 @@
   </div>
   <ul class="user">
     <% if user_signed_in? %>
-      <li><%= link_to current_user.username, edit_user_registration_path %></li>|
+      <li><%= link_to current_user.username, edit_user_registration_path %></li>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li><%=link_to "Login", new_user_session_path%></li>

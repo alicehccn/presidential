@@ -1,7 +1,7 @@
 <div class="user-page">
 
   <div class="user-login">
-    <h3>Log In</h3>
+    <h2>Log In</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -24,12 +24,17 @@
       <div class="actions">
         <%= f.submit "Log in" %>
       </div>
+
+      <div class="actions">
+        <%= link_to "Forgot Password", new_user_password_path %>
+      </div>
     <% end %>
+
 
   </div>
 
   <div class="sign-up">
-    <h3>Sign Up</h3>
+    <h2>Sign Up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>

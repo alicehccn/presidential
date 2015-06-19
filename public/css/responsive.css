@@ -1,0 +1,239 @@
+
+@media screen and (max-width: 1305px) {
+  .presentation-url {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 1024px) { /* iPad & iPad Mini */
+  .logo {
+    margin: 0 3.9%;
+  }
+  .fetch-presentation {
+    width: 56%;
+  }
+  .user {
+    top: 15px;
+    margin-right: 3.9%;
+    padding: 0;
+  }
+  .user li {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  .slide-container {
+    width: 92.2%;
+  }
+  .slide:hover .toolbar .full-screen,
+  .slide .start-show {
+    display: none;
+  }
+  .prev-arrow {
+    left: -6%;
+  }
+  .next-arrow {
+    right: -6%;
+  }
+  .slide-container.presenting .slide.active  {
+    width: 900px;
+    height: 598px;
+  }
+  .slide:hover .toolbar {
+    margin-top: -20px;
+  }
+  .slide:hover .toolbar img {
+    height: 20px;
+    margin: 0 5px;
+  }
+  .slide-container.presenting .slide.active .toolbar {
+    margin-top: -50px;
+  }
+  .slide-container.presenting .slide.active .toolbar img {
+    height: 40px;
+    margin: 0 15px;
+  }
+  .slide-container.presenting .slide.active .textbox p,
+  .slide-container.presenting .slide.active .textbox ul,
+  .slide-container.presenting .slide.active .textbox ol,
+  .slide-container.presenting .slide.active .textbox pre,
+  .slide-container.presenting .slide.active .textbox code {
+    font-size: 37px;
+  }
+  .slide-container.presenting .slide.active .textbox table {
+    font-size: 30px;
+  }
+  .slide-container.presenting .slide.active .textbox h1,
+  .slide-container.presenting .slide.active .textbox h2,
+  .slide-container.presenting .slide.active .textbox h3,
+  .slide-container.presenting .slide.active .textbox h4,
+  .slide-container.presenting .slide.active .textbox h5,
+  .slide-container.presenting .slide.active .textbox h6 {
+    font-size: 53px;
+  }
+}
+@media screen and (max-width: 414px) { /* iPhone 6 Plus */
+  header {
+    text-align: center;
+    margin-bottom: 20px
+  }
+  body {
+    background-color: rgb(240, 240, 240)
+  }
+  .logo {
+    margin: 25px 0;
+    width: 90%;
+    text-align: left;
+  }
+  .fetch-presentation {
+    width: 90%;
+    margin-left: auto;
+    margin-bottom: 10px;
+  }
+  .presentation-url {
+    margin: 10px 0;
+  }
+  .get-markdown {
+    width: 60px;
+    font-size: 9.5px;
+  }
+  .user {
+    top: 35px;
+    margin-right: 5%;
+  }
+  .user li {
+    margin-bottom: 15px;
+  }
+  .alert-box {
+    top: 185px;
+  }
+  .user-page {
+    width: 90%;
+  }
+  .slide-container {
+    width: 57%;
+  }
+  .slide:hover .toolbar .zoom {
+    display: none;
+  }
+  .slide-container {
+    width: auto;
+    margin: 0;
+  }
+  .slide-container .slide {
+    display: block;
+    margin-left: auto;
+    width: 402.8px;
+    height: 267px;
+  }
+  .slide:hover .toolbar {
+    margin-top: -28px;
+  }
+  .slide:hover .toolbar img {
+    height: 28px;
+    margin: 0 10px;
+  }
+  .slide-container .slide .textbox p,
+  .slide-container .slide .textbox ul,
+  .slide-container .slide .textbox ol,
+  .slide-container .slide .textbox pre,
+  .slide-container .slide .textbox code {
+    font-size: 16.3px;
+  }
+  .slide-container .slide .textbox table {
+    font-size: 14px;
+  }
+  .slide-container .slide .textbox h1,
+  .slide-container .slide .textbox h2,
+  .slide-container .slide .textbox h3,
+  .slide-container .slide .textbox h4,
+  .slide-container .slide .textbox h5,
+  .slide-container .slide .textbox h6 {
+    font-size: 20px;
+  }
+  .slide-container .slide .textbox ul,
+  .slide-container .slide .textbox ol {
+    margin-left: 0.7em;
+  }
+  .user-login, .edit-user,
+  .sign-up, .deactivate, .field input, 
+  .forgot-password .field input,
+  .change-password .field input {
+    display: block;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 375px) { /* iPhone 6 */
+  .slide-container .slide {
+    width: 368px;
+    height: 244px;
+  }
+  .slide-container .slide .textbox p,
+  .slide-container .slide .textbox ul,
+  .slide-container .slide .textbox ol,
+  .slide-container .slide .textbox pre,
+  .slide-container .slide .textbox code {
+    font-size: 14.9px;
+  }
+  .slide-container .slide .textbox table {
+    font-size: 12px;
+  }
+  .slide-container .slide .textbox h1,
+  .slide-container .slide .textbox h2,
+  .slide-container .slide .textbox h3,
+  .slide-container .slide .textbox h4,
+  .slide-container .slide .textbox h5,
+  .slide-container .slide .textbox h6 {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 360px) { /* Samsung Galaxy Note*/
+  .slide-container .slide {
+    width: 350px;
+    height: 233px;
+  }
+  .slide-container .slide .textbox p,
+  .slide-container .slide .textbox ul,
+  .slide-container .slide .textbox ol,
+  .slide-container .slide .textbox code,
+  .slide-container .slide .textbox pre {
+    font-size: 14.1px;
+  }
+  .slide-container .slide .textbox table {
+    font-size: 11px;
+  }
+  .slide-container .slide .textbox h1,
+  .slide-container .slide .textbox h2,
+  .slide-container .slide .textbox h3,
+  .slide-container .slide .textbox h4,
+  .slide-container .slide .textbox h5,
+  .slide-container .slide .textbox h6 {
+    font-size: 20.5px;
+  }
+}
+@media screen and (max-width: 320px) { /* iPhone 5 */
+  .slide-container .slide {
+    width: 315px;
+    height: 208px;
+  }
+  .slide-container .slide .textbox {
+    height: 73%;
+  }
+  .slide-container .slide .textbox p,
+  .slide-container .slide .textbox ul,
+  .slide-container .slide .textbox ol,
+  .slide-container .slide .textbox code,
+  .slide-container .slide .textbox pre {
+    font-size: 12.6px;
+  }
+  .slide-container .slide .textbox table {
+    font-size: 11px;
+  }
+  .slide-container .slide .textbox h1,
+  .slide-container .slide .textbox h2,
+  .slide-container .slide .textbox h3,
+  .slide-container .slide .textbox h4,
+  .slide-container .slide .textbox h5,
+  .slide-container .slide .textbox h6 {
+    font-size: 18.5px;
+  }
+}
