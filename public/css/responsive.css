@@ -93,18 +93,18 @@
     margin: 10px 0;
   }
   .get-markdown {
-    width: 50px;
-    font-size: 8px;
+    width: 60px;
+    font-size: 9.5px;
   }
   .user {
-    top: 30px;
+    top: 35px;
     margin-right: 5%;
   }
   .user li {
     margin-bottom: 15px;
   }
   .alert-box {
-    top: 140px;
+    top: 185px;
   }
   .user-page {
     width: 90%;

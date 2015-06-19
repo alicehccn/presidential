@@ -70,6 +70,9 @@ h1, h2, h3, h4, h5, h6 {
   color: brown;
   top: 75px;
 }
+.alert-box p {
+  margin: 0;
+}
 .fetch-presentation {
   display: inline-block;
   width: 46%;
