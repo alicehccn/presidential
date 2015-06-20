@@ -37,6 +37,8 @@ gem 'github-markdown'
 
 gem 'devise'
 
+gem "octokit"
+
 group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views

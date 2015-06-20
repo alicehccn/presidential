@@ -60,5 +60,7 @@ Rails.application.routes.draw do
   get 'oauth/authorize' => 'oauth#authorize'
   get 'oauth/callback' => 'oauth#callback'
 
+  get 'gists' => 'gist#index'
+
   root 'presidential#index'
 end
