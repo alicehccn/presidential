@@ -10,36 +10,25 @@ class OauthController < ApplicationController
   end
 
   def callback
+
     session_code = request.env['rack.request.query_hash']['code']
 
-    # # ... and POST it back to GitHub
-    # result = RestClient.post('https://github.com/login/oauth/access_token',
-    #                         {:client_id => CLIENT_ID,
-    #                          :client_secret => CLIENT_SECRET,
-    #                          :code => session_code},
-    #                          :accept => :json)
-
-    # # extract the token and granted scopes
-    # access_token = JSON.parse(result)['access_token']
-
-    params = {
-      'client_id' => ENV['GITHUB_CLIENT_ID'],
-      'client_secret' => ENV['GITHUB_CLIENT_SECRET'],
-      'code' => session_code,
-      'accept' => :json
-    }
-
-    response = Net::HTTP.post_form(
-      URI.parse('https://github.com/login/oauth/access_token'),
-      params
-    )
+    access_token_response = request_github_access_token(session_code)
 
     begin
-      @github_access_token_response = JSON.parse(response.body)['access_token']
+      access_token = JSON.parse(access_token_response.body)['access_token']
     rescue
-      @github_access_token_response = response.body
+      access_token = nil
     end
-    render :callback
+
+    if access_token.present?
+      session[:github_access_token] = access_token
+      redirect_to '/gists'
+    else
+      @github_oauth_errors = access_token_response
+      render :github_oauth_error
+    end
+    
   end
 
   private
@@ -58,4 +47,27 @@ class OauthController < ApplicationController
     link << "</a>"
     link
   end
+
+  def request_github_access_token(session_code)
+    uri = URI.parse('https://github.com/login/oauth/access_token')
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Post.new(
+      uri.request_uri,
+      initheader = {
+        'Content-Type' =>'application/json',
+        'Accept' => 'application/json'
+      }
+    )
+    request.body = {
+      'client_id' => ENV['GITHUB_CLIENT_ID'],
+      'client_secret' => ENV['GITHUB_CLIENT_SECRET'],
+      'code' => session_code,
+    }.to_json
+
+    http.request(request)
+  end
+
 end
