@@ -153,10 +153,9 @@ html .slide-container .slide .textbox{
   font-family: sans-serif;
   font-size: 8.5px;
 }
-.slide-container .slide .textbox p.ol-item {
+.slide-container .slide .textbox p.list-item {
   margin: 0 0 0.3em 2em;
   -moz-margin: 0 0 0.2em 2em;
-  list-style-type: disc;
   display: list-item;
 }
 .slide-container .slide .textbox table {
@@ -225,7 +224,6 @@ html .slide-container .slide .textbox{
 /************************ Slide toolbar ************************/
 .toolbar, .toolbar img {
   display: none;
-  width: 100%;
   text-align: center;
 }
 .slide:hover .toolbar img{
