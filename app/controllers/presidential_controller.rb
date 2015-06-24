@@ -11,9 +11,7 @@ class PresidentialController < ApplicationController
       render :nothing
     end
       presentation = Net::HTTP.get(URI.parse(params[:url]))
-      slides = presentation.split("<!--- break -->").map do |slide|
-        GitHub::Markdown.render(slide)
-      end
+      slides = GitHub::Markdown.render(presentation)
       render :json => { slides: slides }
   end
 end

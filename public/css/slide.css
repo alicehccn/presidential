@@ -130,8 +130,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .slide-container .slide .textbox {
   margin: 8%;
-  height: 72%;
-  overflow: hidden;
+  width: 84%;
+  /*height: 72%;*/
+  height: auto;
+  overflow: visible;
 }
 html .slide-container .slide .textbox{
   line-height: 1.1;
@@ -144,8 +146,6 @@ html .slide-container .slide .textbox{
   color: mediumblue;
 }
 .slide-container .slide .textbox p,
-.slide-container .slide .textbox ul,
-.slide-container .slide .textbox ol,
 .slide-container .slide .textbox pre,
 .slide-container .slide .textbox table,
 .slide-container .slide .textbox code {
@@ -153,17 +153,15 @@ html .slide-container .slide .textbox{
   font-family: sans-serif;
   font-size: 8.5px;
 }
-.slide-container .slide .textbox ul,
-.slide-container .slide .textbox ol {
-  padding-left: 15px;
-}
-.slide-container .slide .textbox ul li,
-.slide-container .slide .textbox ol li {
-  -moz-margin-start: -0.5em;
+.slide-container .slide .textbox p.ol-item {
+  margin: 0 0 0.3em 2em;
+  -moz-margin: 0 0 0.2em 2em;
+  list-style-type: disc;
+  display: list-item;
 }
 .slide-container .slide .textbox table {
-  margin: 0.1em;
-  -moz-margin-start: 0.2em;
+  margin: 1em 0;
+  -moz-margin: 1em 0;
   width: 99%;
   font-size: 7px;
 }
@@ -184,6 +182,10 @@ html .slide-container .slide .textbox{
   margin: 0;
   font-family: serif;
   font-size: 12.5px;
+}
+.textbox h1 {
+  position: absolute;
+  top: 45%;
 }
 
 /************************ Image content ************************/
@@ -208,7 +210,8 @@ html .slide-container .slide .textbox{
   width: 15%;
 }
 .slide-container .slide .textbox p img.full,
-.slide-container .slide .textbox p img.background {
+.slide-container .slide .textbox p img.background,
+.slide-container .slide img.background {
   position: absolute;
   top: 0;
   left: 0;
@@ -236,8 +239,8 @@ html .slide-container .slide .textbox{
 .slide:hover .toolbar {
   display: block;
   position: absolute;
+  bottom: 0;
   width: 100%;
-  margin-top: -17px;
   border: none;
   z-index: 10050;
 }
@@ -283,13 +286,8 @@ html .slide-container .slide .textbox{
   background-color: #fff;
   z-index: 10010;
 }
-.slide-container.presenting .slide.active .textbox {
-  height: 75%;
-}
 /************************ Text content ************************/
 .slide-container.presenting .slide.active .textbox p,
-.slide-container.presenting .slide.active .textbox ul,
-.slide-container.presenting .slide.active .textbox ol,
 .slide-container.presenting .slide.active .textbox pre,
 .slide-container.presenting .slide.active .textbox code {
   font-size: 30.5px;
@@ -304,14 +302,6 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active .textbox h5,
 .slide-container.presenting .slide.active .textbox h6 {
   font-size: 45px;
-}
-.slide-container.presenting .slide.active .textbox ul {
-  margin-left: 0.9em;
-  -moz-margin-start: 1.3em;
-}
-.slide-container.presenting .slide.active .textbox ol {
-  margin-left: 1.1em;
-  -moz-margin-start: 1.3em;
 }
 .slide-container.presenting .slide.active .start-show {
   display: none;
@@ -336,7 +326,7 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active .arrows {
   display: block;
   position: absolute;
-  top: 40%;
+  top: 45%;
   height: 60px;
   cursor: pointer;
 }
@@ -352,14 +342,10 @@ html .slide-container .slide .textbox{
   height: 100%;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox {
-  margin: 8% 9%;
-  height: 76.5%;
+  margin: 6%;
 }
-
 /************************ Text content ************************/
 .slide-container.presenting .slide.active.slide-fullscreen .textbox p,
-.slide-container.presenting .slide.active.slide-fullscreen .textbox ul,
-.slide-container.presenting .slide.active.slide-fullscreen .textbox ol,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox pre,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox code {
   font-size: 58.5px;
@@ -374,14 +360,6 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active.slide-fullscreen .textbox h5,
 .slide-container.presenting .slide.active.slide-fullscreen .textbox h6 {
   font-size: 82px;
-}
-.slide-container.presenting .slide.active.slide-fullscreen .textbox ul {
-  margin-left: 0.9em;
-  -moz-margin-start: 1.4em;
-}
-.slide-container.presenting .slide.active.slide-fullscreen .textbox ol {
-  margin-left: 1.4em;
-  -moz-margin-start: 1.6em;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .start-show {
   display: none;

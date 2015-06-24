@@ -1,31 +1,15 @@
 $(document).ready(function(){
-  var $shareButtons = $('<div class="share-buttons"></div>');
-  var $facebook = $('<a><img class="facebook" src="/img/facebook.png" title="Share on Facebook"></a>');
-  var $twitter = $('<a><img class="twitter" src="/img/twitter.png" title="Share on Twitter"></a>');
-  var $emailto = $('<img class="emailto" src="/img/mail.png" title="Send by Email">');
-
   var $startShow = $('<img src="/img/play.png" class="start-show" title="Start Slide Show">');
-
   var currentSlide = null;
   window.slideCount = 0;
 
-  // Append share buttons
-  $shareButtons.
-    prepend($emailto).
-    prepend($twitter).
-    prepend($facebook);
-
-  $('.slide-container').
-    append($shareButtons);
-
-
-  // Add slide to DOM on mouse click
+  // Add slide to DOM
   function addNewSlide(slideContent) {
     window.slideCount++;
     var $slide = $('<div class="slide"></div>');
-    var $textbox = $('<div class="textbox"></div>')
-    var $slideHeader = $('<h1 class="slide-header">Slide header</h1>');
-    var $newContent = $('<p>New Slide</p>');
+    $slide.attr("id", "s" + window.slideCount);
+    $slide.append(slideContent);
+    
     var $toolbar = $('<div class="toolbar" contenteditable="false"></div>');
     var $zoomIcon = $('<img src="/img/zoom_in.png" class="zoom" title="Zoom In">');
     var $editIcon = $('<img src="/img/edit.png" class="edit" title="Edit Slide">');
@@ -36,9 +20,6 @@ $(document).ready(function(){
     var $prevArrow = $('<img src="/img/prev.png" class="prev-arrow arrows" title="Next Slide">');
     var $nextArrow = $('<img src="/img/next.png" class="next-arrow arrows" title="Previous Slide">');
 
-    $slide.attr("id", "s" + window.slideCount);
-    $('.slide-container').append($slide);
-
     $toolbar.
       prepend($zoomIcon).
       prepend($editIcon).
@@ -46,26 +27,31 @@ $(document).ready(function(){
       prepend($deleteSlide).
       prepend($fullScreen);
 
-    if (slideContent) {
-      $textbox.append(slideContent);
-    } else {
-      $textbox.
-        append($slideHeader).
-        append($newContent);
-    }
-
     $slide.
-      append($textbox).
       append($toolbar).
       append($prevArrow).
       append($nextArrow);
-      // append($slideNumber);
 
-    $shareButtons.remove();
-    $('.slide-container').append($shareButtons);
+    $('.slide-container').append($slide);
     $('.slide').eq(0).append($startShow);
   }
 
+  // Append share buttons to slide container
+  function appendShareButtons() {
+    var $shareButtons = $('<div class="share-buttons"></div>');
+    var $facebook = $('<a><img class="facebook" src="/img/facebook.png" title="Share on Facebook"></a>');
+    var $twitter = $('<a><img class="twitter" src="/img/twitter.png" title="Share on Twitter"></a>');
+    var $emailto = $('<img class="emailto" src="/img/mail.png" title="Send by Email">');
+
+    $shareButtons.
+      prepend($emailto).
+      prepend($twitter).
+      prepend($facebook);
+
+    $('.slide-container').append($shareButtons);
+  }
+
+  // Apply image styles to slide
   function applyImageStyles() {
     var hasLargeImageOnLeft = $('img[alt="large-l"]');
     var hasLargeImageOnRight = $('img[alt="large-r"]');
@@ -84,8 +70,161 @@ $(document).ready(function(){
     hasSmallImageOnRight.addClass("medium-img float-right");
     hasFullWidthImage.addClass("full");
     hasBackgroundImage.addClass("background");
+
+    for (var i = 0; i < hasBackgroundImage.length; i++) {
+      if (hasBackgroundImage.eq(i).parent('p').next().length === 0) {
+        hasBackgroundImage.eq(i).addClass('h1hasBackgroundImg')
+      }
+    }
+    $('.h1hasBackgroundImg').parents('.slide').next().append($('.h1hasBackgroundImg').eq(0))
+    $('.h1hasBackgroundImg').parent('p').remove();
   }
 
+  function removeSlideWithEmptyNode() {
+    for (var i = 0; i < $('.slide').length; i++) {
+      if ($('.slide').eq(i).find('p').is(':empty')) {
+        $('.slide').eq(i).remove();
+        $('.slide').eq(0).append($startShow);
+      }
+    }
+  }
+
+  /********************************************
+          Fetch data from Markdown
+  *********************************************/
+
+  function renderHTMLSlides(slides) {
+    // Start a new slide 
+    function startNewSlide() {
+      layoutTextboxElements.eq(layoutTextboxElementCount).remove();
+      finishedTextboxes.push(layoutTextbox.clone());
+      layoutTextbox.empty();
+      layoutTextbox.append(domElement);
+    }
+    
+    $('.slide').remove();
+    $('.share-buttons').remove();
+    window.slideCount = 0;
+
+    var allowedHeight = 128;
+    var finishedTextboxes = [];
+    var slideElements = $(slides).filter(function(index, element) {
+      if (element.nodeType === 1)
+      return true;
+    });
+
+    var newElements = [];
+
+    slideElements.each(function(index, element) {
+      if (element.nodeName.toLowerCase() === 'ol' || element.nodeName.toLowerCase() === 'ul') {
+        var tempList = [];
+        for (var i = 0; i < element.childNodes.length; i++) {
+          var li = element.childNodes[i];
+          var tempElement = document.createElement('p');
+          tempElement.innerHTML = li.innerHTML;
+          tempElement.setAttribute('class','ol-item')
+          if (tempElement.textContent !== 'undefined') {
+            tempList.push(tempElement);
+          }
+        }
+        newElements = newElements.concat(tempList);
+      } else {
+        newElements.push(element);
+      }
+    });
+    slideElements = newElements;
+
+    var slideElementCount = slideElements.length;
+    var layoutSlideContainer = $('<div class="slide-container"></div>');
+    var layoutSlide = $('<div class="slide"></div>');
+    var layoutTextbox = $('<div class="textbox"></div>')
+
+    layoutSlide.append(layoutTextbox);
+    layoutSlideContainer.append(layoutSlide);
+    layoutSlideContainer.css('visibility', 'hidden');
+    $('body').append(layoutSlideContainer);
+
+    for (var i = 0; i < slideElementCount; i++) {
+      var domElement = slideElements[i];
+      if (domElement.nodeType === 1) {
+        layoutTextbox.append(domElement);
+
+        var layoutTextboxElements = layoutTextbox.children();
+        var layoutTextboxElementCount = layoutTextboxElements.length - 1;
+        var textboxHeight = layoutTextbox.height();
+
+        // Check if domElement has h1
+        if (layoutTextbox.children('h1').length && layoutTextboxElementCount > 0) {
+          startNewSlide();
+        }
+
+        // Check if domElement exceed allowed height
+        if (textboxHeight > allowedHeight) {
+          startNewSlide();
+        }
+      }
+    }
+    finishedTextboxes.push(layoutTextbox.clone());
+
+    for (var i = 0; i < finishedTextboxes.length; i++) {
+      addNewSlide(finishedTextboxes[i]);
+    }
+    appendShareButtons();
+    applyImageStyles();
+    removeSlideWithEmptyNode();
+    removeEmptyListItem();
+  }
+
+  function getMarkdown(url, preventHashUpdate) {
+    if (url.length > 0) {
+      var presentationUrl = '/presentation?url=' + encodeURIComponent(url);
+      $.get(presentationUrl, function (data) {
+        renderHTMLSlides(data.slides);
+        clearUrlInput();
+        if (!preventHashUpdate) {
+          document.location.hash = encodeURIComponent(url);
+        }
+      }).fail(function() {
+        alert("An error has occured and your file could not be loaded. Please try again.");
+      });
+    }
+  }
+    
+  function getMarkdownIfUrl() {
+    var url = $('#presentation-url').val();
+    if (url.length > 0) {
+      getMarkdown(url);
+    }
+  }
+
+  function clearUrlInput() {
+    $('#presentation-url').val("").blur();
+  }
+
+  $('#get-markdown').on('click', getMarkdownIfUrl);
+
+  // Show demo slides on load
+  function getInstructionSlide() {
+    var demo = 'https://gist.githubusercontent.com/alicehccn/ec09248285c24a49316a/raw';
+    getMarkdown(demo, true);
+  }
+
+  // Load markdown from URL
+  function setupPresidential() {
+    var hash = decodeURIComponent(document.location.hash);
+    if (hash.length > 0) {
+      if (hash.charAt(0) === "#") {
+        hash = hash.substring(1);
+      }
+      getMarkdown(hash);
+    } else {
+      getInstructionSlide();
+      $('#presentation-url').focus();
+    }
+  }
+  setupPresidential();
+
+  
   // Check presenting mode
   function isPresentingMode() {
     if ($('.slide-container').hasClass("presenting")) {
@@ -366,68 +505,6 @@ $(document).ready(function(){
     currentSlide = $(this).parent(".slide");
     goToNextSlide();
   })
-
-  /********************************************
-          Fetch data from Markdown
-  *********************************************/
-
-  function renderHTMLSlides(slides) {
-    $('.slide').remove();
-    window.slideCount = 0;
-    for (var i = 0; i < slides.length; i++) {
-      addNewSlide(slides[i]);
-    }
-    applyImageStyles();
-  }
-
-  function getMarkdown(url, preventHashUpdate) {
-    if (url.length > 0) {
-      var presentationUrl = '/presentation?url=' + encodeURIComponent(url);
-      $.get(presentationUrl, function (data) {
-        renderHTMLSlides(data.slides);
-        clearUrlInput();
-        if (!preventHashUpdate) {
-          document.location.hash = encodeURIComponent(url);
-        }
-      }).fail(function() {
-        alert("An error has occured and your file could not be loaded. Please try again.");
-      });
-    }
-  }
-    
-  function getMarkdownIfUrl() {
-    var url = $('#presentation-url').val();
-    if (url.length > 0) {
-      getMarkdown(url);
-    }
-  }
-
-  function clearUrlInput() {
-    $('#presentation-url').val("").blur();
-  }
-
-  $('#get-markdown').on('click', getMarkdownIfUrl);
-
-  // Show demo slides on load
-  function getInstructionSlide() {
-    var demo = 'https://gist.githubusercontent.com/alicehccn/ec09248285c24a49316a/raw';
-    getMarkdown(demo, true);
-  }
-
-  // Load markdown from URL
-  function setupPresidential() {
-    var hash = decodeURIComponent(document.location.hash);
-    if (hash.length > 0) {
-      if (hash.charAt(0) === "#") {
-        hash = hash.substring(1);
-      }
-      getMarkdown(hash);
-    } else {
-      getInstructionSlide();
-      $('#presentation-url').focus();
-    }
-  }
-  setupPresidential();
 
   /********************************************
                 Share buttons
