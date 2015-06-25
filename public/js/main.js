@@ -108,33 +108,20 @@ $(document).ready(function(){
 
     // define textbox height according to viewport
     var allowedHeight;
-    switch (screen.width) {
-      case 1440:
+    if (screen.width > 768) {
       allowedHeight = 115;
-      break;
-
-      case 1024:
-      allowedHeight = 115;
-      break;
-
-      case 414:
+    } else if (screen.width <= 768 && screen.width > 414) {
+      allowedHeight = 113;
+    }else if (screen.width <= 414 && screen.width > 375) {
       allowedHeight = 218;
-      break;
-
-      case 375:
+    } else if (screen.width <= 375 && screen.width > 360) {
       allowedHeight = 205;
-      break;
-
-      case 360:
+    } else if (screen.width <= 360 && screen.width > 320) {
       allowedHeight = 190;
-      break;
-
-      case 320:
+    } else if (screen.width <= 320) {
       allowedHeight = 175;
-      break;
-
-      default: return;
-    }
+    } 
+    
     var finishedTextboxes = [];
     var slideElements = $(slides).filter(function(index, element) {
       if (element.nodeType === 1)
