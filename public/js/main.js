@@ -25,7 +25,6 @@ $(document).ready(function(){
       prepend($swapIcon).
       prepend($deleteSlide).
       prepend($fullScreen);
-
     $slide.
       append($toolbar).
       append($prevArrow).
@@ -70,11 +69,20 @@ $(document).ready(function(){
     hasFullWidthImage.addClass("full");
     hasBackgroundImage.addClass("background");
     hasBackgroundImage.eq(0).appendTo($('.slide'))
+    hasBackgroundImage.parent('p').remove();
   }
 
+  function removeEmptyElement() {
+    var textboxElements = $('.textbox').children();
+    for (var i = 0; i < textboxElements.length; i++) {
+      if (textboxElements.eq(i).is(':empty')) {
+        textboxElements.eq(i).remove();
+      }
+    }
+  }
   function removeSlideWithEmptyNode() {
     for (var i = 0; i < $('.textbox').length; i++) {
-      if ($('.textbox').children().is(':empty')) {
+      if ($('.textbox').eq(i).children().length === 0) {
         $('.textbox').eq(i).parent('.slide').remove();
         $startShow.appendTo($('.slide').eq(0));
       }
@@ -98,7 +106,35 @@ $(document).ready(function(){
     $('.share-buttons').remove();
     window.slideCount = 0;
 
-    var allowedHeight = 115;
+    // define textbox height according to viewport
+    var allowedHeight;
+    switch (screen.width) {
+      case 1440:
+      allowedHeight = 115;
+      break;
+
+      case 1024:
+      allowedHeight = 115;
+      break;
+
+      case 414:
+      allowedHeight = 218;
+      break;
+
+      case 375:
+      allowedHeight = 205;
+      break;
+
+      case 360:
+      allowedHeight = 190;
+      break;
+
+      case 320:
+      allowedHeight = 154;
+      break;
+
+      default: return;
+    }
     var finishedTextboxes = [];
     var slideElements = $(slides).filter(function(index, element) {
       if (element.nodeType === 1)
@@ -115,11 +151,7 @@ $(document).ready(function(){
           var tempElement = document.createElement('p');
           tempElement.innerHTML = li.innerHTML;
           if (tempElement.textContent !== 'undefined') {
-            if (element.nodeName.toLowerCase() === 'ol') {
-              tempElement.style.listStyle = 'decimal'
-            } else {
-              tempElement.style.listStyle = 'disc'
-            }
+            tempElement.style.listStyle = 'disc'
             tempElement.setAttribute('class','list-item')
             tempList.push(tempElement);
           }
@@ -168,6 +200,7 @@ $(document).ready(function(){
     }
     appendShareButtons();
     applyImageStyles();
+    removeEmptyElement(); 
     removeSlideWithEmptyNode();
   }
 

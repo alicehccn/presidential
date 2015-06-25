@@ -53,8 +53,6 @@
     margin: 0 15px;
   }
   .slide-container.presenting .slide.active .textbox p,
-  .slide-container.presenting .slide.active .textbox ul,
-  .slide-container.presenting .slide.active .textbox ol,
   .slide-container.presenting .slide.active .textbox pre,
   .slide-container.presenting .slide.active .textbox code {
     font-size: 37px;
@@ -130,25 +128,31 @@
   }
   .slide:hover .toolbar img {
     height: 28px;
-    margin: 0 10px;
+    margin: 10px;
   }
   .slide-container .slide .textbox p,
-  .slide-container .slide .textbox ul,
-  .slide-container .slide .textbox ol,
   .slide-container .slide .textbox pre,
   .slide-container .slide .textbox code {
-    font-size: 16.3px;
+    font-size: 16px;
   }
   .slide-container .slide .textbox table {
     font-size: 14px;
   }
-  .slide-container .slide .textbox h1,
-  .slide-container .slide .textbox h2,
-  .slide-container .slide .textbox h3,
-  .slide-container .slide .textbox h4,
+  .slide-container .slide .textbox h1 {
+    font-size: 24px;
+  }
+  .slide-container .slide .textbox h2 {
+    font-size: 21px;
+  }
+  .slide-container .slide .textbox h3 {
+    font-size: 19px;
+  }
+  .slide-container .slide .textbox h4 {
+    font-size: 17px;
+  }
   .slide-container .slide .textbox h5,
   .slide-container .slide .textbox h6 {
-    font-size: 20px;
+    font-size: 16px;
   }
   .slide-container .slide .textbox ul,
   .slide-container .slide .textbox ol {
@@ -168,8 +172,6 @@
     height: 244px;
   }
   .slide-container .slide .textbox p,
-  .slide-container .slide .textbox ul,
-  .slide-container .slide .textbox ol,
   .slide-container .slide .textbox pre,
   .slide-container .slide .textbox code {
     font-size: 14.9px;
@@ -177,13 +179,21 @@
   .slide-container .slide .textbox table {
     font-size: 12px;
   }
-  .slide-container .slide .textbox h1,
-  .slide-container .slide .textbox h2,
-  .slide-container .slide .textbox h3,
-  .slide-container .slide .textbox h4,
+  .slide-container .slide .textbox h1 {
+    font-size: 22px;
+  }
+  .slide-container .slide .textbox h2 {
+    font-size: 19.5px;
+  }
+  .slide-container .slide .textbox h3 {
+    font-size: 17.5px;
+  }
+  .slide-container .slide .textbox h4 {
+    font-size: 16px;
+  }
   .slide-container .slide .textbox h5,
   .slide-container .slide .textbox h6 {
-    font-size: 22px;
+    font-size: 14.9px;
   }
 }
 @media screen and (max-width: 360px) { /* Samsung Galaxy Note*/
@@ -192,8 +202,6 @@
     height: 233px;
   }
   .slide-container .slide .textbox p,
-  .slide-container .slide .textbox ul,
-  .slide-container .slide .textbox ol,
   .slide-container .slide .textbox code,
   .slide-container .slide .textbox pre {
     font-size: 14.1px;
@@ -201,13 +209,21 @@
   .slide-container .slide .textbox table {
     font-size: 11px;
   }
-  .slide-container .slide .textbox h1,
-  .slide-container .slide .textbox h2,
-  .slide-container .slide .textbox h3,
-  .slide-container .slide .textbox h4,
+  .slide-container .slide .textbox h1 {
+    font-size: 21px;
+  }
+  .slide-container .slide .textbox h2 {
+    font-size: 18.5px;
+  }
+  .slide-container .slide .textbox h3 {
+    font-size: 16.5px
+  }
+  .slide-container .slide .textbox h4 {
+    font-size: 15px;
+  }
   .slide-container .slide .textbox h5,
   .slide-container .slide .textbox h6 {
-    font-size: 20.5px;
+    font-size: 14.1px;
   }
 }
 @media screen and (max-width: 320px) { /* iPhone 5 */
@@ -219,8 +235,6 @@
     height: 73%;
   }
   .slide-container .slide .textbox p,
-  .slide-container .slide .textbox ul,
-  .slide-container .slide .textbox ol,
   .slide-container .slide .textbox code,
   .slide-container .slide .textbox pre {
     font-size: 12.6px;
@@ -228,12 +242,20 @@
   .slide-container .slide .textbox table {
     font-size: 11px;
   }
-  .slide-container .slide .textbox h1,
-  .slide-container .slide .textbox h2,
-  .slide-container .slide .textbox h3,
-  .slide-container .slide .textbox h4,
+  .slide-container .slide .textbox h1 {
+    font-size: 18.5px;
+  }
+  .slide-container .slide .textbox h2 {
+    font-size: 16.5px;
+  }
+  .slide-container .slide .textbox h3 {
+    font-size: 14.5px;
+  }
+  .slide-container .slide .textbox h4 {
+    font-size: 13px;
+  }
   .slide-container .slide .textbox h5,
   .slide-container .slide .textbox h6 {
-    font-size: 18.5px;
+    font-size: 12.6px;
   }
 }
