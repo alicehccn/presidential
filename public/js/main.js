@@ -130,7 +130,7 @@ $(document).ready(function(){
       break;
 
       case 320:
-      allowedHeight = 154;
+      allowedHeight = 175;
       break;
 
       default: return;
