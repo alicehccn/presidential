@@ -231,13 +231,10 @@
     width: 315px;
     height: 208px;
   }
-  .slide-container .slide .textbox {
-    height: 73%;
-  }
   .slide-container .slide .textbox p,
   .slide-container .slide .textbox code,
   .slide-container .slide .textbox pre {
-    font-size: 12.6px;
+    font-size: 12.5px;
   }
   .slide-container .slide .textbox table {
     font-size: 11px;
@@ -256,6 +253,6 @@
   }
   .slide-container .slide .textbox h5,
   .slide-container .slide .textbox h6 {
-    font-size: 12.6px;
+    font-size: 12.5px;
   }
 }
