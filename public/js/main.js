@@ -1,15 +1,10 @@
 $(document).ready(function(){
   var $startShow = $('<img src="/img/play.png" class="start-show" title="Start Slide Show">');
   var currentSlide = null;
-  window.slideCount = 0;
 
   // Add slide to DOM
   function addNewSlide(slideContent) {
-    window.slideCount++;
-    var $slide = $('<div class="slide"></div>');
-    $slide.attr("id", "s" + window.slideCount);
-    $slide.append(slideContent);
-    
+    var $slide = $('<div class="slide"></div>');    
     var $toolbar = $('<div class="toolbar"></div>');
     var $zoomIcon = $('<img src="/img/zoom_in.png" class="zoom" title="Zoom In">');
     var $swapIcon = $('<img src="/img/link.png" class="swap" title="Swap Slide">');
@@ -19,6 +14,7 @@ $(document).ready(function(){
     var $prevArrow = $('<img src="/img/prev.png" class="prev-arrow arrows" title="Next Slide">');
     var $nextArrow = $('<img src="/img/next.png" class="next-arrow arrows" title="Previous Slide">');
 
+    $slide.append(slideContent);
     $toolbar.
       prepend($zoomIcon).
       prepend($toggleBgImg).
@@ -68,7 +64,7 @@ $(document).ready(function(){
     hasSmallImageOnRight.addClass("medium-img float-right");
     hasFullWidthImage.addClass("full");
     hasBackgroundImage.addClass("background");
-    hasBackgroundImage.eq(0).appendTo($('.slide'))
+    hasBackgroundImage.eq(0).prependTo($('.slide'))
     hasBackgroundImage.parent('p').remove();
   }
 
@@ -88,6 +84,11 @@ $(document).ready(function(){
       }
     }
   }
+  function assignSlideId() {
+    for (var i = 0; i < $('.slide').length; i++) {
+      $('.slide').eq(i).attr("id", "s" + (i+1));
+    }
+  }
 
   /********************************************
           Fetch data from Markdown
@@ -104,7 +105,6 @@ $(document).ready(function(){
     
     $('.slide').remove();
     $('.share-buttons').remove();
-    window.slideCount = 0;
 
     // define textbox height according to viewport
     var allowedHeight;
@@ -182,12 +182,15 @@ $(document).ready(function(){
         var layoutTextboxElementCount = layoutTextboxElements.length - 1;
         var textboxHeight = layoutTextbox.height();
 
-        // Check if domElement has h1
+        // Start new slide with only H1
         if (layoutTextbox.children('h1').length > 0) {
           startNewSlide();
         }
-
-        // Check if domElement exceed allowed height
+        // Start new slide with H2 and following elements
+        if (domElement.nodeName.toLowerCase() === 'h2') {
+          startNewSlide();
+        }
+        // Start new slide if domElement exceed allowed height
         if (textboxHeight > allowedHeight) {
           startNewSlide();
         }
@@ -202,6 +205,7 @@ $(document).ready(function(){
     applyImageStyles();
     removeEmptyElement(); 
     removeSlideWithEmptyNode();
+    assignSlideId();
   }
 
   function getMarkdown(url, preventHashUpdate) {
