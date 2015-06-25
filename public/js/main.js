@@ -86,7 +86,7 @@ $(document).ready(function(){
   }
   function assignSlideId() {
     for (var i = 0; i < $('.slide').length; i++) {
-      $('.slide').eq(i).attr("id", "s" + (i+1));
+      $('.slide').eq(i).attr("id", "s" + (i + 1));
     }
   }
 
@@ -108,9 +108,9 @@ $(document).ready(function(){
 
     // define textbox height according to viewport
     var allowedHeight;
-    if (screen.width > 768) {
-      allowedHeight = 115;
-    } else if (screen.width <= 768 && screen.width > 414) {
+    if (screen.width >= 768) {
+      allowedHeight = 108;
+    } else if (screen.width < 768 && screen.width > 414) {
       allowedHeight = 113;
     }else if (screen.width <= 414 && screen.width > 375) {
       allowedHeight = 218;
@@ -121,7 +121,7 @@ $(document).ready(function(){
     } else if (screen.width <= 320) {
       allowedHeight = 175;
     } 
-    
+
     var finishedTextboxes = [];
     var slideElements = $(slides).filter(function(index, element) {
       if (element.nodeType === 1)
