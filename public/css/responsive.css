@@ -1,15 +1,13 @@
 
-@media screen and (max-width: 1305px) {
-  .presentation-url {
-    width: 70%;
-  }
-}
 @media screen and (max-width: 1024px) { /* iPad & iPad Mini */
   .logo {
     margin: 0 3.9%;
   }
   .fetch-presentation {
     width: 56%;
+  }
+  .presentation-url {
+    width: 84%;
   }
   .user {
     top: 15px;
@@ -45,9 +43,6 @@
     height: 20px;
     margin: 0 5px;
   }
-  .slide-container.presenting .slide.active .toolbar {
-    margin-top: -50px;
-  }
   .slide-container.presenting .slide.active .toolbar img {
     height: 40px;
     margin: 0 15px;
@@ -60,13 +55,21 @@
   .slide-container.presenting .slide.active .textbox table {
     font-size: 30px;
   }
-  .slide-container.presenting .slide.active .textbox h1,
-  .slide-container.presenting .slide.active .textbox h2,
-  .slide-container.presenting .slide.active .textbox h3,
-  .slide-container.presenting .slide.active .textbox h4,
+  .slide-container.presenting .slide.active .textbox h1 {
+    font-size: 53px
+  }
+  .slide-container.presenting .slide.active .textbox h2 {
+    font-size: 49px;
+  }
+  .slide-container.presenting .slide.active .textbox h3 {
+    font-size: 43px;
+  }
+  .slide-container.presenting .slide.active .textbox h4 {
+    font-size: 40px;
+  }
   .slide-container.presenting .slide.active .textbox h5,
   .slide-container.presenting .slide.active .textbox h6 {
-    font-size: 53px;
+    font-size: 37px;
   }
 }
 @media screen and (max-width: 414px) { /* iPhone 6 Plus */
@@ -88,7 +91,7 @@
     margin-bottom: 10px;
   }
   .presentation-url {
-    margin: 10px 0;
+    width: 72%;
   }
   .get-markdown {
     width: 60px;
@@ -123,12 +126,9 @@
     width: 402.8px;
     height: 267px;
   }
-  .slide:hover .toolbar {
-    margin-top: -28px;
-  }
   .slide:hover .toolbar img {
     height: 28px;
-    margin: 10px;
+    margin: 5px 10px;
   }
   .slide-container .slide .textbox p,
   .slide-container .slide .textbox pre,
