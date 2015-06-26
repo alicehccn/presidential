@@ -170,7 +170,7 @@ html .slide-container .slide .textbox{
   padding: 1%;
 }
 .slide-container .slide .textbox code {
-  background-color: #eee;
+  background-color: rgba(237, 238, 238, 0.5);
   word-wrap: break-word;
 }
 .slide-container .slide .textbox h1,
