@@ -212,7 +212,6 @@ html .slide-container .slide .textbox{
   position: relative;
   float: right;
   margin: 0 1.5%;
-  max-width: 100%;
   width: 30%;
 }
 .slide-container .slide .textbox p img.float-left {
