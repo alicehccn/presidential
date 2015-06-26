@@ -507,8 +507,8 @@ $(document).ready(function(){
   *********************************************/
 
   $(".slide-container").on("click", ".emailto", function() {
-    var subject = "Check out this presentation I just created online";
-    var body_message = "Hi! I just use Presidential to create an online presentation. Check it out on:";
+    var subject = "Check out my presentation online";
+    var body_message = "Hi! I just created a presentation. Check it out on:";
     var url = window.location.href;
     document.location.href = "mailto:" + '?subject=' + subject + '&body=' + body_message + " " +url;
   })
@@ -519,7 +519,7 @@ $(document).ready(function(){
   }
 
   $(".slide-container").on("click", ".twitter", function() {
-    window.open("https://twitter.com/intent/tweet?text=Check out the presentation I just created Presidential&url="  + getUrlWithoutHash());
+    window.open("https://twitter.com/intent/tweet?text=Check out my presentation on="  + getUrlWithoutHash());
   })
 
   $(".slide-container").on("click", ".facebook", function() {
