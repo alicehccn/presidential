@@ -43,6 +43,7 @@ $(document).ready(function(){
       prepend($facebook);
 
     $('.slide-container').append($shareButtons);
+    $('h1').parent('.textbox').addClass('h1-box');
   }
 
   // Apply image styles to slide
@@ -256,15 +257,15 @@ $(document).ready(function(){
   
 
   // Enable and disable swap and delete
-  function enableSwapDeleteFullScreen() {
-    $('.swap').prop("disabled", false);
-    $('.delete-slide').prop("disabled", false);
-    $('.full-screen').prop("disabled", false);
+  function showSwapDeleteFullScreen() {
+    $('.swap').show();
+    $('.delete-slide').show();
+    $('.full-screen').show();
   }
-  function disableSwapDeleteFullScreen() {
-    $('.swap').prop("disabled", true);
-    $('.delete-slide').prop("disabled", true);
-    $('.full-screen').prop("disabled", true);
+  function hideSwapDeleteFullScreen() {
+    $('.swap').hide();
+    $('.delete-slide').hide();
+    $('.full-screen').hide();
   }
 
   // Check presenting mode
@@ -283,14 +284,12 @@ $(document).ready(function(){
       "left": calculateEdgeWidth()
     });
   }
-
   function decenterSlide() {
     $('.slide').css({
       "top": "0",
       "left": "0"
     });
   }
-
   // Zoom in slide
   function zoomInSlide() {
     $('.slide-container').addClass("presenting");
@@ -298,9 +297,8 @@ $(document).ready(function(){
     $('.share-buttons').hide();
     $('.arrows').show();
     centerSlideWhenZoomedIn();
-    disableSwapDeleteFullScreen();
+    hideSwapDeleteFullScreen();
   }
-
   // Zoom out slide
   function zoomOutSlide() {
     $('.slide-container').removeClass("presenting");
@@ -309,9 +307,8 @@ $(document).ready(function(){
     $(".arrows").hide();
     $('.share-buttons').show();
     decenterSlide();
-    enableSwapDeleteFullScreen();
+    showSwapDeleteFullScreen();
   }
-
   // Toggle slide zooming on mouse click
   $('.slide-container').on("click", ".zoom", function() {
     currentSlide = $(this).parents(".slide");
