@@ -37,7 +37,9 @@ gem 'github-markdown'
 
 gem 'devise'
 
-gem "octokit"
+gem 'aes'
+
+gem 'octokit'
 
 group :development, :test do
 

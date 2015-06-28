@@ -3,6 +3,7 @@ class OauthController < ApplicationController
   require 'uri'
   require 'net/http'
   require 'json'
+  require 'aes'
 
   def authorize
     @github_authorization_link = generate_github_oauth_authorization_link
@@ -22,7 +23,9 @@ class OauthController < ApplicationController
     end
 
     if access_token.present?
-      session[:github_access_token] = access_token
+      access_tokens = { github: access_token }.to_json
+      encrypted_access_tokens = AES.encrypt(access_tokens, ENV['PRESIDENTIAL_AES_KEY'])
+      cookies[:presidential_access_tokens] = encrypted_access_tokens
       redirect_to '/gists'
     else
       @github_oauth_errors = access_token_response
