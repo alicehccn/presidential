@@ -36,21 +36,6 @@ class OauthController < ApplicationController
 
   private
 
-  def github_permissions
-    'gist'
-  end
-
-  def generate_github_oauth_authorization_link
-    link = '<a href="'
-    link << 'https://github.com/login/oauth/authorize?scope='
-    link << "#{github_permissions}&"
-    link << "client_id=#{ENV['GITHUB_CLIENT_ID']}"
-    link << '">'
-    link << "Authorize"
-    link << "</a>"
-    link
-  end
-
   def request_github_access_token(session_code)
     uri = URI.parse('https://github.com/login/oauth/access_token')
 

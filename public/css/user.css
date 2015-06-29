@@ -3,10 +3,14 @@
   margin: auto;
   text-align: left;
 }
-.user-login, .edit-user{
+.gist {
   display: inline-block;
   margin-bottom: 30px;
   width: 42%;
+}
+.gist-list {
+  display: block;
+  margin: 20px 0;
 }
 .sign-up, .deactivate {
   display: inline-block;
