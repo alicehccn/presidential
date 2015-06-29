@@ -1,2 +1,12 @@
-<%= @github_user.inspect %>
-<%= @gists.inspect %>
+<div class="user-page">
+  <div class="gist">
+    <h3>Your Gist</h3>
+    <% @gists.get.data.each do |datum| %>
+      <% datum.files.each do |filename, file_data| %>
+        <div class="gist-list"><a href="/#<%= URI::encode(file_data.raw_url) %>" title="<%= filename %>">
+          <%= filename %>
+        </a>
+        </div>
+      <% end %>
+    <% end %>
+</div>

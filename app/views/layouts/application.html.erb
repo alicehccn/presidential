@@ -40,14 +40,15 @@
     <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
     <span class="get-markdown"><img id="get-markdown" src="/img/markdown.png" title="Get Markdown">PRESENT NOW</span>
   </div>
-  <ul class="user">
-    <% if user_signed_in? %>
-      <li><%= link_to current_user.username, edit_user_registration_path %></li>
-      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+  <div class="user">
+    <% if @gists.present? %>
+      <%= link_to @gists.get.data[0].owner.login, gists_path %>
     <% else %>
-      <li><%=link_to "Login", new_user_session_path%></li>
+      <a href="<%= generate_github_oauth_authorization_url %>" title="GitHub Gist">
+        GitHub Gist
+      </a>
     <% end %>
-  </ul>
+  </div>
   </header>
   <div class="alert-box">
     <% if notice %>
