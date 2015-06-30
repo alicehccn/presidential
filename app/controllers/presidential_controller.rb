@@ -14,4 +14,9 @@ class PresidentialController < ApplicationController
       slides = GitHub::Markdown.render(presentation)
       render :json => { slides: slides }
   end
+
+  def logout
+    cookies.delete(:presidential_access_tokens)
+    redirect_to '/'
+  end
 end

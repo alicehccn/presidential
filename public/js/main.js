@@ -158,7 +158,7 @@ $(document).ready(function(){
 
     layoutSlide.append(layoutTextbox);
     layoutSlideContainer.append(layoutSlide);
-    layoutSlideContainer.css('visibility', 'hidden');
+    layoutSlideContainer.css('display', 'none');
     $('body').append(layoutSlideContainer);
 
     for (var i = 0; i < slideElementCount; i++) {
