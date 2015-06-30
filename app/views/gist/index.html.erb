@@ -2,15 +2,15 @@
   <div class="gist">
     <ul class="gist-id">
       <li><h2>Your Gist</h2></li>
-      <li class="gist-login" title="Go to Github"><%= link_to @gists.get.data[0].owner.login, @gists.get.data[0].owner.html_url %></li>
-      <li class="close-gist"><%= link_to "disconnect", root_path %></li>
+      <li class="github-url" title="Go to Github"><%= link_to "GitHub", @gists.get.data[0].owner.html_url %></li>
+      <li class="close-gist"><%= link_to "Logout", root_path %></li>
     </ul>
   
     <% @gists.get.data.each do |datum| %>
       <% datum.files.each do |filename, file_data| %>
         <div class="gist-list"><img src="/img/markdown.png">
           <a href="/#<%= URI::encode(file_data.raw_url) %>" title="Click to Present">
-            <div><%= filename %></div>
+            <span><%= @gists.get.data[0].owner.login %> / <%= filename %></span>
             <span class="description">
               <% if datum.description.present? %>
                 <p><%= datum.description %></p>

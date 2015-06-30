@@ -6,7 +6,7 @@ $(document).ready(function(){
     3 * 1000
   );
 
-  $(".description").text(function(index, currentText) {
+  $(".gist-list span").text(function(index, currentText) {
     if (screen.width > 1024) {
       return currentText.substr(0, 75);
     } else if (screen.width <= 1024 && screen.width > 768) {

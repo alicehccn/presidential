@@ -103,9 +103,6 @@
   .user img {
     height: 10px;
   }
-  .alert-box {
-    top: 185px;
-  }
   .user-page {
     width: 90%;
   }
@@ -165,7 +162,7 @@
   .gist-id li {
     padding: 0 20px 0 0;
   }
-  .gist-id li.gist-login, .gist-id li.close-gist {
+  .gist-id li.github-url, .gist-id li.close-gist {
     padding-left: 20px;
   }
   .gist-list {
@@ -235,6 +232,12 @@
   }
 }
 @media screen and (max-width: 320px) { /* iPhone 5 */
+  .gist-id li {
+    padding: 0 10px 0 0;
+  }
+  .gist-id li.github-url, .gist-id li.close-gist {
+    padding-left: 10px;
+  }
   .slide-container .slide {
     width: 315px;
     height: 208px;
