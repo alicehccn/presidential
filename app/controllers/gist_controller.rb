@@ -3,8 +3,7 @@ class GistController < ApplicationController
   require 'aes'
 
   def index
-    cookies[:presidential_access_tokens] = 'YUTEmbgq+wwDcmm5DlfIsA==$gZvqkXGnSQbWLuwv7zQJdEVMr61zRc466H5eTo9KpXhl8W5zZoBpTlIjrLeh
-Gc0lPqjmJ2RDHpx8WHtszXm0/Q=='
+    
     access_token = get_access_token_from_cookie('github')
 
     if access_token.present?
