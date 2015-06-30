@@ -57,6 +57,7 @@ ul.gist-id {
   font-size: 0.9em;
   background-color: rgb(252, 252, 252);
   border: 1px solid #ccc;
+  border-radius: 3px;
 }
 .gist-list a, .gist-list a:visited {
   color: #000;
