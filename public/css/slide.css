@@ -110,7 +110,6 @@ br {
   position: absolute;
   margin: 8%;
   width: 84%;
-  height: auto;
   overflow: visible;
 }
 html .slide-container .slide .textbox{
@@ -341,6 +340,12 @@ html .slide-container .slide .textbox{
   position: absolute;
   width: 100%;
   height: 100%;
+}
+.slide-container.presenting .slide.active.slide-fullscreen .textbox {
+  margin: 5% 8%;
+}
+.slide-container.presenting .slide.active.slide-fullscreen .textbox.h1-box {
+  top: 40%;
 }
 /************************ Text content ************************/
 .slide-container.presenting .slide.active.slide-fullscreen .textbox p,
