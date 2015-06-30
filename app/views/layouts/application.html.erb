@@ -41,7 +41,7 @@
     <span class="get-markdown"><img id="get-markdown" src="/img/markdown.png" title="Get Markdown">PRESENT NOW</span>
   </div>
   <div class="user">
-    <% if @gists.present? %>
+    <% if @github_user.present? %>
       <a href="<%= gists_path %>"><img src="/img/github.png"></a>
     <% else %>
       <a href="<%= generate_github_oauth_authorization_url %>" data-confirm='Presidential wants access to your Github Gist. Click "OK" to continue.' title="Link to Github Gist"><img src="/img/github.png">
