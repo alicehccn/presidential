@@ -62,5 +62,7 @@ Rails.application.routes.draw do
 
   get 'gists' => 'gist#index'
 
+  get 'logout' => 'presidential'
+
   root 'presidential#index'
 end

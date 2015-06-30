@@ -3,7 +3,7 @@
     <ul class="gist-id">
       <li><h2>Your Gist</h2></li>
       <li class="github-url" title="Go to Github"><%= link_to "GitHub", @gists.get.data[0].owner.html_url %></li>
-      <li class="close-gist"><%= link_to "Logout", root_path %></li>
+      <li class="close-gist"><a href="/logout">Logout</a></li>
     </ul>
   
     <% @gists.get.data.each do |datum| %>

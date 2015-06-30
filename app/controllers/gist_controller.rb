@@ -15,7 +15,7 @@ class GistController < ApplicationController
       redirect_to '/oauth/authorize'
     end
   end
-
+  
   private 
 
   def get_access_token_from_cookie(service)
