@@ -110,7 +110,7 @@ $(document).ready(function(){
     // define textbox height according to viewport
     var allowedHeight;
     if (screen.width >= 768) {
-      allowedHeight = 108;
+      allowedHeight = 113;
     } else if (screen.width < 768 && screen.width > 414) {
       allowedHeight = 113;
     }else if (screen.width <= 414 && screen.width > 375) {
@@ -158,7 +158,7 @@ $(document).ready(function(){
 
     layoutSlide.append(layoutTextbox);
     layoutSlideContainer.append(layoutSlide);
-    layoutSlideContainer.css('display', 'none');
+    layoutSlideContainer.css('visibility', 'hidden');
     $('body').append(layoutSlideContainer);
 
     for (var i = 0; i < slideElementCount; i++) {
@@ -194,6 +194,7 @@ $(document).ready(function(){
     removeEmptyElement(); 
     removeSlideWithEmptyNode();
     assignSlideId();
+    layoutSlideContainer.hide();
   }
 
   function getMarkdown(url, preventHashUpdate) {
