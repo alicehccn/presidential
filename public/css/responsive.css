@@ -6,20 +6,11 @@
   .fetch-presentation {
     width: 56%;
   }
-  .presentation-url {
-    width: 84%;
-  }
   .user {
-    top: 15px;
     margin-right: 3.9%;
     padding: 0;
   }
-  .user li {
-    display: block;
-    margin-bottom: 20px;
-    padding: 0;
-  }
-  .slide-container {
+  .user-page, .slide-container {
     width: 92.2%;
   }
   .slide:hover .toolbar .full-screen,
@@ -76,6 +67,9 @@
   .presentation-url {
     width: 70%;
   }
+  .gist-list {
+    width: 29%;
+  }
 }
 @media screen and (max-width: 640px) { /* Smartphones (portrait) */
   header {
@@ -106,14 +100,17 @@
     top: 35px;
     margin-right: 5%;
   }
-  .user li {
-    margin-bottom: 15px;
+  .user img {
+    height: 10px;
   }
   .alert-box {
     top: 185px;
   }
   .user-page {
     width: 90%;
+  }
+  .gist-list {
+    background-color: #fff;
   }
   .slide-container {
     width: 57%;
@@ -163,15 +160,19 @@
   .slide-container .slide .textbox ol {
     margin-left: 0.7em;
   }
-  .user-login, .edit-user,
-  .sign-up, .deactivate, .field input, 
-  .forgot-password .field input,
-  .change-password .field input {
-    display: block;
-    width: 90%;
-  }
 }
 @media screen and (max-width: 414px) { /* iPhone 6 Plus */
+  .gist-id li {
+    padding: 0 20px 0 0;
+  }
+  .gist-id li.gist-login, .gist-id li.close-gist {
+    padding-left: 20px;
+  }
+  .gist-list {
+    display: block;
+    width: 92%;
+    padding: 4%;
+  }
 }
 @media screen and (max-width: 375px) { /* iPhone 6 */
   .slide-container .slide {

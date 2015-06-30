@@ -42,10 +42,9 @@
   </div>
   <div class="user">
     <% if @gists.present? %>
-      <%= link_to @gists.get.data[0].owner.login, gists_path %>
+      <a href="<%= gists_path %>"><img src="/img/github.png"></a>
     <% else %>
-      <a href="<%= generate_github_oauth_authorization_url %>" title="GitHub Gist">
-        GitHub Gist
+      <a href="<%= generate_github_oauth_authorization_url %>" data-confirm='Presidential wants access to your Github Gist. Click "OK" to continue.' title="Link to Github Gist"><img src="/img/github.png">
       </a>
     <% end %>
   </div>
