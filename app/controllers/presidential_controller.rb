@@ -19,4 +19,13 @@ class PresidentialController < ApplicationController
     cookies.delete(:presidential_access_tokens)
     redirect_to '/'
   end
+
+  def terms
+  end
+
+  def privacy
+  end
+
+  def contact
+  end
 end

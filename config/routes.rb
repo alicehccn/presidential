@@ -64,5 +64,11 @@ Rails.application.routes.draw do
 
   get 'logout' => 'presidential'
 
+  get 'terms' => 'presidential#terms'
+
+  get 'privacy' => 'presidential#privacy'
+
+  get 'contact' => 'presidential#contact'
+
   root 'presidential#index'
 end

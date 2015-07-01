@@ -160,10 +160,7 @@
 }
 @media screen and (max-width: 414px) { /* iPhone 6 Plus */
   .gist-id li {
-    padding: 0 20px 0 0;
-  }
-  .gist-id li.github-url, .gist-id li.close-gist {
-    padding-left: 20px;
+    padding: 0 20px;
   }
   .gist-list {
     display: block;
@@ -232,11 +229,11 @@
   }
 }
 @media screen and (max-width: 320px) { /* iPhone 5 */
-  .gist-id li {
-    padding: 0 10px 0 0;
+  footer span {
+    margin-right: 15px;
   }
-  .gist-id li.github-url, .gist-id li.close-gist {
-    padding-left: 10px;
+  .gist-id li {
+    padding: 0 15px;
   }
   .slide-container .slide {
     width: 315px;

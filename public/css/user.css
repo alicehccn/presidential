@@ -34,33 +34,37 @@ ul.gist-id {
 }
 .gist-id li {
   display: inline-block;
-  padding: 0 30px 0 0;
+  padding: 0 30px;
+  border-left: 1px solid rgb(110, 110, 110);
 }
-.gist-id li.github-url, .gist-id li.close-gist {
-  padding-left: 30px;
-  border-left: 1px solid #eee;
+.gist-id li:first-child {
+  padding-left: 0;
+  border-left: none;
 }
-.gist-id li.gist-login {
-  float: left;
+.gist-id li:last-child {
+  padding-right: 0;
 }
 .gist-id a, .gist-id a:visited {
   color: rgb(110, 110, 110);
 }
-.gist-id a:hover {
-  color: #000;
-}
 .gist-list {
   display: inline-block;
-  margin: 20px 1% 0 0;
+  margin: 20px 1.5% 0 0;
   padding: 0.9%;
   width: 30%;
   font-size: 0.9em;
-  background-color: rgb(252, 252, 252);
+  background-color: rgb(250, 250, 250);
   border: 1px solid #ccc;
   border-radius: 3px;
 }
+.gist-list:last-child {
+  margin-right: 0;
+}
 .gist-list a, .gist-list a:visited {
   color: #000;
+}
+.gist-id a:hover, .gist-list a:hover {
+  color: brown;
 }
 .gist-list:hover {
   background-color: rgb(245, 245, 245);
