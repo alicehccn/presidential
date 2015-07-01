@@ -3,7 +3,6 @@ class GistController < ApplicationController
   require 'aes'
 
   def index
-    
     access_token = get_access_token_from_cookie('github')
 
     if access_token.present?
