@@ -21,11 +21,13 @@ class OauthController < ApplicationController
     rescue
       access_token = nil
     end
-
     if access_token.present?
       access_tokens = { github: access_token }.to_json
       encrypted_access_tokens = AES.encrypt(access_tokens, ENV['PRESIDENTIAL_AES_KEY'])
-      cookies[:presidential_access_tokens] = encrypted_access_tokens
+      cookies[:presidential_access_tokens] = {
+        :value => encrypted_access_tokens,
+        :expires => 1.hour.from_now
+      }
       redirect_to '/gists'
     else
       @github_oauth_errors = access_token_response
