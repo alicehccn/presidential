@@ -6,12 +6,18 @@
   .fetch-presentation {
     width: 56%;
   }
+  .presentation-url {
+    margin: 15px 0;
+  }
   .user {
     margin-right: 3.9%;
     padding: 0;
   }
   .gist-page, .slide-container {
     width: 92.2%;
+  }
+  .terms {
+    width: 62%;
   }
   .contact-form input, .contact-form textarea {
     border: 1px solid #aaa;
@@ -68,7 +74,7 @@
 }
 @media screen and (max-width: 768px) { /* Tablets (portrait) */
   .fetch-presentation {
-    width: 50%;
+    width: 48%;
   }
   .presentation-url {
     width: 70%;
@@ -97,10 +103,6 @@
     width: 90%;
     margin-left: auto;
     margin-bottom: 10px;
-  }
-  .presentation-url {
-    width: 70%;
-    margin: 15px 0;
   }
   .get-markdown {
     width: 70px;
