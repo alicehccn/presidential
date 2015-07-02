@@ -10,8 +10,11 @@
     margin-right: 3.9%;
     padding: 0;
   }
-  .user-page, .slide-container {
+  .gist-page, .slide-container {
     width: 92.2%;
+  }
+  .contact-form input, .contact-form textarea {
+    border: 1px solid #aaa;
   }
   .slide:hover .toolbar .full-screen,
   .slide .start-show {
@@ -64,11 +67,17 @@
   }
 }
 @media screen and (max-width: 768px) { /* Tablets (portrait) */
+  .fetch-presentation {
+    width: 50%;
+  }
   .presentation-url {
     width: 70%;
   }
   .gist-list {
     width: 29%;
+  }
+  .terms {
+    width: 90%;
   }
 }
 @media screen and (max-width: 640px) { /* Smartphones (portrait) */
@@ -90,7 +99,8 @@
     margin-bottom: 10px;
   }
   .presentation-url {
-    width: auto;
+    width: 70%;
+    margin: 15px 0;
   }
   .get-markdown {
     width: 70px;
@@ -103,11 +113,21 @@
   .user img {
     height: 10px;
   }
-  .user-page {
+  .gist-page, .contact-page {
     width: 90%;
   }
   .gist-list {
     background-color: #fff;
+  }
+  .primary, .secondary {
+    margin: 0;
+    width: 100%;
+  }
+  .contact-us {
+    margin-top: 30px;
+  }
+  form {
+    width: 90%;
   }
   .slide-container {
     width: 57%;
@@ -229,11 +249,14 @@
   }
 }
 @media screen and (max-width: 320px) { /* iPhone 5 */
+  .presentation-url {
+    margin: 10px 0;
+  }
   footer span {
     margin-right: 15px;
   }
   .gist-id li {
-    padding: 0 15px;
+    padding: 0 10px;
   }
   .slide-container .slide {
     width: 315px;
