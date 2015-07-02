@@ -75,7 +75,7 @@ br {
 }
 .presentation-url {
   width: 82%;
-  margin: 15px 2px;
+  margin: 20px 2px;
   outline: none;
   border: none;
   color: #000;
@@ -132,7 +132,7 @@ html .slide-container .slide .textbox{
 }
 /************************ Text content ************************/
 .slide-container .slide .textbox a {
-  color: mediumblue;
+  color: brown;
 }
 .slide-container .slide .textbox p,
 .slide-container .slide .textbox pre,

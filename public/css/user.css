@@ -18,7 +18,7 @@
 /******************************************************************************
                                      Gist List
 *******************************************************************************/
-.user-page {
+.gist-page {
   width: 84%;
   margin: 0 auto 50px;
   text-align: left;
@@ -49,7 +49,7 @@ ul.gist-id {
 }
 .gist-list {
   display: inline-block;
-  margin: 20px 1.5% 0 0;
+  margin: 20px 1% 0 0;
   padding: 0.9%;
   width: 30%;
   font-size: 0.9em;
@@ -81,4 +81,68 @@ ul.gist-id {
   width: 45px;
   margin-right: 5px;
   padding: 0;
+}
+/******************************************************************************
+                            Terms, Privacy and Contact
+*******************************************************************************/
+.terms {
+  width: 55%;
+  margin: 0 auto;
+}
+.terms span {
+  font-size: 0.8em;
+}
+.terms h4, .contact-page h4 {
+  margin: 30px 0 -10px;
+}
+.terms p, .contact-page p {
+  line-height: 1.2;
+  font-size: 0.9em;
+}
+.terms a, .terms a:visited,
+.contact {
+  color: brown;
+}
+.primary, .secondary {
+  display: inline-block;
+  width: 40%;
+  vertical-align: top;
+}
+.primary {
+  margin-right: 120px;
+}
+.contact-page a {
+  color: brown;
+}
+h3.support {
+  margin-top: 30px;
+}
+.contact-form label, button {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+form {
+  width: 65%;
+}
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: 1px solid rgb(110, 110, 110);
+}
+.contact-form textarea {
+  border: 1px solid #ccc;
+  margin: 0;
+  height: 50px;
+}
+.contact-page {
+  width: 84%;
+  margin: 0 auto;
+}
+form button {
+  margin-top: 5px;
 }
