@@ -28,4 +28,22 @@ class PresidentialController < ApplicationController
 
   def contact
   end
+
+  def contact_submit
+    binding.pry
+    @contact_form = ContactForm.new(
+      'name' => params['form_name'],
+      'email' => params['form_email'],
+      'message' => params['form_message']
+    )
+    if @contact_form.deliver
+      redirect_to '/'
+    else
+      flash[:error] = 'Sorry, an error has occured. Please try again.'
+      redirect_to '/contact'
+    end
+  rescue ScriptError
+    flash[:error] = 'Sorry, an error has occured. Please try again.'
+    redirect_to '/contact'
+  end
 end

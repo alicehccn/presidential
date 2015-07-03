@@ -8,19 +8,19 @@
 
     <h3 class="support">Support</h3>
     <p>We strive to build innovative, fast and reliable applications for our users.</p>
-    <p>If you have any questions about using Presidential, or want to share ideas on how we can improve your experience, please contact us at <a href="mailto:contact@presidential.com">contact@presidential.com</a>.</p>
+    <p>If you have any questions about using Presidential, or want to share ideas on how we can improve your experience, please contact us at <a href="mailto:presidentialjs.app@gmail.com">presidentialjs.app@gmail.com</a>.</p>
     <p>Or, drop us a line via the following form.</p>
   </section>
 
   <section class="secondary">
     <h3 class="contact-us">Contact Us</h3>
-      <form class="contact-form" action="index.html" method="post">
+
+    <form class="contact-form" action="/contact_submit" method="post">
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
       <label for="name">Name:</label>
       <input type="text" id="form_name" name="form_name">
       <label for="mail">Email:</label>
       <input type="email" id="form_email" name="form_email">
-      <label for="subject">Subject:</label>
-      <input type="text" id="form_subject" name="form_subject">
       <label for="message">Message:</label>        
       <textarea id="form_message" name="form_message"></textarea>
       <button type="submit" id="submit" value="SUBMIT" class="form-button">Send</button> 
