@@ -30,7 +30,6 @@ class PresidentialController < ApplicationController
   end
 
   def contact_submit
-    binding.pry
     @contact_form = ContactForm.new(
       'name' => params['form_name'],
       'email' => params['form_email'],
