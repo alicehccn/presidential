@@ -70,5 +70,7 @@ Rails.application.routes.draw do
 
   get 'contact' => 'presidential#contact'
 
+  post 'contact_submit' => 'presidential#contact_submit'
+
   root 'presidential#index'
 end
