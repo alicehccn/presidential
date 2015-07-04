@@ -31,24 +31,30 @@
 
 </head>
 <body>
-<header>
-  <div class="logo">
-    <span class="logo-name"><%=link_to "Presidential", root_path %></span>
-    <span class="tagline">Presentation in Markdown.</span>
-  </div>
-  <div class="fetch-presentation">
-    <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
-    <span class="get-markdown"><img id="get-markdown" src="/img/markdown.png" title="Get Markdown">PRESENT NOW</span>
-  </div>
-  <div class="user">
-    <% if cookies[:presidential_access_tokens].present? %>
-      <a href="<%= gists_path %>"><img src="/img/github.png"></a>
-    <% else %>
-      <a href="<%= generate_github_oauth_authorization_url %>" data-confirm='Presidential wants access to your Github Gist. Click "OK" to continue.' title="Import Gist form Github"><img src="/img/github.png">
-      </a>
-    <% end %>
-  </div>
+  <header>
+    <div class="logo">
+      <span class="logo-name"><%=link_to "Presidential", root_path %></span>
+      <span class="tagline">Presentation in Markdown.</span>
+    </div>
+    <div class="fetch-presentation">
+      <input id="presentation-url" class="presentation-url" type="text" name="Markdown URL" placeholder="http://location/file.md"/>
+      <span class="get-markdown"><img id="get-markdown" src="/img/markdown.png" title="Get Markdown">PRESENT NOW</span>
+    </div>
+    <div class="user">
+      <% if cookies[:presidential_access_tokens].present? %>
+        <a href="<%= gists_path %>"><img src="/img/github.png"></a>
+      <% else %>
+        <a href="<%= generate_github_oauth_authorization_url %>" data-confirm='Presidential wants access to your Github Gist. Click "OK" to continue.' title="Import Gist form Github"><img src="/img/github.png">
+        </a>
+      <% end %>
+    </div>
   </header>
+
+<div class="alert-box">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+</div>
 
 <%= yield %>
 

@@ -36,6 +36,7 @@ class PresidentialController < ApplicationController
       'message' => params['form_message']
     )
     if @contact_form.deliver
+      flash[:notice] = 'Thank you for contacting us!'
       redirect_to '/'
     else
       flash[:error] = 'Sorry, an error has occured. Please try again.'
