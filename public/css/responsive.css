@@ -89,7 +89,7 @@
 @media screen and (max-width: 640px) { /* Smartphones (portrait) */
   header {
     text-align: center;
-    margin-bottom: 20px
+    margin-bottom: 40px
   }
   body {
     background-color: rgb(240, 240, 240)
@@ -114,6 +114,9 @@
   }
   .user img {
     height: 10px;
+  }
+  .alert-box {
+    top: 200px;
   }
   .gist-page, .contact-page {
     width: 90%;
