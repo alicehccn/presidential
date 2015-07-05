@@ -289,6 +289,10 @@ html .slide-container .slide .textbox{
   background-color: #fff;
   z-index: 10010;
 }
+.slide-container.presenting .slide.active .textbox {
+  margin: 7% 8%;
+  width: 84.5%;
+}
 /************************ Text content ************************/
 .slide-container.presenting .slide.active .textbox p,
 .slide-container.presenting .slide.active .textbox pre,
@@ -354,7 +358,8 @@ html .slide-container .slide .textbox{
   height: 100%;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox {
-  margin: 5% 8%;
+  margin: 5% 7%;
+  width: 85%;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox.h1-box {
   top: 40%;
