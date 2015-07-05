@@ -308,6 +308,9 @@ html .slide-container .slide .textbox{
 .slide-container.presenting .slide.active .textbox h1 {
   font-size: 45px;
 }
+.slide-container.presenting .slide.active .textbox.h1-box {
+  top: 40%;
+}
 .slide-container.presenting .slide.active .textbox h2 {
   font-size: 39px;
 }
@@ -362,7 +365,7 @@ html .slide-container .slide .textbox{
   width: 85%;
 }
 .slide-container.presenting .slide.active.slide-fullscreen .textbox.h1-box {
-  top: 40%;
+  top: 42%;
 }
 /************************ Text content ************************/
 .slide-container.presenting .slide.active.slide-fullscreen .textbox p,
