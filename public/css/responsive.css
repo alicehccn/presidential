@@ -192,6 +192,10 @@
     width: 92%;
     padding: 4%;
   }
+  footer span:first-child {
+    display: block;
+    margin-bottom: 20px;
+  }
 }
 @media screen and (max-width: 375px) { /* iPhone 6 */
   .slide-container .slide {
